@@ -81,7 +81,21 @@ fn bundle_header(bytes: &[u8]) -> &[u8] {
     }
 }
 
+/// The recorded repos were made with no user or system git config and `main` as the first branch; a runner's
+/// own config (a different default branch name, a signing key) must not reach the twin's git.
+fn pin_git_environment() {
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {
+        std::env::set_var("GIT_CONFIG_GLOBAL", "/dev/null");
+        std::env::set_var("GIT_CONFIG_SYSTEM", "/dev/null");
+        std::env::set_var("GIT_CONFIG_COUNT", "1");
+        std::env::set_var("GIT_CONFIG_KEY_0", "init.defaultBranch");
+        std::env::set_var("GIT_CONFIG_VALUE_0", "main");
+    });
+}
+
 fn fixtures() -> Vec<Fixture> {
+    pin_git_environment();
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("fixtures/workspace");
     let mut files: Vec<PathBuf> = std::fs::read_dir(&dir)
         .unwrap_or_else(|e| {
