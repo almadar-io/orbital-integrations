@@ -1,8 +1,11 @@
 //! Twin parity: every action sequence `@almadar/integrations` recorded for the `workspace` service over
 //! `storageWorkspaceHost` (`fixtures/workspace/*.json`, written by `__tests__/workspace-recorded-exchanges.test.ts`)
 //! is replayed against the Rust provider with an in-memory bucket. Time is pinned, so the Rust twin must produce
-//! the same results, the same commit ids, the same bucket object names and contents, and byte-identical git
-//! bundles. A second test hands the Rust twin the bucket the TS host left behind and reads its history cold.
+//! the same results, the same commit ids, the same bucket object names and contents, and git bundles with the
+//! same header (refs and prerequisite commits: a commit id hashes its whole history, so equal headers mean equal
+//! history). The pack bytes behind the header are not compared: they depend on the git and zlib build that wrote
+//! them, so a fixture recorded on one machine never matches byte for byte on another. A second test hands the
+//! Rust twin the bucket the TS host left behind and reads its history cold.
 
 use orbital_core::effects::ServiceCaller;
 use orbital_integrations::CallContext;
@@ -67,6 +70,14 @@ impl Object {
                 .decode(base64)
                 .expect("bundle base64"),
         }
+    }
+}
+
+/// The bundle's text header: the signature line, prerequisites and refs, up to the blank line before the pack.
+fn bundle_header(bytes: &[u8]) -> &[u8] {
+    match bytes.windows(2).position(|w| w == b"\n\n") {
+        Some(end) => &bytes[..end + 2],
+        None => bytes,
     }
 }
 
@@ -256,19 +267,21 @@ fn differences(fixture: &Fixture, replay: &Replay) -> Option<String> {
     for (name, object) in &fixture.bucket {
         match actual.get(name) {
             None => return Some(format!("{}: {name} is missing", fixture.case)),
-            Some(bytes) if *bytes != object.bytes() => {
-                return Some(match object {
-                    Object::Text { text } => format!(
+            Some(bytes) => match object {
+                Object::Text { text } if bytes != text.as_bytes() => {
+                    return Some(format!(
                         "{}: {name}\n  recorded {text}\n  rust     {}",
                         fixture.case,
                         String::from_utf8_lossy(bytes)
-                    ),
-                    Object::Bundle { .. } => {
-                        format!("{}: {name} (git bundle bytes differ)", fixture.case)
-                    }
-                })
-            }
-            Some(_) => {}
+                    ))
+                }
+                Object::Bundle { .. }
+                    if bundle_header(bytes) != bundle_header(&object.bytes()) =>
+                {
+                    return Some(format!("{}: {name} (git bundle header differs)", fixture.case))
+                }
+                _ => {}
+            },
         }
     }
     None
@@ -322,6 +335,33 @@ fn control_a_bundle_that_differs_by_one_byte_is_caught() {
         .cloned()
         .expect("base bundle");
     let mut bytes = fixture.bucket[&base].bytes();
+    let first_ref = bytes.iter().position(|b| *b == b'\n').expect("header line") + 1;
+    bytes[first_ref] ^= 1;
+    fixture.bucket.insert(
+        base,
+        Object::Bundle {
+            base64: base64::engine::general_purpose::STANDARD.encode(bytes),
+        },
+    );
+    assert!(differences(&fixture, &run).is_some());
+}
+
+#[test]
+fn control_a_different_pack_encoding_behind_the_same_header_is_not_a_difference() {
+    let mut fixture = fixtures()
+        .into_iter()
+        .find(|f| f.case == "snapshot-then-cold-history")
+        .expect("fixture");
+    let run = replay(&fixture, 0);
+    assert!(differences(&fixture, &run).is_none());
+    let base = fixture
+        .bucket
+        .keys()
+        .find(|n| n.ends_with("/history/base.bundle"))
+        .cloned()
+        .expect("base bundle");
+    let mut bytes = fixture.bucket[&base].bytes();
+    assert!(bytes.len() > bundle_header(&bytes).len(), "the bundle carries a pack");
     let last = bytes.len() - 1;
     bytes[last] ^= 1;
     fixture.bucket.insert(
@@ -330,7 +370,7 @@ fn control_a_bundle_that_differs_by_one_byte_is_caught() {
             base64: base64::engine::general_purpose::STANDARD.encode(bytes),
         },
     );
-    assert!(differences(&fixture, &run).is_some());
+    assert!(differences(&fixture, &run).is_none());
 }
 
 fn changed_history(step: &Step) -> bool {
