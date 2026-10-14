@@ -1,0 +1,16 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "validation-unknown-param",
+  "env": {},
+  "params": {
+    "title": "x",
+    "lang": "de"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for wikimedia.getPage: lang: Unknown parameter: lang (declared: title)"
+  }
+}

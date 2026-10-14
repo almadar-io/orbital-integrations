@@ -1,0 +1,58 @@
+{
+  "service": "llm",
+  "action": "classify",
+  "case": "openai-classify-retries-after-unreadable-reply",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "text": "The invoice is overdue",
+    "categories": [
+      "billing",
+      "support"
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\"},{\"role\":\"user\",\"content\":\"The invoice is overdue\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"not json at all\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\"},{\"role\":\"user\",\"content\":\"The invoice is overdue\\n\\n[Previous attempt failed with: No valid JSON found in response. Expected a JSON value (object, array, string, number, boolean, or null), possibly wrapped in markdown code blocks.]\\nPlease output valid JSON that matches the expected schema.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\\"category\\\":\\\"support\\\",\\\"confidence\\\":0.5,\\\"reasoning\\\":\\\"unclear\\\"}\\n```\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "category": "support",
+      "confidence": 0.5,
+      "reasoning": "unclear"
+    }
+  }
+}

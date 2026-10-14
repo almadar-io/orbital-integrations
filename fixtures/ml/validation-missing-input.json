@@ -1,0 +1,18 @@
+{
+  "service": "ml",
+  "action": "infer",
+  "case": "validation-missing-input",
+  "env": {
+    "MASAR_URL": "{base}",
+    "MASAR_ML_TRAIT": "inference-serving"
+  },
+  "params": {
+    "model": "hf:x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for ml.infer: input: Missing required parameter: input"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-enrollment-course-missing",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "e1": {
+        "id": "e1",
+        "type": "Enrollment",
+        "properties": {
+          "courseId": "gone"
+        }
+      },
+      "e2": {
+        "id": "e2",
+        "type": "Enrollment",
+        "properties": {
+          "courseId": ""
+        }
+      },
+      "e3": {
+        "id": "e3",
+        "type": "Enrollment",
+        "properties": {}
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_11_ENROLLMENT_COURSE_MISSING",
+      "severity": "warning",
+      "nodeId": "e1",
+      "message": "Enrollment \"e1\" references courseId \"gone\" but no such node exists."
+    }
+  ]
+}

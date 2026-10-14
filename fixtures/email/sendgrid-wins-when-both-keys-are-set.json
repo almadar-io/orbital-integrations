@@ -1,0 +1,43 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "sendgrid-wins-when-both-keys-are-set",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test",
+    "RESEND_API_KEY": "test-key"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":{\"email\":\"noreply@almadar.test\"},\"subject\":\"Welcome\",\"personalizations\":[{\"to\":[{\"email\":\"ada@example.com\"}]}],\"content\":[{\"value\":\"<p>Hello Ada</p>\",\"type\":\"text/html\"}]}"
+      },
+      "response": {
+        "status": 202,
+        "body": "",
+        "headers": {
+          "x-message-id": "sg-msg-5"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "sg-msg-5",
+      "status": "sent"
+    }
+  }
+}

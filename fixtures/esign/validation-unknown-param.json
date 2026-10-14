@@ -1,0 +1,19 @@
+{
+  "service": "esign",
+  "action": "getEnvelopeStatus",
+  "case": "validation-unknown-param",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": "env-1",
+    "bogus": 1
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for esign.getEnvelopeStatus: bogus: Unknown parameter: bogus (declared: envelopeId)"
+  }
+}

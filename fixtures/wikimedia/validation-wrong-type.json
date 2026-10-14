@@ -1,0 +1,15 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "validation-wrong-type",
+  "env": {},
+  "params": {
+    "title": 7
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for wikimedia.getPage: title: Expected string, got number"
+  }
+}

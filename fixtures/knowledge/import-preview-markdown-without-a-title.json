@@ -1,0 +1,43 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-markdown-without-a-title",
+  "env": {},
+  "params": {
+    "adapter": "markdown",
+    "documents": [
+      {
+        "ref": "loose.md",
+        "title": "",
+        "raw": "Just a note.\n## Part\nBody"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "units": [
+        {
+          "ref": "doc:loose.md",
+          "targetEntity": "LearningGoal",
+          "title": "document",
+          "parentRef": ""
+        },
+        {
+          "ref": "doc:loose.md/h:part",
+          "targetEntity": "Concept",
+          "title": "Part",
+          "parentRef": "doc:loose.md"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

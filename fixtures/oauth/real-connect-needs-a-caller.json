@@ -1,0 +1,26 @@
+{
+  "service": "oauth",
+  "case": "real-connect-needs-a-caller",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "connect",
+      "params": {
+        "provider": "github",
+        "code": "c",
+        "state": "s"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "A provider connection needs a signed-in caller"
+      }
+    }
+  ]
+}

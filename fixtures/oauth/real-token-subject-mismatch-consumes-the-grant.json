@@ -1,0 +1,60 @@
+{
+  "service": "oauth",
+  "case": "real-token-subject-mismatch-consumes-the-grant",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "github",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback",
+        "subject": "user-1"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://github.com/login/oauth/authorize?redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&scope=openid+email&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256&client_id=client-id-1&response_type=code",
+          "state": "<state>"
+        }
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}",
+        "subject": "user-2"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "OAuth completion refused: the completing subject is not the one that started the authorization"
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}",
+        "subject": "user-1"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid or expired state token: <state>"
+      }
+    }
+  ]
+}

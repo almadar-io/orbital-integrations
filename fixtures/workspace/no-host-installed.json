@@ -1,0 +1,24 @@
+{
+  "service": "workspace",
+  "case": "no-host-installed",
+  "startMs": 1767225600000,
+  "steps": [
+    {
+      "action": "tree",
+      "params": {
+        "workspace": "app-1"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": true,
+      "atMs": 1767225600000,
+      "outcome": {
+        "ok": false,
+        "code": "NOT_CONFIGURED",
+        "message": "No workspace host is installed on this host"
+      },
+      "objects": []
+    }
+  ],
+  "bucket": {}
+}

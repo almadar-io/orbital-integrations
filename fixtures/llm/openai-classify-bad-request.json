@@ -1,0 +1,71 @@
+{
+  "service": "llm",
+  "action": "classify",
+  "case": "openai-classify-bad-request",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "text": "The invoice is overdue",
+    "categories": [
+      "billing",
+      "support"
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\"},{\"role\":\"user\",\"content\":\"The invoice is overdue\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"Invalid request\",\"type\":\"invalid_request_error\",\"code\":null}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\"},{\"role\":\"user\",\"content\":\"The invoice is overdue\\n\\n[Previous attempt failed with: 400 Invalid request]\\nPlease output valid JSON that matches the expected schema.\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"Invalid request\",\"type\":\"invalid_request_error\",\"code\":null}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\"},{\"role\":\"user\",\"content\":\"The invoice is overdue\\n\\n[Previous attempt failed with: 400 Invalid request]\\nPlease output valid JSON that matches the expected schema.\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"Invalid request\",\"type\":\"invalid_request_error\",\"code\":null}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "400 Invalid request"
+  }
+}

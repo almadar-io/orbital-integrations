@@ -1,0 +1,36 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "send-sms-without-a-sender-anywhere",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=%2B4915112345678&From=&Body=x"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"code\":21603,\"message\":\"A 'From' phone number is required.\",\"more_info\":\"https://www.twilio.com/docs/errors/21603\",\"status\":400}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "A 'From' phone number is required."
+  }
+}

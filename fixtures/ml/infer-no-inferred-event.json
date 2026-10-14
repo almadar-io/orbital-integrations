@@ -1,0 +1,46 @@
+{
+  "service": "ml",
+  "action": "infer",
+  "case": "infer-no-inferred-event",
+  "env": {
+    "MASAR_URL": "{base}",
+    "MASAR_ML_TRAIT": "inference-serving"
+  },
+  "params": {
+    "model": "hf:distilbert-base-uncased",
+    "input": {
+      "tokens": [
+        101,
+        2023,
+        102
+      ],
+      "mask": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/api/inference-serving/events",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*"
+        },
+        "body": "{\"event\":\"INFER\",\"payload\":{\"model\":\"hf:distilbert-base-uncased\",\"input\":{\"tokens\":[101,2023,102],\"mask\":[1,1,1]}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"success\":true,\"newState\":\"ready\",\"effectResults\":[{\"effect\":\"emit\",\"success\":true,\"data\":{\"event\":\"OTHER\",\"payload\":{\"output\":[0.1,0.9],\"confidence\":0.9,\"violations\":[]}}}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "ML service response did not include a valid inference result"
+  }
+}

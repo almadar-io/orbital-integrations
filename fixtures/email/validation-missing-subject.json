@@ -1,0 +1,19 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "validation-missing-subject",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "body": "x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for email.send: subject: Missing required parameter: subject"
+  }
+}

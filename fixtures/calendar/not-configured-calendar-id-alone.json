@@ -1,0 +1,15 @@
+{
+  "service": "calendar",
+  "action": "listEvents",
+  "case": "not-configured-calendar-id-alone",
+  "env": {
+    "GOOGLE_CALENDAR_ID": "work@example.com"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "NOT_CONFIGURED",
+    "message": "Integration not configured: calendar. Set GOOGLE_CALENDAR_SA_KEY / GOOGLE_CALENDAR_SUBJECT / GOOGLE_CALENDAR_ID / GOOGLE_CALENDAR_CHANNEL_TOKEN."
+  }
+}

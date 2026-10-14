@@ -1,0 +1,23 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track-from-a-local-host-sends-nothing",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "name": "x",
+    "path": "/"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": false
+    }
+  },
+  "page": {
+    "hostname": "localhost",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

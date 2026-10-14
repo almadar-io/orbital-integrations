@@ -1,0 +1,67 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-relationship-unknown-type",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "c1",
+        "target": "c1",
+        "type": "UNKNOWN_TYPE",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_03_REL_UNKNOWN_TYPE",
+      "severity": "error",
+      "message": "Relationship \"r1\" has unknown type \"UNKNOWN_TYPE\"."
+    }
+  ]
+}

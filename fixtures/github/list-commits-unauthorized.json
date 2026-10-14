@@ -1,0 +1,34 @@
+{
+  "service": "github",
+  "action": "listCommits",
+  "case": "list-commits-unauthorized",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/commits",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 401,
+        "body": "{\"message\":\"Bad credentials\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "GitHub API authentication failed: Bad credentials"
+  }
+}

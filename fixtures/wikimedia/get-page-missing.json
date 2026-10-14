@@ -1,0 +1,30 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "get-page-missing",
+  "env": {},
+  "params": {
+    "title": "Nonexistent page xyz"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages|description|extracts&explaintext=1&exintro=1&piprop=thumbnail&pithumbsize=240&titles=Nonexistent%20page%20xyz",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"batchcomplete\":\"\",\"query\":{\"pages\":{\"-1\":{\"ns\":0,\"title\":\"Nonexistent page xyz\",\"missing\":\"\"}}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {}
+  }
+}

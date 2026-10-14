@@ -1,0 +1,48 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-index-ghost",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {},
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "ghost"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_02_INDEX_GHOST",
+      "severity": "error",
+      "nodeId": "ghost",
+      "message": "nodeTypes[\"Concept\"] references \"ghost\" but no such node exists in graph.nodes."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "service": "github",
+  "action": "listCommits",
+  "case": "list-commits-options",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "path": "src/index.ts",
+    "ref": "develop",
+    "per_page": 10
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/commits?path=src%2Findex.ts&sha=develop&per_page=10",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"sha\":\"ccc333\",\"commit\":{\"message\":\"Touch index\",\"author\":{\"name\":\"Carol\",\"email\":\"carol@example.com\",\"date\":\"2026-02-03T04:05:06Z\"}}}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "commits": [
+        {
+          "sha": "ccc333",
+          "message": "Touch index",
+          "author": "Carol",
+          "date": "2026-02-03T04:05:06Z"
+        }
+      ]
+    }
+  }
+}

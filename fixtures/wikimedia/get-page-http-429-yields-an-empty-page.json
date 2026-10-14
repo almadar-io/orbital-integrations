@@ -1,0 +1,30 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "get-page-http-429-yields-an-empty-page",
+  "env": {},
+  "params": {
+    "title": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages|description|extracts&explaintext=1&exintro=1&piprop=thumbnail&pithumbsize=240&titles=x",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 429,
+        "body": "{\"error\":\"slow down\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {}
+  }
+}

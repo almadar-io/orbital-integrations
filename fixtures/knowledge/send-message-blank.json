@@ -1,0 +1,22 @@
+{
+  "service": "knowledge",
+  "action": "sendMessage",
+  "case": "send-message-blank",
+  "env": {},
+  "params": {
+    "connectionId": "c1",
+    "content": "   "
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "content: content required"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

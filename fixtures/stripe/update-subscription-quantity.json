@@ -1,0 +1,65 @@
+{
+  "service": "stripe",
+  "action": "updateSubscription",
+  "case": "update-subscription-quantity",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "subscriptionId": "sub_1",
+    "quantity": 5
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_1",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"cancel_at_period_end\":false,\"current_period_start\":1767225600,\"current_period_end\":1769904000,\"items\":{\"object\":\"list\",\"data\":[{\"id\":\"si_1\",\"object\":\"subscription_item\",\"quantity\":1,\"price\":{\"id\":\"price_solo_test\",\"object\":\"price\"}}],\"has_more\":false}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_1",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "proration_behavior=create_prorations&items[0][id]=si_1&items[0][quantity]=5"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"cancel_at_period_end\":false,\"current_period_start\":1767225600,\"current_period_end\":1769904000,\"items\":{\"data\":[{\"id\":\"si_1\",\"quantity\":5,\"price\":{\"id\":\"price_solo_test\"}}]}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "subscriptionId": "sub_1",
+      "customerId": "cus_1",
+      "status": "active",
+      "priceId": "price_solo_test",
+      "quantity": 5,
+      "currentPeriodStart": "2026-01-01T00:00:00.000Z",
+      "currentPeriodEnd": "2026-02-01T00:00:00.000Z",
+      "cancelAtPeriodEnd": false,
+      "tier": "solo"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "svg-exists-server-error",
+  "env": {},
+  "params": {
+    "path": "logos/boom.svg"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/logos/boom.svg",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 502,
+        "body": "bad gateway"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "exists": false
+    }
+  }
+}

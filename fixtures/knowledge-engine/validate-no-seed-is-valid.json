@@ -1,0 +1,39 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-no-seed-is-valid",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {},
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": []
+}

@@ -1,0 +1,151 @@
+{
+  "service": "database",
+  "case": "params-that-are-not-arrays",
+  "env": {},
+  "setup": {
+    "processEnv": {
+      "ORDERS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "REPORTS_DB_URL": "postgres://reader:test-key@reports.internal:5432/reports",
+      "ALIAS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "EMPTY_DB_URL": ""
+    }
+  },
+  "steps": [
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1, $2, $3",
+        "params": "abc"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: params: Expected array, got string"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1",
+        "params": 5
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: params: Expected array, got number"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1",
+        "params": {
+          "a": 1
+        }
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: params: Expected array, got object"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1",
+        "params": null
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: params: Expected array, got null"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1",
+        "params": [
+          1
+        ]
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "a": 1
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [
+          {
+            "connectionString": "postgres://app:test-key@db.internal:5432/orders",
+            "statementTimeoutMs": 10000
+          }
+        ],
+        "queries": [
+          {
+            "sql": "SELECT $1",
+            "params": [
+              1
+            ]
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "a": 1
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    }
+  ]
+}

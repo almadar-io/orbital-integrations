@@ -1,0 +1,42 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "kimi-generate",
+  "env": {
+    "KIMI_API_KEY": "test-key",
+    "LLM_PROVIDER": "kimi"
+  },
+  "params": {
+    "userPrompt": "hi",
+    "temperature": 0.2
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.moonshot.ai/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"kimi-k2.5\",\"temperature\":0.6,\"stream\":false,\"thinking\":{\"type\":\"disabled\"},\"max_tokens\":1024,\"messages\":[{\"role\":\"system\",\"content\":\"You are a helpful assistant.\"},{\"role\":\"user\",\"content\":\"hi\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"hi\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "hi",
+      "usage": {
+        "promptTokens": 3,
+        "completionTokens": 1,
+        "totalTokens": 4
+      }
+    }
+  }
+}

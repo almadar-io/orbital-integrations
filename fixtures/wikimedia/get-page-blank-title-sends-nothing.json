@@ -1,0 +1,14 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "get-page-blank-title-sends-nothing",
+  "env": {},
+  "params": {
+    "title": "   "
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {}
+  }
+}

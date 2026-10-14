@@ -1,0 +1,48 @@
+{
+  "service": "github",
+  "action": "listCommits",
+  "case": "list-commits-defaults",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/commits",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"sha\":\"aaa111\",\"commit\":{\"message\":\"Initial commit\",\"author\":{\"name\":\"Alice\",\"email\":\"alice@example.com\",\"date\":\"2026-02-03T04:05:06Z\"}}},{\"sha\":\"bbb222\",\"commit\":{\"message\":\"Fix bug\",\"author\":{\"name\":\"Bob\",\"email\":\"bob@example.com\",\"date\":\"2026-02-03T04:05:06Z\"}},\"stats\":{\"additions\":1,\"deletions\":2,\"total\":3}}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "commits": [
+        {
+          "sha": "aaa111",
+          "message": "Initial commit",
+          "author": "Alice",
+          "date": "2026-02-03T04:05:06Z"
+        },
+        {
+          "sha": "bbb222",
+          "message": "Fix bug",
+          "author": "Bob",
+          "date": "2026-02-03T04:05:06Z"
+        }
+      ]
+    }
+  }
+}

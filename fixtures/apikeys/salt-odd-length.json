@@ -1,0 +1,21 @@
+{
+  "service": "apikeys",
+  "case": "salt-odd-length",
+  "env": {
+    "ALMADAR_API_KEY_SALT": "abc"
+  },
+  "steps": [
+    {
+      "action": "mint",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "@almadar/auth/apikey: the API key salt must be non-empty hex (ALMADAR_API_KEY_SALT)"
+      }
+    }
+  ]
+}

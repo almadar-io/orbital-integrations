@@ -1,0 +1,23 @@
+{
+  "service": "oauth",
+  "case": "mock-token-unknown-state",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "token",
+      "params": {
+        "code": "c",
+        "state": "never-issued"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid or expired state token: never-issued"
+      }
+    }
+  ]
+}

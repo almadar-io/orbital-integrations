@@ -1,0 +1,37 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "resend-domain-not-verified",
+  "env": {
+    "RESEND_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":\"noreply@almadar.test\",\"html\":\"<p>Hello Ada</p>\",\"subject\":\"Welcome\",\"to\":\"ada@example.com\"}"
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"statusCode\":403,\"name\":\"validation_error\",\"message\":\"The almadar.test domain is not verified.\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Resend rejected the email: The almadar.test domain is not verified."
+  }
+}

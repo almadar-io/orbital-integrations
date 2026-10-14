@@ -1,0 +1,45 @@
+{
+  "service": "knowledge",
+  "action": "openConnection",
+  "case": "open-connection-unknown-token",
+  "env": {},
+  "params": {
+    "peerRef": "nope",
+    "originKind": "concept",
+    "canonicalId": "light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/peer-tokens/nope\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/peer-tokens/nope\",\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "Peer reference is invalid or expired"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

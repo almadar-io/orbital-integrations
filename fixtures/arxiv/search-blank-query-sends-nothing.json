@@ -1,0 +1,16 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "search-blank-query-sends-nothing",
+  "env": {},
+  "params": {
+    "query": "   "
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "results": []
+    }
+  }
+}

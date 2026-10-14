@@ -1,0 +1,46 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "send-client-error-is-returned-not-thrown",
+  "env": {
+    "WEBHOOK_SIGNING_SECRET": "test-key"
+  },
+  "params": {
+    "url": "{base}/hooks/orders",
+    "event": "order.created",
+    "payload": {
+      "orderId": "o-42",
+      "customer": "Zoe",
+      "amount": "19.90",
+      "note": "ünïcode \"quoted\" <tag> & more"
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/hooks/orders",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "x-almadar-event": "order.created",
+          "x-almadar-signature": "sha256=16deaedde1dd60c14c5750bbb3d4649b1ea76781274a8acf467a08d4762cad22"
+        },
+        "body": "{\"event\":\"order.created\",\"payload\":{\"orderId\":\"o-42\",\"customer\":\"Zoe\",\"amount\":\"19.90\",\"note\":\"ünïcode \\\"quoted\\\" <tag> & more\"},\"timestamp\":\"2026-05-17T08:09:10.011Z\"}"
+      },
+      "response": {
+        "status": 404,
+        "body": "no such hook"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": 404,
+      "ok": false,
+      "durationMs": 0
+    }
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

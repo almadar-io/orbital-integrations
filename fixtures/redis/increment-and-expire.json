@@ -1,0 +1,196 @@
+{
+  "service": "redis",
+  "case": "increment-and-expire",
+  "env": {},
+  "steps": [
+    {
+      "action": "increment",
+      "params": {
+        "key": "hits"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 1
+        }
+      }
+    },
+    {
+      "action": "increment",
+      "params": {
+        "key": "hits",
+        "by": 4
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 5
+        }
+      }
+    },
+    {
+      "action": "increment",
+      "params": {
+        "key": "hits",
+        "by": -2
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 3
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "label",
+        "value": "text"
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "increment",
+      "params": {
+        "key": "label",
+        "by": 2
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 2
+        }
+      }
+    },
+    {
+      "action": "expire",
+      "params": {
+        "key": "hits",
+        "ttl": 1
+      },
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "set": true
+        }
+      }
+    },
+    {
+      "action": "increment",
+      "params": {
+        "key": "hits"
+      },
+      "clockMs": 1760000000500,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 4
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "hits"
+      },
+      "clockMs": 1760000001100,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": null
+        }
+      }
+    },
+    {
+      "action": "expire",
+      "params": {
+        "key": "hits",
+        "ttl": 5
+      },
+      "clockMs": 1760000001200,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "set": false
+        }
+      }
+    },
+    {
+      "action": "expire",
+      "params": {
+        "key": "never-set",
+        "ttl": 5
+      },
+      "clockMs": 1760000001300,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "set": false
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "half",
+        "value": 1.5
+      },
+      "clockMs": 1760000001400,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "increment",
+      "params": {
+        "key": "half",
+        "by": 0.25
+      },
+      "clockMs": 1760000001410,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 1.75
+        }
+      }
+    }
+  ]
+}

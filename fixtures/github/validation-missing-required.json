@@ -1,0 +1,19 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "validation-missing-required",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "title": "only a title"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for github.createPR: body: Missing required parameter: body; baseBranch: Missing required parameter: baseBranch; headBranch: Missing required parameter: headBranch"
+  }
+}

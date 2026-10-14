@@ -1,0 +1,20 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "validation-wrong-type",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": 5,
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for email.send: to: Expected string, got number"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-from-a-public-host-that-contains-localhost",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"pageview\",\"d\":\"localhost.example.com\",\"u\":\"/\",\"r\":\"https://news.ycombinator.com/\",\"w\":1440}"
+      },
+      "response": {
+        "status": 202,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "localhost.example.com",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "service": "esign",
+  "action": "getEnvelopeStatus",
+  "case": "not-configured-missing-token",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1"
+  },
+  "params": {
+    "envelopeId": "env-1"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "NOT_CONFIGURED",
+    "message": "Integration not configured: esign. Set DOCUSIGN_BASE_URL / DOCUSIGN_ACCESS_TOKEN."
+  }
+}

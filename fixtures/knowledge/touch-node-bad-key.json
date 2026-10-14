@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "touchNode",
+  "case": "touch-node-bad-key",
+  "env": {},
+  "params": {
+    "nodeKey": "light"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "nodeKey: nodeKey must be concept:<id> or path:<id>"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

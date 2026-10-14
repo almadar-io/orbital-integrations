@@ -1,0 +1,16 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "get-icon-body-empty-name-sends-nothing",
+  "env": {},
+  "params": {
+    "iconId": "mdi:"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "body": null
+    }
+  }
+}

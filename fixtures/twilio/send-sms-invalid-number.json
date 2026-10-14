@@ -1,0 +1,37 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "send-sms-invalid-number",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "123",
+    "body": "hi"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=123&From=%2B15005550006&Body=hi"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"code\":21211,\"message\":\"The 'To' number 123 is not a valid phone number.\",\"more_info\":\"https://www.twilio.com/docs/errors/21211\",\"status\":400}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "The 'To' number 123 is not a valid phone number."
+  }
+}

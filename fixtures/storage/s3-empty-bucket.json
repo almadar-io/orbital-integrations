@@ -1,0 +1,143 @@
+{
+  "service": "storage",
+  "case": "s3-empty-bucket",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "",
+    "STORAGE_ENDPOINT": "http://s3.recorded.test:9000"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "",
+        "key": "k.txt",
+        "content": "x"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "No value provided for input HTTP label: Bucket."
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "",
+        "key": "k.txt"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "No value provided for input HTTP label: Bucket."
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "media",
+        "key": ""
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "whole bucket",
+            "headers": {
+              "content-type": "text/plain"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "content": "d2hvbGUgYnVja2V0",
+          "contentType": "text/plain",
+          "size": 12,
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "media",
+        "key": ""
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 204,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": ""
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=0f1bf5d22b8d27c03123237556d840a0b372317032e2fed424ee4af4bfd51d53&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760003600004
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": ""
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "No value provided for input HTTP label: Bucket."
+      }
+    }
+  ]
+}

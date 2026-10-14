@@ -1,0 +1,34 @@
+{
+  "service": "banking",
+  "action": "listAccounts",
+  "case": "token-rejected",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "requisitionId": "req-1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://bankaccountdata.gocardless.com/api/v2/token/new/",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "body": "{\"secret_id\":\"test-id\",\"secret_key\":\"test-key\"}"
+      },
+      "response": {
+        "status": 401,
+        "body": "{\"summary\":\"Invalid token\",\"status_code\":401}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "GoCardless token request failed: 401"
+  }
+}

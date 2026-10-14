@@ -1,0 +1,33 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-sign-in-rejected-401",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 401,
+        "body": "{}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "KFlow rejected the sign-in"
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

@@ -1,0 +1,108 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-translation-source-missing-and-no-back-edge",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      },
+      "t1": {
+        "id": "t1",
+        "type": "Translation",
+        "properties": {
+          "sourceNodeId": "gone",
+          "sourceNodeType": "Concept",
+          "language": "es",
+          "status": "draft"
+        }
+      },
+      "t2": {
+        "id": "t2",
+        "type": "Translation",
+        "properties": {
+          "sourceNodeId": "c1",
+          "sourceNodeType": "Concept",
+          "language": "es",
+          "status": "draft"
+        }
+      },
+      "t3": {
+        "id": "t3",
+        "type": "Translation",
+        "properties": {
+          "sourceNodeId": "c1",
+          "sourceNodeType": "Concept",
+          "language": "fr",
+          "status": "draft"
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "t3",
+        "target": "c1",
+        "type": "translationOf",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_10_TRANSLATION_SRC_MISSING",
+      "severity": "error",
+      "nodeId": "t1",
+      "message": "Translation \"t1\" references sourceNodeId \"gone\" which does not exist."
+    },
+    {
+      "code": "KG_INV_10_TRANSLATION_NO_BACK_EDGE",
+      "severity": "warning",
+      "nodeId": "t2",
+      "message": "Translation \"t2\" has no translationOf back-edge to \"c1\"."
+    }
+  ]
+}

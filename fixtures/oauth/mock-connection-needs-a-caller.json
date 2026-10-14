@@ -1,0 +1,22 @@
+{
+  "service": "oauth",
+  "case": "mock-connection-needs-a-caller",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "connection",
+      "params": {
+        "provider": "google"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "NOT_CONFIGURED",
+        "message": "No OAuth connection store is installed on this host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "service": "github",
+  "action": "commit",
+  "case": "commit-all",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_WORK_DIR": "{workdir}"
+  },
+  "params": {
+    "message": "Add everything"
+  },
+  "setup": "git-repo",
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "message": "Successfully committed changes: Add everything"
+    }
+  }
+}

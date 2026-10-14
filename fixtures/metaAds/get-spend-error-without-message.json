@@ -1,0 +1,34 @@
+{
+  "service": "metaAds",
+  "action": "getSpend",
+  "case": "get-spend-error-without-message",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {
+    "since": "2026-01-01",
+    "until": "2026-01-31"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://graph.facebook.com/v21.0/act_1234567890/insights?fields=spend%2Cimpressions%2Cclicks%2Caccount_currency&time_range=%7B%22since%22%3A%222026-01-01%22%2C%22until%22%3A%222026-01-31%22%7D&level=account&access_token=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Meta Graph API error: 403"
+  }
+}

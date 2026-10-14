@@ -1,0 +1,23 @@
+{
+  "service": "github",
+  "action": "commit",
+  "case": "commit-files",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_WORK_DIR": "{workdir}"
+  },
+  "params": {
+    "message": "Add note",
+    "files": [
+      "note.txt"
+    ]
+  },
+  "setup": "git-repo",
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "message": "Successfully committed changes: Add note"
+    }
+  }
+}

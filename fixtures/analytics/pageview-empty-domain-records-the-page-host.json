@@ -1,0 +1,39 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-empty-domain-records-the-page-host",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/pricing",
+    "domain": ""
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"pageview\",\"d\":\"orb.almadar.io\",\"u\":\"/pricing\",\"r\":\"https://news.ycombinator.com/\",\"w\":1440}"
+      },
+      "response": {
+        "status": 202,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

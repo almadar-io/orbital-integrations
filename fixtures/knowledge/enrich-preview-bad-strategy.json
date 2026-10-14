@@ -1,0 +1,24 @@
+{
+  "service": "knowledge",
+  "action": "enrichPreview",
+  "case": "enrich-preview-bad-strategy",
+  "env": {},
+  "params": {
+    "graphId": "g1",
+    "strategies": [
+      "guess"
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "strategies.0: Invalid enum value. Expected 'missingConcepts' | 'prerequisites' | 'crossLayer' | 'goalAware', received 'guess'"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

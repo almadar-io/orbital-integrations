@@ -1,0 +1,23 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track-empty-endpoint-sends-nothing",
+  "env": {},
+  "params": {
+    "endpoint": "",
+    "name": "x",
+    "path": "/"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": false
+    }
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

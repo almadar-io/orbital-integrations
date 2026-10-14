@@ -1,0 +1,51 @@
+{
+  "service": "drive",
+  "action": "createFolder",
+  "case": "create-folder-forbidden",
+  "env": {
+    "GOOGLE_DRIVE_REFRESH_TOKEN": "test-refresh-token",
+    "OAUTH_CLIENT_ID": "test-client-id",
+    "OAUTH_CLIENT_SECRET": "test-client-secret"
+  },
+  "params": {
+    "name": "Q3"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://oauth2.googleapis.com/token",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "*/*"
+        },
+        "body": "refresh_token=test-refresh-token&client_id=test-client-id&client_secret=test-client-secret&grant_type=refresh_token"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"access_token\":\"ya29.test-token\",\"expires_in\":3599,\"token_type\":\"Bearer\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/drive/v3/files?fields=id%2C%20name",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"name\":\"Q3\",\"mimeType\":\"application/vnd.google-apps.folder\"}"
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{\"code\":403,\"message\":\"Insufficient Permission\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Insufficient Permission"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "service": "stripe",
+  "action": "getSubscription",
+  "case": "error-of-unknown-type",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "subscriptionId": "sub_1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_1",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"type\":\"brand_new_error\",\"message\":\"Something new happened.\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Something new happened."
+  }
+}

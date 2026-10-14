@@ -1,0 +1,35 @@
+{
+  "service": "apikeys",
+  "case": "validation-failures",
+  "env": {
+    "ALMADAR_API_KEY_SALT": "00112233445566778899"
+  },
+  "steps": [
+    {
+      "action": "mint",
+      "params": {
+        "label": "x"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for apikeys.mint: label: Unknown parameter: label (declared: )"
+      }
+    },
+    {
+      "action": "revoke",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for apikeys.revoke: action: Unknown action: revoke"
+      }
+    }
+  ]
+}

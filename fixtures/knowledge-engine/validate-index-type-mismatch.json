@@ -1,0 +1,60 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-index-type-mismatch",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [
+        "c1"
+      ],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_02_INDEX_TYPE_MISMATCH",
+      "severity": "error",
+      "nodeId": "c1",
+      "message": "nodeTypes[\"Layer\"] indexes \"c1\" but node.type is \"Concept\"."
+    }
+  ]
+}

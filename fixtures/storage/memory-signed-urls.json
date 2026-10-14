@@ -1,0 +1,63 @@
+{
+  "service": "storage",
+  "case": "memory-signed-urls",
+  "env": {
+    "STORAGE_BUCKET": "dev-bucket"
+  },
+  "steps": [
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "b",
+        "key": "a/b.txt"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "https://storage.mock.local/b/a/b.txt?X-Amz-Algorithm=MOCK-HMAC-SHA256&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8f41c6b4df6f2c48&operation=get",
+          "expiresAt": 1760003600000
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "b",
+        "key": "a/b.txt",
+        "expiresIn": 60,
+        "operation": "put"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "https://storage.mock.local/b/a/b.txt?X-Amz-Algorithm=MOCK-HMAC-SHA256&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=73930331a16242c1&operation=put",
+          "expiresAt": 1760000060001
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "",
+        "key": "with space.txt",
+        "expiresIn": 1.5
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "https://storage.mock.local/dev-bucket/with space.txt?X-Amz-Algorithm=MOCK-HMAC-SHA256&X-Amz-Expires=1.5&X-Amz-SignedHeaders=host&X-Amz-Signature=c46e77d867c4b150&operation=get",
+          "expiresAt": 1760000001502
+        }
+      }
+    }
+  ]
+}

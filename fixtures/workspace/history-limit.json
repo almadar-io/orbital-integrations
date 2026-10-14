@@ -1,0 +1,350 @@
+{
+  "service": "workspace",
+  "case": "history-limit",
+  "startMs": 1767225600000,
+  "steps": [
+    {
+      "action": "writeFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo",
+        "content": "1"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225600000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "path": "a.lolo",
+          "written": true
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb"
+      ]
+    },
+    {
+      "action": "snapshot",
+      "params": {
+        "workspace": "app-1",
+        "reason": "one"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225601000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "committed": true,
+          "oid": "7ecb386d8c93af73976defd4801c75019ad568ff"
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle"
+      ]
+    },
+    {
+      "action": "writeFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo",
+        "content": "2"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225602000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "path": "a.lolo",
+          "written": true
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle"
+      ]
+    },
+    {
+      "action": "snapshot",
+      "params": {
+        "workspace": "app-1",
+        "reason": "two"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225603000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "committed": true,
+          "oid": "43b4ead4d0b8eccf7a958f8a4c6375208b4a6e76"
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle"
+      ]
+    },
+    {
+      "action": "writeFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo",
+        "content": "3"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225604000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "path": "a.lolo",
+          "written": true
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle"
+      ]
+    },
+    {
+      "action": "snapshot",
+      "params": {
+        "workspace": "app-1",
+        "reason": "three"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225605000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "committed": true,
+          "oid": "3c2c969e02d340946500b9b1d96ab1a283bb24b8"
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle",
+        "workspaces/user-1/app-1/history/inc-000001.bundle"
+      ]
+    },
+    {
+      "action": "history",
+      "params": {
+        "workspace": "app-1",
+        "limit": 2
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225606000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "snapshots": [
+            {
+              "id": "3c2c969e02d340946500b9b1d96ab1a283bb24b8",
+              "timestamp": 1767225605000,
+              "reason": "three",
+              "kind": "snapshot",
+              "target": ""
+            },
+            {
+              "id": "43b4ead4d0b8eccf7a958f8a4c6375208b4a6e76",
+              "timestamp": 1767225603000,
+              "reason": "two",
+              "kind": "snapshot",
+              "target": ""
+            }
+          ],
+          "canUndo": true,
+          "canRedo": false
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle",
+        "workspaces/user-1/app-1/history/inc-000001.bundle"
+      ]
+    },
+    {
+      "action": "history",
+      "params": {
+        "workspace": "app-1",
+        "limit": 1
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225607000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "snapshots": [
+            {
+              "id": "3c2c969e02d340946500b9b1d96ab1a283bb24b8",
+              "timestamp": 1767225605000,
+              "reason": "three",
+              "kind": "snapshot",
+              "target": ""
+            }
+          ],
+          "canUndo": true,
+          "canRedo": false
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle",
+        "workspaces/user-1/app-1/history/inc-000001.bundle"
+      ]
+    },
+    {
+      "action": "history",
+      "params": {
+        "workspace": "app-1"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225608000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "snapshots": [
+            {
+              "id": "3c2c969e02d340946500b9b1d96ab1a283bb24b8",
+              "timestamp": 1767225605000,
+              "reason": "three",
+              "kind": "snapshot",
+              "target": ""
+            },
+            {
+              "id": "43b4ead4d0b8eccf7a958f8a4c6375208b4a6e76",
+              "timestamp": 1767225603000,
+              "reason": "two",
+              "kind": "snapshot",
+              "target": ""
+            },
+            {
+              "id": "7ecb386d8c93af73976defd4801c75019ad568ff",
+              "timestamp": 1767225601000,
+              "reason": "one",
+              "kind": "snapshot",
+              "target": ""
+            }
+          ],
+          "canUndo": true,
+          "canRedo": false
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/a.lolo",
+        "workspaces/user-1/app-1/files/schema.orb",
+        "workspaces/user-1/app-1/history/base.bundle",
+        "workspaces/user-1/app-1/history/inc-000000.bundle",
+        "workspaces/user-1/app-1/history/inc-000001.bundle"
+      ]
+    }
+  ],
+  "bucket": {
+    "workspaces/user-1/app-1/files/.almadar/app-marker.json": {
+      "text": "{\n  \"appId\": \"app-1\",\n  \"userId\": \"user-1\",\n  \"createdAt\": 1767225600000\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/index.json": {
+      "text": "{\n  \"schemaVersion\": 2,\n  \"bm25\": {\n    \"documents\": {},\n    \"docFreq\": {},\n    \"docCount\": 0,\n    \"avgDocLen\": 0\n  },\n  \"intent\": {\n    \"entityNameOverrides\": {},\n    \"traitRefImporters\": {},\n    \"ruleCapabilities\": {},\n    \"organism\": {}\n  },\n  \"composed\": {\n    \"events\": {},\n    \"entityNameComposed\": {}\n  },\n  \"recency\": {},\n  \"bakedAt\": 1767225600000\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/project.orb": {
+      "text": "{\n  \"name\": \"ProjectMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Domain knowledge for Untitled\",\n  \"orbitals\": [\n    {\n      \"name\": \"DomainKnowledge\",\n      \"entity\": {\n        \"name\": \"ProjectContext\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"app-1\",\n            \"appId\": \"app-1\",\n            \"projectName\": \"Untitled\",\n            \"lastUpdatedAt\": \"2026-01-01T00:00:00.000Z\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/user.orb": {
+      "text": "{\n  \"name\": \"UserMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"User preferences and learned patterns\",\n  \"orbitals\": [\n    {\n      \"name\": \"PreferenceTracking\",\n      \"entity\": {\n        \"name\": \"UserPreference\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"pref-user-1\",\n            \"userId\": \"user-1\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/user-1/app-1/files/.gitignore": {
+      "text": "# Almadar — version only the app; ignore generated/churny state\n# `.almadar/` is an allowlist: its app state is history, anything else there is scratch.\n/.almadar/*\n!/.almadar/app-marker.json\n!/.almadar/ledger.json\n!/.almadar/project.orb\n!/.almadar/user.orb\n!/.almadar/fill-candidates/\n# A session is churn except each orbital's spec.json: its .orb is derived from it.\n!/.almadar/sessions/\n/.almadar/sessions/*\n!/.almadar/sessions/*/\n/.almadar/sessions/*/**\n!/.almadar/sessions/*/spec.json\n/apps/\n/.almadar-archive.bundle\n"
+    },
+    "workspaces/user-1/app-1/files/a.lolo": {
+      "text": "3"
+    },
+    "workspaces/user-1/app-1/files/schema.orb": {
+      "text": "{\n  \"name\": \"Untitled\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"orbitals\": []\n}"
+    },
+    "workspaces/user-1/app-1/history/base.bundle": {
+      "base64": "IyB2MiBnaXQgYnVuZGxlCjdlY2IzODZkOGM5M2FmNzM5NzZkZWZkNDgwMWM3NTAxOWFkNTY4ZmYgcmVmcy9oZWFkcy9tYWluCjdlY2IzODZkOGM5M2FmNzM5NzZkZWZkNDgwMWM3NTAxOWFkNTY4ZmYgSEVBRAoKUEFDSwAAAAIAAAAJmgx4nJ2MUQrCMBBE//cU+y9KUrvZWkT021Ns0tQGTFLaeH9T1As4MAzM8KYs3iO19kR2ZCvEnd58VI4NW27dyK4zyltiIZBXmfKCt2eUQWo+fCp4li2u8ikPIV9QV7hpyCiNO1UFLscYSvH/sLAmmdcplx5z8gDfh/09pKHH3whvOyQ+A6EJeJwzMQACBb3EnNzElMQihorm2rO9Bvvtoi95sunHb5Y/ZiKwwdDAwMzEREEvPbMkMz0vvyiVQUSCpbV1H1sXyzmhy5mH3wX1Jv/7AlWVqJeTn5PPELaMVWbRBm2W95OuivLM+8bgYLPxHlRFcXJGam6iXn5REoN8ye3pk5Y7hZ2Knd7qfPvC4pMPT8wAAN0KOKmmB3icMzQwMDMxUUgsKNDNTSzKTi3SyyrOz2P4PvelzqPZKYvKijWXCNaduv048VatIURpQVF+VmpyiV5+URKD3rfHxp5bvAR8pFU42ioMT51YyTcXqqy0GGgWSI28yE9W77nN13KfdaY/0GPuljl9/SgArf8vHLoEeJyr5lJQUEosKPBMUbICM3QNlXRAYqXFqUUQQRALJppclJpYkpriWAKUMDQ3MzcyMjUzAAGuWgDQNxLSsR94nHVQO0/DMBDe+ysszzRyOjB0Q7CgCsRAF6oMR3yt3Ca2ZZ+AKsp/rx9pcIWwTtbdfY87e1gwxjX0yNeMvzlzxJZesDfuzO8i9IXOK6MjWleiErkr0bdOWZqQJ9OD0uykzXeH8oBsbxzbalIUyqww7lMRdD7Qd6FmbEh3MTybbK4eSZYIGI3OgXKV/N340WjCH5o1gbFX2Mk0rim6SnsC3eLvHvkMRR5pMpqDtcu68ExQaD7/j9q8z+u03s0fFLQOPG2tBEL5QJG4Eqv7pahDvAuxTlEJIT54oRvnvJmycf4jcqDo9rXcwiG/M9OjvFmMF0+reqLqCYB4eJz7yLyQWbCaS0FBKS8xN1XJSkEptDi1aKKIoSqIVigoSk1LLUrNS04tVkjMS1HISU0syktNUShILClJLcornpikIRQAVxNSlJicnZmXPnGmGh9IO0Jm4ll/bZBZuqVAYV1DJR2gjQigBBL1TAHZDpGfPJ8xCAD6vzNqvCB4nHVQQU7EMAy89xVGe0CqaHqH0/5kvYm3yZImlZ0u9MYjeCEvwW3RUqFy9Mx4ZuwDHGOPDhm+Pj7hRiwhJ8gpTlA8AQ7DC4QuZSboKBFjIddaP3KaQIpO1QFOBleP9gRBABNgjPktBinPEIrMLqt4pr3Cmacn1U3Fh9QBRaE5jRderIZYb6r2bltXD7+DmjU98iuxuUpOWyqS63bggfOVbDGZz1t4FNX+wS4hxsZicsFpXWn1uiMIyfIVLbdcDvRuaShAaD2oQSgYH7X4QHbJXo+erecVRxxu5ODCuVfCbON+nDVnB6t3lfW+tq3/k99rVfPrtlENsvXazZzH5CJV3+G6td0xeJwzBAAAMgAytQV4nKvmUlBQykvMTVWyUlAKzSvJLMlJTVHSAYmWpRYVZ+bngSQM9Qz0DCCiKanFyUWZBSVQGYhgflFSZkliTjFQJDqWqxYA6z8XjHm6YALSVrlLOjKkamE8jG66kIfd"
+    },
+    "workspaces/user-1/app-1/history/inc-000000.bundle": {
+      "base64": "IyB2MiBnaXQgYnVuZGxlCi03ZWNiMzg2ZDhjOTNhZjczOTc2ZGVmZDQ4MDFjNzUwMTlhZDU2OGZmIHNuYXBzaG90OiBvbmUKNDNiNGVhZDRkMGI4ZWNjZjdhOTU4ZjhhNGM2Mzc1MjA4YjRhNmU3NiByZWZzL2hlYWRzL21haW4KClBBQ0sAAAACAAAAA5oPeJydjFEKwjAQRP9zivyLkmSbbFpE9NtTbJONFmxT2ojXN0W9gAPDwBtmysIsySetHKfeIFaTJwsmJK2hcYQVggNDbMRMC09FIocevIs+tEAJoUUXOcXGKx3QKt1StM6nJOhZ7nmRl8dIkWretvWRtjjTBx6GfJIaHRpjnQK5U1Ui5HEcSuF/tmKdaF7vuXSyvLIQ34f9dZhiJ3+leAN1x0v2/gFUuVv3uleBV4Ewx2e3TPfIYOtXpXicm8g4kXFCuMgNNbuXbaxTLjVk8/6V/ise1M29aMnEbDUAviYMqjF4nDMCAAAzADN7/Hazeru1nP6BG6TwqzL1zICvzA=="
+    },
+    "workspaces/user-1/app-1/history/inc-000001.bundle": {
+      "base64": "IyB2MiBnaXQgYnVuZGxlCi00M2I0ZWFkNGQwYjhlY2NmN2E5NThmOGE0YzYzNzUyMDhiNGE2ZTc2IHNuYXBzaG90OiB0d28KM2MyYzk2OWUwMmQzNDA5NDY1MDBiOWIxZDk2YWIxYTI4M2JiMjRiOCByZWZzL2hlYWRzL21haW4KClBBQ0sAAAACAAAAA5wPeJydj8EKwjAQRO/5itxFSdPsJhYRPfsVu8nGFmxT2vj/VtQfcC4DM7yBqYuIluQZQOgIOTfCHpEQsJUMjRjLEhyztZLVTItMVbuWnVByyXCQGLPfyJADuYitB2sCO0LxqOhZ+7Lo62OkRJvf3/SJ3nahT3gYylk3Hr21gAb0zmxSsYzjUKv8w6p1onntS+107bd7Sn039rdhSp3+1eoFNY9OBf4BqPEG77J3snqKUyzxE0anJ3NjKuJ4nJvIOJFxQrjIE4enJ5wiMlOX/y6/d0vvVEaitnzwxGw1ANSsDaoxeJwzBgAANAA0Z3+vp4pnNS+aFTfFXkw0SGl4450="
+    }
+  }
+}

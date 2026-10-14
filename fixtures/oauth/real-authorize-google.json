@@ -1,0 +1,46 @@
+{
+  "service": "oauth",
+  "case": "real-authorize-google",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "https://accounts.google.com/.well-known/openid-configuration",
+            "headers": {
+              "accept": "application/json"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "{\"issuer\":\"https://accounts.google.com\",\"authorization_endpoint\":\"https://accounts.google.com/o/oauth2/v2/auth\",\"token_endpoint\":\"https://oauth2.googleapis.com/token\",\"userinfo_endpoint\":\"https://openidconnect.googleapis.com/v1/userinfo\",\"revocation_endpoint\":\"https://oauth2.googleapis.com/revoke\",\"jwks_uri\":\"https://www.googleapis.com/oauth2/v3/certs\",\"id_token_signing_alg_values_supported\":[\"RS256\"]}"
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&scope=openid+email&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256&client_id=client-id-1&response_type=code",
+          "state": "<state>"
+        }
+      }
+    }
+  ]
+}

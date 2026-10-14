@@ -1,0 +1,18 @@
+{
+  "service": "metaAds",
+  "action": "getSpend",
+  "case": "get-spend-no-account",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key"
+  },
+  "params": {
+    "since": "2026-01-01",
+    "until": "2026-01-31"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "No ad account: pass `accountId` or set META_AD_ACCOUNT_ID"
+  }
+}

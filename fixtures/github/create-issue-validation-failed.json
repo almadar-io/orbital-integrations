@@ -1,0 +1,36 @@
+{
+  "service": "github",
+  "action": "createIssue",
+  "case": "create-issue-validation-failed",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "title": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/acme/widgets/issues",
+        "headers": {
+          "content-type": "text/plain;charset=UTF-8",
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"title\":\"x\"}"
+      },
+      "response": {
+        "status": 410,
+        "body": "{\"message\":\"Issues are disabled for this repo\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "GitHub API request failed: Issues are disabled for this repo"
+  }
+}

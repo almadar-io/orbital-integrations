@@ -1,0 +1,48 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-forbidden-403",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[{\"id\":\"p1\",\"type\":\"learningPath\",\"title\":\"Graph Algorithms\",\"lastAccessedAt\":1799913600000,\"progress\":{\"completedLessons\":3,\"totalLessons\":10,\"progressPercentage\":30},\"metadata\":{}},{\"id\":\"p2\",\"type\":\"learningPath\",\"title\":\"Spanish B1\",\"lastAccessedAt\":1799827200000,\"progress\":{\"completedLessons\":10,\"totalLessons\":10,\"progressPercentage\":100},\"metadata\":{}},{\"id\":\"p3\",\"type\":\"learningPath\",\"title\":\"Old Interest\",\"lastAccessedAt\":1792224000000,\"metadata\":{}}]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/learning/goals",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 403,
+        "body": "{}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "KFlow rejected the sign-in"
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

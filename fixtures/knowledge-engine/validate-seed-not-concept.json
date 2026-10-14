@@ -1,0 +1,57 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-seed-not-concept",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "seedConceptId": "l1",
+    "nodes": {
+      "l1": {
+        "id": "l1",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 1
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [
+        "l1"
+      ],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_01_SEED_NOT_CONCEPT",
+      "severity": "error",
+      "nodeId": "l1",
+      "message": "seedConceptId \"l1\" references a node of type \"Layer\", expected \"Concept\"."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "create-pr-owner-repo-not-configured",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "title": "Add widgets",
+    "body": "x",
+    "baseBranch": "main",
+    "headBranch": "feature/x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "GitHub owner and repo must be configured. Either set GITHUB_OWNER/GITHUB_REPO or clone a repository first."
+  }
+}

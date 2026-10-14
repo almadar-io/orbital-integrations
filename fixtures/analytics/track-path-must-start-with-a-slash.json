@@ -1,0 +1,22 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track-path-must-start-with-a-slash",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "name": "x",
+    "path": ""
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Param 'path' must start with \"/\", got ''"
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

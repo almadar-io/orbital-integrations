@@ -1,0 +1,37 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-paste",
+  "env": {},
+  "params": {
+    "adapter": "paste",
+    "documents": [
+      {
+        "ref": "clip",
+        "title": "Clip",
+        "raw": "line one\nline two"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "units": [
+        {
+          "ref": "doc:clip",
+          "targetEntity": "LearningGoal",
+          "title": "clip",
+          "parentRef": ""
+        }
+      ],
+      "errors": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

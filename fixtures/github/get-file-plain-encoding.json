@@ -1,0 +1,39 @@
+{
+  "service": "github",
+  "action": "getFile",
+  "case": "get-file-plain-encoding",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "path": "a.txt"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/contents/a.txt",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"path\":\"a.txt\",\"sha\":\"111\",\"size\":3,\"encoding\":\"none\",\"content\":\"raw\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "path": "a.txt",
+      "content": "raw",
+      "sha": "111",
+      "size": 3
+    }
+  }
+}

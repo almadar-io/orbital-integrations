@@ -1,0 +1,43 @@
+{
+  "service": "knowledge",
+  "action": "connection",
+  "case": "connection-stranger-refused",
+  "env": {},
+  "params": {
+    "connectionId": "c1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/connections/c1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1\",\"fields\":{\"callerUid\":{\"stringValue\":\"learner-1\"},\"peerUid\":{\"stringValue\":\"learner-2\"},\"participants\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"x\"},{\"stringValue\":\"y\"}]}},\"origin\":{\"mapValue\":{\"fields\":{\"kind\":{\"stringValue\":\"concept\"},\"canonicalId\":{\"stringValue\":\"light\"}}}},\"badges\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b0\"},\"label\":{\"stringValue\":\"Photons\"},\"kind\":{\"stringValue\":\"subtopic\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b1\"},\"label\":{\"stringValue\":\"Waves\"},\"kind\":{\"stringValue\":\"subtopic\"}}}}]}},\"activeBadgeId\":{\"stringValue\":\"b0\"},\"status\":{\"stringValue\":\"active\"},\"createdAt\":{\"integerValue\":\"1699999999000\"},\"lastActivityAt\":{\"integerValue\":\"1699999999000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "Connection not found"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "svg-exists-not-found",
+  "env": {},
+  "params": {
+    "path": "logos/nope.svg"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/logos/nope.svg",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 404,
+        "body": "404"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "exists": false
+    }
+  }
+}

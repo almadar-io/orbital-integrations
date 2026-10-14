@@ -1,0 +1,30 @@
+{
+  "service": "ml",
+  "action": "train",
+  "case": "unknown-action",
+  "env": {
+    "MASAR_URL": "{base}",
+    "MASAR_ML_TRAIT": "inference-serving"
+  },
+  "params": {
+    "model": "hf:distilbert-base-uncased",
+    "input": {
+      "tokens": [
+        101,
+        2023,
+        102
+      ],
+      "mask": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for ml.train: action: Unknown action: train"
+  }
+}

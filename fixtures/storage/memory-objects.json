@@ -1,0 +1,425 @@
+{
+  "service": "storage",
+  "case": "memory-objects",
+  "env": {
+    "STORAGE_BUCKET": "dev-bucket"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "docs/one.txt",
+        "content": "one",
+        "contentType": "text/plain",
+        "metadata": {
+          "k": "v"
+        }
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "docs/one.txt",
+          "bucket": "b",
+          "size": 3,
+          "etag": "\"f97c5d29941bfb1b2fdab0874906ab82\"",
+          "id": "docs/one.txt",
+          "url": "data:text/plain;base64,b25l"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "docs/two.txt",
+        "content": "two!"
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "docs/two.txt",
+          "bucket": "b",
+          "size": 4,
+          "etag": "\"9f5b6d9a034d175868bf593885b7dc4e\"",
+          "id": "docs/two.txt",
+          "url": "data:application/octet-stream;base64,dHdvIQ=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "Docs/Three.txt",
+        "content": "3"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "Docs/Three.txt",
+          "bucket": "b",
+          "size": 1,
+          "etag": "\"eccbc87e4b5ce2fe28308fd9f2a7baf3\"",
+          "id": "Docs/Three.txt",
+          "url": "data:application/octet-stream;base64,Mw=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "docs-extra/four.txt",
+        "content": "4"
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "docs-extra/four.txt",
+          "bucket": "b",
+          "size": 1,
+          "etag": "\"a87ff679a2f3e71d9181a67b7542122c\"",
+          "id": "docs-extra/four.txt",
+          "url": "data:application/octet-stream;base64,NA=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "other",
+        "key": "docs/one.txt",
+        "content": "elsewhere"
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "docs/one.txt",
+          "bucket": "other",
+          "size": 9,
+          "etag": "\"916a43142e8db811d76675eeedc5ae4a\"",
+          "id": "docs/one.txt",
+          "url": "data:application/octet-stream;base64,ZWxzZXdoZXJl"
+        }
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "b",
+        "key": "docs/one.txt"
+      },
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "content": "b25l",
+          "contentType": "text/plain",
+          "size": 3,
+          "metadata": {
+            "k": "v"
+          }
+        }
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "b",
+        "key": "docs/two.txt"
+      },
+      "clockMs": 1760000000051,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "content": "dHdvIQ==",
+          "contentType": "application/octet-stream",
+          "size": 4,
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "b",
+        "key": "missing.txt"
+      },
+      "clockMs": 1760000000052,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Object not found: b/missing.txt"
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "nope",
+        "key": "docs/one.txt"
+      },
+      "clockMs": 1760000000053,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Object not found: nope/docs/one.txt"
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b"
+      },
+      "clockMs": 1760000000060,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "docs-extra/four.txt",
+              "size": 1,
+              "lastModified": 1760000000030
+            },
+            {
+              "key": "docs/one.txt",
+              "size": 3,
+              "lastModified": 1760000000000
+            },
+            {
+              "key": "Docs/Three.txt",
+              "size": 1,
+              "lastModified": 1760000000020
+            },
+            {
+              "key": "docs/two.txt",
+              "size": 4,
+              "lastModified": 1760000000010
+            }
+          ],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "prefix": "docs/"
+      },
+      "clockMs": 1760000000061,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "docs/one.txt",
+              "size": 3,
+              "lastModified": 1760000000000
+            },
+            {
+              "key": "docs/two.txt",
+              "size": 4,
+              "lastModified": 1760000000010
+            }
+          ],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "prefix": "docs/",
+        "maxKeys": 1
+      },
+      "clockMs": 1760000000062,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "docs/one.txt",
+              "size": 3,
+              "lastModified": 1760000000000
+            }
+          ],
+          "truncated": true,
+          "nextToken": "1"
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "prefix": "docs/",
+        "maxKeys": 1,
+        "continuationToken": "1"
+      },
+      "clockMs": 1760000000063,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "docs/two.txt",
+              "size": 4,
+              "lastModified": 1760000000010
+            }
+          ],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "prefix": "docs/",
+        "maxKeys": 1,
+        "continuationToken": "2"
+      },
+      "clockMs": 1760000000064,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "maxKeys": 2,
+        "continuationToken": "garbage"
+      },
+      "clockMs": 1760000000065,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "docs-extra/four.txt",
+              "size": 1,
+              "lastModified": 1760000000030
+            },
+            {
+              "key": "docs/one.txt",
+              "size": 3,
+              "lastModified": 1760000000000
+            }
+          ],
+          "truncated": true,
+          "nextToken": "2"
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "prefix": "zzz"
+      },
+      "clockMs": 1760000000066,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "b",
+        "key": "docs/one.txt"
+      },
+      "clockMs": 1760000000070,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "b",
+        "key": "docs/one.txt"
+      },
+      "clockMs": 1760000000071,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": false
+        }
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "other",
+        "key": "docs/one.txt"
+      },
+      "clockMs": 1760000000072,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "content": "ZWxzZXdoZXJl",
+          "contentType": "application/octet-stream",
+          "size": 9,
+          "metadata": {}
+        }
+      }
+    }
+  ]
+}

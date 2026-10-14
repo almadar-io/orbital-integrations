@@ -1,0 +1,16 @@
+{
+  "service": "banking",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for banking.nope: action: Unknown action: nope"
+  }
+}

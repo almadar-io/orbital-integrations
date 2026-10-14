@@ -1,0 +1,36 @@
+{
+  "service": "twilio",
+  "action": "sendWhatsApp",
+  "case": "send-whatsapp-without-a-configured-number",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=whatsapp%3A%2B4915112345678&From=whatsapp%3A&Body=x"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"code\":21212,\"message\":\"The 'From' number whatsapp: is not a valid phone number, shortcode, or alphanumeric sender ID.\",\"more_info\":\"https://www.twilio.com/docs/errors/21212\",\"status\":400}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "The 'From' number whatsapp: is not a valid phone number, shortcode, or alphanumeric sender ID."
+  }
+}

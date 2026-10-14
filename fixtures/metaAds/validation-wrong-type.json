@@ -1,0 +1,20 @@
+{
+  "service": "metaAds",
+  "action": "listCampaigns",
+  "case": "validation-wrong-type",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {
+    "status": [
+      "ACTIVE"
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for metaAds.listCampaigns: status: Expected string, got array"
+  }
+}

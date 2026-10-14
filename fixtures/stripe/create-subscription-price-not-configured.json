@@ -1,0 +1,19 @@
+{
+  "service": "stripe",
+  "action": "createSubscription",
+  "case": "create-subscription-price-not-configured",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "customerId": "cus_1",
+    "tier": "teams",
+    "quantity": 1
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "STRIPE_PRICE_TEAMS not configured"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "service": "stripe",
+  "action": "getSubscription",
+  "case": "permission-denied",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "subscriptionId": "sub_1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_1",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The provided key does not have the required permissions.\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "The provided key does not have the required permissions."
+  }
+}

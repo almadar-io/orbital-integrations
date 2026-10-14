@@ -1,0 +1,70 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-cross-graph-endpoints-are-not-checked",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "elsewhere",
+        "target": "c1",
+        "type": "derivedFrom",
+        "direction": "forward",
+        "sourceGraphId": "g2"
+      },
+      {
+        "id": "r2",
+        "source": "c1",
+        "target": "there",
+        "type": "derivedFrom",
+        "direction": "forward",
+        "targetGraphId": "g3"
+      }
+    ]
+  },
+  "output": []
+}

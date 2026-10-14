@@ -1,0 +1,378 @@
+{
+  "service": "database",
+  "case": "queries-and-pooling",
+  "env": {},
+  "setup": {
+    "processEnv": {
+      "ORDERS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "REPORTS_DB_URL": "postgres://reader:test-key@reports.internal:5432/reports",
+      "ALIAS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "EMPTY_DB_URL": ""
+    }
+  },
+  "steps": [
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT id, total FROM orders WHERE customer = $1 AND total > $2",
+        "params": [
+          "ada",
+          10.5
+        ]
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "id": 1,
+              "total": 12.5
+            },
+            {
+              "id": 2,
+              "total": 40
+            }
+          ],
+          "rowCount": 2
+        }
+      },
+      "driver": {
+        "connects": [
+          {
+            "connectionString": "postgres://app:test-key@db.internal:5432/orders",
+            "statementTimeoutMs": 10000
+          }
+        ],
+        "queries": [
+          {
+            "sql": "SELECT id, total FROM orders WHERE customer = $1 AND total > $2",
+            "params": [
+              "ada",
+              10.5
+            ]
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "id": 1,
+              "total": 12.5
+            },
+            {
+              "id": 2,
+              "total": 40
+            }
+          ],
+          "rowCount": 2
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "?column?": 1
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT 1",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "?column?": 1
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "REPORTS_DB_URL",
+        "sql": "SELECT name FROM reports",
+        "params": []
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "name": "daily"
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [
+          {
+            "connectionString": "postgres://reader:test-key@reports.internal:5432/reports",
+            "statementTimeoutMs": 10000
+          }
+        ],
+        "queries": [
+          {
+            "sql": "SELECT name FROM reports",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "name": "daily"
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ALIAS_DB_URL",
+        "sql": "SELECT count(*) AS n FROM orders"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "n": "41"
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT count(*) AS n FROM orders",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "n": "41"
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT id FROM orders WHERE false"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [],
+          "rowCount": 0
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT id FROM orders WHERE false",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [],
+          "rowCount": 0
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT id FROM orders",
+        "params": [
+          true,
+          false,
+          null,
+          "x",
+          7
+        ]
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "id": 1
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT id FROM orders",
+            "params": [
+              true,
+              false,
+              null,
+              "x",
+              7
+            ]
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "id": 1
+            }
+          ],
+          "rowCount": null
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "WITH recent AS (SELECT * FROM orders ORDER BY id) SELECT * FROM recent LIMIT $1",
+        "params": [
+          5
+        ]
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "id": 9
+            }
+          ],
+          "rowCount": 3
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "WITH recent AS (SELECT * FROM orders ORDER BY id) SELECT * FROM recent LIMIT $1",
+            "params": [
+              5
+            ]
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "id": 9
+            }
+          ],
+          "rowCount": 3
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT $1::text AS note",
+        "params": [
+          "it's \"quoted\" — é"
+        ]
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "note": "it's \"quoted\" — é"
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT $1::text AS note",
+            "params": [
+              "it's \"quoted\" — é"
+            ]
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "note": "it's \"quoted\" — é"
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    }
+  ]
+}

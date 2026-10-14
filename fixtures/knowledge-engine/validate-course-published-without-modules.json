@@ -1,0 +1,70 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-course-published-without-modules",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "co1": {
+        "id": "co1",
+        "type": "Course",
+        "properties": {
+          "title": "t",
+          "description": "d",
+          "modules": [],
+          "publishStatus": "published"
+        }
+      },
+      "co2": {
+        "id": "co2",
+        "type": "Course",
+        "properties": {
+          "title": "t",
+          "description": "d",
+          "modules": [],
+          "publishStatus": "draft"
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [
+        "co1",
+        "co2"
+      ],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_08_COURSE_EMPTY_MODULES",
+      "severity": "warning",
+      "nodeId": "co1",
+      "message": "Course \"co1\" publishStatus=published but has no modules."
+    }
+  ]
+}

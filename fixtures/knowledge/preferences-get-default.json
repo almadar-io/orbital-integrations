@@ -1,0 +1,51 @@
+{
+  "service": "knowledge",
+  "action": "getPreferences",
+  "case": "preferences-get-default",
+  "env": {},
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/profile/student\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/profile/student\",\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "expandModel": "qwen3-30b-a3b",
+      "explainModel": "deepseek-v4-flash"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ],
+    [
+      40,
+      3
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

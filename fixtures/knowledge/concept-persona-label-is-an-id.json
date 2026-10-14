@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "conceptPersona",
+  "case": "concept-persona-label-is-an-id",
+  "env": {},
+  "params": {
+    "conceptLabel": "123e4567-e89b-12d3-a456-426614174000"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "conceptLabel must be a human-readable concept name"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

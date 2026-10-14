@@ -1,0 +1,68 @@
+{
+  "service": "push",
+  "action": "send",
+  "case": "send-push-service-503",
+  "env": {
+    "VAPID_PUBLIC_KEY": "BECHRcCvIQtR5RDxgMq6mnyWPa1YaZpvW1t9NZYwbseWTts_aglewW-vHOaigsyyCK-7ohOfelkh6FaU5bdvg2s",
+    "VAPID_PRIVATE_KEY": "qQYsogrPfyiau8LBWmOl_LnbiSC9WkSDjJVO_96vNTM",
+    "VAPID_SUBJECT": "mailto:ops@example.com"
+  },
+  "params": {
+    "subscription": {
+      "endpoint": "https://push.example.test/send/abc123",
+      "keys": {
+        "p256dh": "BOYuy0LUz97GK19omLCB55E4xhvwL3O5yIgXvBoFAD0ZFMqkrc_tD3CNVV6yuQnSB-Ez2JorrSMI0QJP9oEGPdI",
+        "auth": "nV6t2OrNKvav6-5xNrNoKQ"
+      }
+    },
+    "title": "Hello",
+    "body": "World",
+    "url": "/inbox",
+    "icon": "https://cdn.example.test/i.png"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://push.example.test/send/abc123",
+        "headers": {
+          "content-type": "application/octet-stream",
+          "authorization": "<redacted>",
+          "ttl": "2419200",
+          "urgency": "normal",
+          "content-encoding": "aes128gcm",
+          "content-length": "190"
+        },
+        "body": "L�\u0001����0��ڻ=�;V\u0000\u0000\u0010\u0000A\u0004��e��LGWz'�!S\u0012�'\f��\u0006\f\"�;\u0002\u001c\u001c�v]�جP�f��(���� 0-\u0005���\u0013\u0011��\u001e�N���G�\n���:��vO\u001f�>���,眹�c��^\u0013!2�x�z\u0018��\u001b��k�{�q\u001c�;�Գ�i\u0015��\u0000\u001e\u0015�7\n�T���\u0013~�|3\nB���N�ڢ�\u0007\f}�-hm\u000f�$�\u0010�:�����{��R���"
+      },
+      "response": {
+        "status": 503,
+        "body": "unavailable",
+        "headers": {
+          "content-type": "text/plain"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Push endpoint returned 503"
+  },
+  "now": "2026-06-01T12:00:00.000Z",
+  "extra": {
+    "receiver": {
+      "publicKey": "BOYuy0LUz97GK19omLCB55E4xhvwL3O5yIgXvBoFAD0ZFMqkrc_tD3CNVV6yuQnSB-Ez2JorrSMI0QJP9oEGPdI",
+      "privateKey": "T39KEbfxztuNv3A7lrLQhwc-FEEMk4wQ-_Zwj9F52Cs",
+      "auth": "nV6t2OrNKvav6-5xNrNoKQ"
+    },
+    "vapid": {
+      "publicKey": "BECHRcCvIQtR5RDxgMq6mnyWPa1YaZpvW1t9NZYwbseWTts_aglewW-vHOaigsyyCK-7ohOfelkh6FaU5bdvg2s"
+    },
+    "entropy": {
+      "ephemeralPrivateKey": "5lObQ5dE6QR7H4fJ2mNbWxdjGjlaLZR-9g-wJv7cXOo",
+      "salt": "TLMBgtbA4jC20Nq7PfA7Vg"
+    },
+    "bodyBase64": "TLMBgtbA4jC20Nq7PfA7VgAAEABBBKesZa+gTEdXeieuIVMS1ycM5+4GDCLyOwIcHOl2XYzYrFCuZvn5KP7Y8vEgMC0FlOLtExGBkB6BTreyqkf+Co2E45M6r9Z2Tx/LPrH+xiznnLnXY9HNXhMhMp14hHoYxdYb+KJr2nvicRzsO/LUs/dpFby/AB4VwDcK7VSo6ewTfpd8MwpCyNfuTtraosEHDH35LWhtD68krRDXOpPN+J+Te5+9Ur27ow=="
+  }
+}

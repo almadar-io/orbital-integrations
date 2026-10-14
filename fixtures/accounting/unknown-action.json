@@ -1,0 +1,14 @@
+{
+  "service": "accounting",
+  "action": "exportBalance",
+  "case": "unknown-action",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for accounting.exportBalance: action: Unknown action: exportBalance"
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

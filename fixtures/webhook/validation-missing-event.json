@@ -1,0 +1,16 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "validation-missing-event",
+  "env": {},
+  "params": {
+    "url": "{base}/hooks/orders"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for webhook.send: event: Missing required parameter: event"
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

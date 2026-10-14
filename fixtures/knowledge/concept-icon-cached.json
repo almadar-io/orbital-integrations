@@ -1,0 +1,45 @@
+{
+  "service": "knowledge",
+  "action": "conceptIcon",
+  "case": "concept-icon-cached",
+  "env": {},
+  "params": {
+    "label": "Light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:light\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:light\",\"fields\":{\"label\":{\"stringValue\":\"Light\"},\"icon\":{\"stringValue\":\"mdi:lightbulb\"},\"tone\":{\"stringValue\":\"themed\"},\"fetchedAt\":{\"integerValue\":\"1699913600000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "icon": "mdi:lightbulb",
+      "tone": "themed"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

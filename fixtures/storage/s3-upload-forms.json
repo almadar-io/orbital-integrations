@@ -1,0 +1,202 @@
+{
+  "service": "storage",
+  "case": "s3-upload-forms",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "media",
+    "STORAGE_ENDPOINT": "http://s3.recorded.test:9000",
+    "STORAGE_PUBLIC_URL_BASE": "https://cdn.example.com/files/"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "file": {
+          "name": "photo one.png",
+          "size": 14,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        },
+        "acl": "public"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/1760000000000-photo_one.png?x-id=PutObject",
+            "headers": {
+              "content-type": "image/png",
+              "authorization": "<redacted>"
+            },
+            "body": "fake-png-bytes"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "1760000000000-photo_one.png",
+          "bucket": "media",
+          "size": 14,
+          "etag": "\"889541037126eeed978cc93426fb98b7\"",
+          "id": "1760000000000-photo_one.png",
+          "url": "https://cdn.example.com/files/1760000000000-photo_one.png"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "file": {
+          "name": "private.png",
+          "size": 14,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        }
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/1760000000001-private.png?x-id=PutObject",
+            "headers": {
+              "content-type": "image/png",
+              "authorization": "<redacted>"
+            },
+            "body": "fake-png-bytes"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "1760000000001-private.png",
+          "bucket": "media",
+          "size": 14,
+          "etag": "\"889541037126eeed978cc93426fb98b7\"",
+          "id": "1760000000001-private.png",
+          "url": "http://s3.recorded.test:9000/media/1760000000001-private.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=04d3683a2205fa8c43cd736b7917ed585c7557ffd5bb60113c7c08179afc8e9a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+        }
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "media",
+        "files": [
+          {
+            "name": "a.png",
+            "size": 14,
+            "type": "image/png",
+            "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+          },
+          {
+            "name": "b.txt",
+            "size": 2,
+            "type": "text/plain",
+            "content": "hi"
+          }
+        ],
+        "acl": "public"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/1760000000002-a.png?x-id=PutObject",
+            "headers": {
+              "content-type": "image/png",
+              "authorization": "<redacted>"
+            },
+            "body": "fake-png-bytes"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        },
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/1760000000002-b.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "text/plain",
+              "authorization": "<redacted>"
+            },
+            "body": "hi"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "1760000000002-a.png",
+              "key": "1760000000002-a.png",
+              "url": "https://cdn.example.com/files/1760000000002-a.png",
+              "name": "a.png",
+              "sizeBytes": 14,
+              "mimeType": "image/png"
+            },
+            {
+              "id": "1760000000002-b.txt",
+              "key": "1760000000002-b.txt",
+              "url": "https://cdn.example.com/files/1760000000002-b.txt",
+              "name": "b.txt",
+              "sizeBytes": 2,
+              "mimeType": "text/plain"
+            }
+          ],
+          "count": 2
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "file": {
+          "name": "toobig.png",
+          "size": 20,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        },
+        "maxSize": 10
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Upload rejected: toobig.png is 20 bytes (max 10)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "service": "knowledge",
+  "action": "expand",
+  "case": "expand-difficulty-needs-a-goal",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key",
+    "OPEN_ROUTER_API_KEY": "test-key"
+  },
+  "params": {
+    "graphId": "g2",
+    "difficulty": "beginner"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g2\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g2\",\"fields\":{\"id\":{\"stringValue\":\"g2\"},\"seedConceptId\":{\"stringValue\":\"Fungi\"},\"createdAt\":{\"integerValue\":\"1700000000001\"},\"updatedAt\":{\"integerValue\":\"1700000000001\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"g2\"},\"nodes\":{\"mapValue\":{\"fields\":{\"g2\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g2\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g2\"},\"seedConceptId\":{\"stringValue\":\"Fungi\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Fungi\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Fungi\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Fungi\"},\"name\":{\"stringValue\":\"Fungi\"},\"description\":{\"stringValue\":\"Fungi description\"},\"layer\":{\"integerValue\":\"0\"},\"sequence\":{\"integerValue\":\"1\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Light\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Light\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Light\"},\"name\":{\"stringValue\":\"Light\"},\"description\":{\"stringValue\":\"Light description\"},\"layer\":{\"integerValue\":\"1\"},\"sequence\":{\"integerValue\":\"1\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"g2\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Fungi\"},{\"stringValue\":\"Light\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g2-containsConcept-Fungi\"},\"source\":{\"stringValue\":\"g2\"},\"target\":{\"stringValue\":\"Fungi\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g2-containsConcept-Light\"},\"source\":{\"stringValue\":\"g2\"},\"target\":{\"stringValue\":\"Light\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Path g2 has no goal to set a level on"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

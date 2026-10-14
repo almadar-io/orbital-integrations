@@ -1,0 +1,29 @@
+{
+  "service": "oauth",
+  "case": "real-authorize-auth0-without-issuer",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "auth0",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Provider \"auth0\" has no OIDC issuer — set OIDC_ISSUER_URL to an OIDC-compliant issuer, or use OAUTH_MODE=mock"
+      }
+    }
+  ]
+}

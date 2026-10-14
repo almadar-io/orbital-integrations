@@ -1,0 +1,40 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "send-sms-empty-sender-falls-back-to-the-configured-number",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "hi",
+    "from": ""
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=%2B4915112345678&From=%2B15005550006&Body=hi"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\"account_sid\":\"AC00000000000000000000000000000000\",\"sid\":\"SM44444444444444444444444444444444\",\"status\":\"queued\",\"to\":\"+4915112345678\",\"from\":\"+15005550006\",\"body\":\"hi\",\"num_segments\":\"1\",\"direction\":\"outbound-api\",\"date_created\":\"Mon, 16 Mar 2026 10:00:00 +0000\",\"uri\":\"/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages/SM44444444444444444444444444444444.json\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sid": "SM44444444444444444444444444444444",
+      "status": "queued"
+    }
+  }
+}

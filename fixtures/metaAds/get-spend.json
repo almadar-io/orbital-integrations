@@ -1,0 +1,38 @@
+{
+  "service": "metaAds",
+  "action": "getSpend",
+  "case": "get-spend",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {
+    "since": "2026-01-01",
+    "until": "2026-01-31"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://graph.facebook.com/v21.0/act_1234567890/insights?fields=spend%2Cimpressions%2Cclicks%2Caccount_currency&time_range=%7B%22since%22%3A%222026-01-01%22%2C%22until%22%3A%222026-01-31%22%7D&level=account&access_token=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\":[{\"spend\":\"1234.56\",\"impressions\":\"98765\",\"clicks\":\"4321\",\"account_currency\":\"EUR\",\"date_start\":\"2026-01-01\",\"date_stop\":\"2026-01-31\"}],\"paging\":{\"cursors\":{\"before\":\"a\",\"after\":\"b\"}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "spend": 1234.56,
+      "currency": "EUR",
+      "impressions": 98765,
+      "clicks": 4321
+    }
+  }
+}

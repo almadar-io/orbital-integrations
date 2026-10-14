@@ -1,0 +1,96 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-metadata-counts-disagree",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "a": {
+        "id": "a",
+        "type": "Concept",
+        "properties": {
+          "id": "a",
+          "name": "a",
+          "description": "a d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      },
+      "b": {
+        "id": "b",
+        "type": "Concept",
+        "properties": {
+          "id": "b",
+          "name": "b",
+          "description": "b d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      },
+      "meta": {
+        "id": "meta",
+        "type": "GraphMetadata",
+        "properties": {
+          "totalConcepts": 5,
+          "totalRelationships": 0.5
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "a",
+        "b"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [
+        "meta"
+      ],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "a",
+        "target": "b",
+        "type": "hasChild",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_15_METADATA_CONCEPT_COUNT",
+      "severity": "warning",
+      "nodeId": "meta",
+      "message": "GraphMetadata \"meta\" claims totalConcepts=5 but actual count is 2."
+    },
+    {
+      "code": "KG_INV_15_METADATA_REL_COUNT",
+      "severity": "warning",
+      "nodeId": "meta",
+      "message": "GraphMetadata \"meta\" claims totalRelationships=0.5 but actual count is 1."
+    }
+  ]
+}

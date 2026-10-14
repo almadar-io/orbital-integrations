@@ -1,0 +1,17 @@
+{
+  "service": "stripe",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for stripe.nope: action: Unknown action: nope"
+  }
+}

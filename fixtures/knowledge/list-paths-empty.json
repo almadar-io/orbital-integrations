@@ -1,0 +1,46 @@
+{
+  "service": "knowledge",
+  "action": "listPaths",
+  "case": "list-paths-empty",
+  "env": {},
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/users/learner-1:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"knowledgeGraphs\"}],\"select\":{\"fields\":[{\"fieldPath\":\"id\"}]}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "items": [],
+      "total": 0,
+      "page": 1,
+      "totalPages": 1,
+      "clusters": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

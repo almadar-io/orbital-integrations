@@ -1,0 +1,44 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "sendgrid-send-named-addresses",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "Ada Lovelace <ada@example.com>",
+    "subject": "Welcome",
+    "body": "Hi",
+    "from": "Almadar Team <team@almadar.test>",
+    "replyTo": " Support <support@almadar.test> "
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":{\"email\":\"team@almadar.test\",\"name\":\"Almadar Team\"},\"subject\":\"Welcome\",\"personalizations\":[{\"to\":[{\"email\":\"ada@example.com\",\"name\":\"Ada Lovelace\"}]}],\"content\":[{\"value\":\"Hi\",\"type\":\"text/html\"}],\"reply_to\":{\"email\":\"support@almadar.test\",\"name\":\"Support\"}}"
+      },
+      "response": {
+        "status": 202,
+        "body": "",
+        "headers": {
+          "x-message-id": "sg-msg-6"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "sg-msg-6",
+      "status": "sent"
+    }
+  }
+}

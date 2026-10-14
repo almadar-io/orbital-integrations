@@ -1,0 +1,198 @@
+{
+  "service": "otel",
+  "case": "metrics",
+  "env": {},
+  "steps": [
+    {
+      "action": "getMetrics",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {}
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "requests",
+        "value": 1
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "requests",
+        "value": 2.5,
+        "labels": {
+          "route": "/a"
+        }
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "queue_depth",
+        "value": 7,
+        "type": "gauge"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "queue_depth",
+        "value": 3,
+        "type": "gauge",
+        "labels": {
+          "q": "mail"
+        }
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "latency",
+        "value": 120,
+        "type": "histogram"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "latency",
+        "value": 80,
+        "type": "histogram"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "latency",
+        "value": 5,
+        "type": "counter"
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "queue_depth",
+        "value": 1,
+        "type": "histogram"
+      },
+      "clockMs": 1760000000008,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "recorded": true
+        }
+      }
+    },
+    {
+      "action": "getMetrics",
+      "params": {},
+      "clockMs": 1760000000009,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "requests": {
+            "name": "requests",
+            "type": "counter",
+            "value": 3.5,
+            "values": [],
+            "labels": {
+              "route": "/a"
+            }
+          },
+          "queue_depth": {
+            "name": "queue_depth",
+            "type": "gauge",
+            "value": 3,
+            "values": [
+              1
+            ],
+            "labels": {}
+          },
+          "latency": {
+            "name": "latency",
+            "type": "histogram",
+            "value": 5,
+            "values": [
+              120,
+              80
+            ],
+            "labels": {}
+          }
+        }
+      }
+    }
+  ]
+}

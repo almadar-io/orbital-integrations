@@ -1,0 +1,18 @@
+{
+  "service": "banking",
+  "action": "listTransactions",
+  "case": "validation-wrong-type",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "accountId": 5
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for banking.listTransactions: accountId: Expected string, got number"
+  }
+}

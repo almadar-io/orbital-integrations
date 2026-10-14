@@ -1,0 +1,99 @@
+{
+  "service": "knowledge",
+  "action": "connection",
+  "case": "connection-view",
+  "env": {},
+  "params": {
+    "connectionId": "c1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/connections/c1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1\",\"fields\":{\"callerUid\":{\"stringValue\":\"learner-1\"},\"peerUid\":{\"stringValue\":\"learner-2\"},\"participants\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"learner-1\"},{\"stringValue\":\"learner-2\"}]}},\"origin\":{\"mapValue\":{\"fields\":{\"kind\":{\"stringValue\":\"concept\"},\"canonicalId\":{\"stringValue\":\"light\"}}}},\"badges\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b0\"},\"label\":{\"stringValue\":\"Photons\"},\"kind\":{\"stringValue\":\"subtopic\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b1\"},\"label\":{\"stringValue\":\"Waves\"},\"kind\":{\"stringValue\":\"subtopic\"}}}}]}},\"activeBadgeId\":{\"stringValue\":\"b0\"},\"status\":{\"stringValue\":\"active\"},\"createdAt\":{\"integerValue\":\"1699999999000\"},\"lastActivityAt\":{\"integerValue\":\"1699999999000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/connections/c1:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"messages\"}],\"orderBy\":[{\"field\":{\"fieldPath\":\"createdAt\"},\"direction\":1}]}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"document\":{\"name\":\"projects/p/databases/(default)/documents/connections/c1/messages/m1\",\"fields\":{\"senderUid\":{\"stringValue\":\"learner-1\"},\"content\":{\"stringValue\":\"hello m1\"},\"createdAt\":{\"integerValue\":\"1699999999100\"},\"activeBadgeId\":{\"stringValue\":\"b0\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"},{\"document\":{\"name\":\"projects/p/databases/(default)/documents/connections/c1/messages/m2\",\"fields\":{\"senderUid\":{\"stringValue\":\"learner-2\"},\"content\":{\"stringValue\":\"hello m2\"},\"createdAt\":{\"integerValue\":\"1699999999200\"},\"activeBadgeId\":{\"stringValue\":\"b0\"},\"moderation\":{\"mapValue\":{\"fields\":{\"score\":{\"doubleValue\":0.1},\"flagged\":{\"booleanValue\":true},\"reason\":{\"stringValue\":\"off topic\"}}}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": "active",
+      "peerHandle": "peer-fff82e",
+      "originKind": "concept",
+      "originLabel": "light",
+      "badges": [
+        {
+          "id": "b0",
+          "label": "Photons",
+          "kind": "subtopic",
+          "active": true
+        },
+        {
+          "id": "b1",
+          "label": "Waves",
+          "kind": "subtopic",
+          "active": false
+        }
+      ],
+      "messages": [
+        {
+          "id": "m1",
+          "fromViewer": true,
+          "content": "hello m1",
+          "createdAt": 1699999999100,
+          "flagged": false,
+          "moderationReason": ""
+        },
+        {
+          "id": "m2",
+          "fromViewer": false,
+          "content": "hello m2",
+          "createdAt": 1699999999200,
+          "flagged": true,
+          "moderationReason": "off topic"
+        }
+      ]
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

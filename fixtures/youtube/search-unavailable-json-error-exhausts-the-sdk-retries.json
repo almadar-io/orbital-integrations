@@ -1,0 +1,74 @@
+{
+  "service": "youtube",
+  "action": "search",
+  "case": "search-unavailable-json-error-exhausts-the-sdk-retries",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"errors\":[{\"message\":\"The service is currently unavailable.\",\"domain\":\"youtube.quota\",\"reason\":\"backendError\"}],\"status\":\"ERROR\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"errors\":[{\"message\":\"The service is currently unavailable.\",\"domain\":\"youtube.quota\",\"reason\":\"backendError\"}],\"status\":\"ERROR\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"errors\":[{\"message\":\"The service is currently unavailable.\",\"domain\":\"youtube.quota\",\"reason\":\"backendError\"}],\"status\":\"ERROR\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"code\":503,\"message\":\"The service is currently unavailable.\",\"errors\":[{\"message\":\"The service is currently unavailable.\",\"domain\":\"youtube.quota\",\"reason\":\"backendError\"}],\"status\":\"ERROR\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "The service is currently unavailable."
+  }
+}

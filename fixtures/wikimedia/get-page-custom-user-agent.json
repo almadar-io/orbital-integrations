@@ -1,0 +1,38 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "get-page-custom-user-agent",
+  "env": {
+    "WIKIMEDIA_USER_AGENT": "Probe/2.0 (ops@example.com)",
+    "WIKIMEDIA_TIMEOUT_MS": "1500"
+  },
+  "params": {
+    "title": "Ada Lovelace"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages|description|extracts&explaintext=1&exintro=1&piprop=thumbnail&pithumbsize=240&titles=Ada%20Lovelace",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Probe/2.0 (ops@example.com)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"batchcomplete\":\"\",\"query\":{\"pages\":{\"974\":{\"pageid\":974,\"ns\":0,\"title\":\"Ada Lovelace\",\"description\":\"English mathematician (1815-1852)\",\"extract\":\"Augusta Ada King, Countess of Lovelace was an English mathematician and writer. She worked on Charles Babbage's Analytical Engine.\",\"thumbnail\":{\"source\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/240px-Ada_Lovelace_portrait.jpg\",\"width\":240,\"height\":300}}}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "title": "Ada Lovelace",
+      "description": "English mathematician (1815-1852)",
+      "portraitUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/240px-Ada_Lovelace_portrait.jpg",
+      "extract": "Augusta Ada King, Countess of Lovelace was an English mathematician and writer. She worked on Charles Babbage's Analytical Engine."
+    }
+  }
+}

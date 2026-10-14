@@ -1,0 +1,35 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "svg-exists-found",
+  "env": {},
+  "params": {
+    "path": "logos/github-icon.svg"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/logos/github-icon.svg",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 2L2 7l10 5 10-5z\"/></svg>",
+        "headers": {
+          "content-type": "image/svg+xml"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "exists": true
+    }
+  }
+}

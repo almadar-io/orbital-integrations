@@ -1,0 +1,141 @@
+{
+  "service": "redis",
+  "case": "basic-keys",
+  "env": {},
+  "steps": [
+    {
+      "action": "get",
+      "params": {
+        "key": "user:1"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": null
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "user:1",
+        "value": {
+          "name": "Ada",
+          "tags": [
+            "a",
+            "b"
+          ]
+        }
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "user:1"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": {
+            "name": "Ada",
+            "tags": [
+              "a",
+              "b"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "n",
+        "value": null
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "n"
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": null
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "key": "user:1"
+      },
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "key": "user:1"
+      },
+      "clockMs": 1760000000060,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": false
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "user:1"
+      },
+      "clockMs": 1760000000070,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "service": "esign",
+  "action": "downloadDocument",
+  "case": "download-document",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": "env-1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/restapi/v2.1/accounts/acct-1/envelopes/env-1/documents/combined",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/pdf",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "%PDF-1.4 signed document body",
+        "headers": {
+          "content-type": "application/pdf"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "JVBERi0xLjQgc2lnbmVkIGRvY3VtZW50IGJvZHk=",
+      "documentName": "envelope-env-1.pdf"
+    }
+  }
+}

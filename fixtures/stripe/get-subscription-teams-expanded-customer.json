@@ -1,0 +1,46 @@
+{
+  "service": "stripe",
+  "action": "getSubscription",
+  "case": "get-subscription-teams-expanded-customer",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "subscriptionId": "sub_2"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_2",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"sub_2\",\"object\":\"subscription\",\"customer\":{\"id\":\"cus_2\",\"object\":\"customer\"},\"status\":\"past_due\",\"cancel_at_period_end\":true,\"current_period_start\":1767225600,\"current_period_end\":1769904000,\"items\":{\"data\":[{\"id\":\"si_2\",\"quantity\":3,\"price\":{\"id\":\"price_teams_test\"}}]}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "subscriptionId": "sub_2",
+      "customerId": "cus_2",
+      "status": "past_due",
+      "priceId": "price_teams_test",
+      "quantity": 3,
+      "currentPeriodStart": "2026-01-01T00:00:00.000Z",
+      "currentPeriodEnd": "2026-02-01T00:00:00.000Z",
+      "cancelAtPeriodEnd": true,
+      "tier": "teams"
+    }
+  }
+}

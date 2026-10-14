@@ -1,0 +1,90 @@
+{
+  "service": "workspace",
+  "case": "validation-failures",
+  "startMs": 1767225600000,
+  "steps": [
+    {
+      "action": "writeFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225600000,
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for workspace.writeFile: content: Missing required parameter: content"
+      },
+      "objects": []
+    },
+    {
+      "action": "readFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo",
+        "bogus": 1
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225601000,
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for workspace.readFile: bogus: Unknown parameter: bogus (declared: path, workspace)"
+      },
+      "objects": []
+    },
+    {
+      "action": "history",
+      "params": {
+        "workspace": "app-1",
+        "limit": "two"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225602000,
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for workspace.history: limit: Expected number, got string"
+      },
+      "objects": []
+    },
+    {
+      "action": "tree",
+      "params": {},
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225603000,
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for workspace.tree: workspace: Missing required parameter: workspace"
+      },
+      "objects": []
+    },
+    {
+      "action": "nope",
+      "params": {
+        "workspace": "app-1"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225604000,
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for workspace.nope: action: Unknown action: nope"
+      },
+      "objects": []
+    }
+  ],
+  "bucket": {}
+}

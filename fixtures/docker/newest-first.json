@@ -1,0 +1,204 @@
+{
+  "service": "docker",
+  "case": "newest-first",
+  "env": {},
+  "steps": [
+    {
+      "action": "run",
+      "params": {
+        "image": "a",
+        "name": "one"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.04296875,
+        0.25,
+        0.45703125,
+        0.6640625,
+        0.87109375,
+        0.078125,
+        0.28515625,
+        0.4921875,
+        0.69921875,
+        0.90625,
+        0.11328125,
+        0.3203125,
+        0.52734375,
+        0.734375,
+        0.94140625,
+        0.1484375
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "name": "one",
+          "status": "running",
+          "ports": []
+        }
+      }
+    },
+    {
+      "action": "run",
+      "params": {
+        "image": "b",
+        "name": "two"
+      },
+      "clockMs": 1760000000100,
+      "randoms": [
+        0.546875,
+        0.75390625,
+        0.9609375,
+        0.16796875,
+        0.375,
+        0.58203125,
+        0.7890625,
+        0.99609375,
+        0.203125,
+        0.41015625,
+        0.6171875,
+        0.82421875,
+        0.03125,
+        0.23828125,
+        0.4453125,
+        0.65234375
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "8cc1f62b6095caff34699ed3083d72a7",
+          "name": "two",
+          "status": "running",
+          "ports": []
+        }
+      }
+    },
+    {
+      "action": "run",
+      "params": {
+        "image": "c",
+        "name": "three"
+      },
+      "clockMs": 1760000000100,
+      "randoms": [
+        0.30078125,
+        0.5078125,
+        0.71484375,
+        0.921875,
+        0.12890625,
+        0.3359375,
+        0.54296875,
+        0.75,
+        0.95703125,
+        0.1640625,
+        0.37109375,
+        0.578125,
+        0.78515625,
+        0.9921875,
+        0.19921875,
+        0.40625
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "4d82b7ec21568bc0f52a5f94c9fe3368",
+          "name": "three",
+          "status": "running",
+          "ports": []
+        }
+      }
+    },
+    {
+      "action": "stop",
+      "params": {
+        "containerId": "8cc1f62b6095caff34699ed3083d72a7"
+      },
+      "clockMs": 1760000000200,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "8cc1f62b6095caff34699ed3083d72a7",
+          "status": "exited",
+          "stoppedAt": 1760000000200
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {},
+      "clockMs": 1760000000300,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containers": [
+            {
+              "id": "4d82b7ec21568bc0f52a5f94c9fe3368",
+              "name": "three",
+              "image": "c",
+              "status": "running",
+              "ports": [],
+              "createdAt": 1760000000100
+            },
+            {
+              "id": "0b4075aadf14497eb3e81d5287bcf126",
+              "name": "one",
+              "image": "a",
+              "status": "running",
+              "ports": [],
+              "createdAt": 1760000000000
+            }
+          ],
+          "total": 2
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "all": true
+      },
+      "clockMs": 1760000000301,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containers": [
+            {
+              "id": "8cc1f62b6095caff34699ed3083d72a7",
+              "name": "two",
+              "image": "b",
+              "status": "exited",
+              "ports": [],
+              "createdAt": 1760000000100
+            },
+            {
+              "id": "4d82b7ec21568bc0f52a5f94c9fe3368",
+              "name": "three",
+              "image": "c",
+              "status": "running",
+              "ports": [],
+              "createdAt": 1760000000100
+            },
+            {
+              "id": "0b4075aadf14497eb3e81d5287bcf126",
+              "name": "one",
+              "image": "a",
+              "status": "running",
+              "ports": [],
+              "createdAt": 1760000000000
+            }
+          ],
+          "total": 3
+        }
+      }
+    }
+  ]
+}

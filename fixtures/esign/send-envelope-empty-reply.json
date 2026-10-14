@@ -1,0 +1,40 @@
+{
+  "service": "esign",
+  "action": "sendEnvelope",
+  "case": "send-envelope-empty-reply",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "recipientEmail": "ada@example.com",
+    "recipientName": "Ada Lovelace",
+    "documentName": "contract.pdf",
+    "documentContent": "aGVsbG8gY29udHJhY3Q="
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/restapi/v2.1/accounts/acct-1/envelopes",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"emailSubject\":\"Please sign: contract.pdf\",\"status\":\"sent\",\"documents\":[{\"documentBase64\":\"aGVsbG8gY29udHJhY3Q=\",\"name\":\"contract.pdf\",\"fileExtension\":\"pdf\",\"documentId\":\"1\"}],\"recipients\":{\"signers\":[{\"email\":\"ada@example.com\",\"name\":\"Ada Lovelace\",\"recipientId\":\"1\",\"routingOrder\":\"1\"}]}}"
+      },
+      "response": {
+        "status": 201,
+        "body": "{}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "envelopeId": "",
+      "status": "sent"
+    }
+  }
+}

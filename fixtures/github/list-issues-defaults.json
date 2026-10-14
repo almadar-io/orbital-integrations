@@ -1,0 +1,65 @@
+{
+  "service": "github",
+  "action": "listIssues",
+  "case": "list-issues-defaults",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/issues?state=open&per_page=30",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"number\":1,\"url\":\"https://api.github.com/repos/acme/widgets/issues/1\",\"title\":\"First\",\"body\":\"Body of First\",\"state\":\"open\",\"labels\":[{\"name\":\"bug\",\"color\":\"d73a4a\"}],\"created_at\":\"2026-01-02T03:04:05Z\",\"updated_at\":\"2026-01-03T03:04:05Z\"},{\"number\":2,\"url\":\"https://api.github.com/repos/acme/widgets/issues/2\",\"title\":\"Second\",\"body\":\"Body of Second\",\"state\":\"open\",\"labels\":[{\"name\":\"bug\",\"color\":\"d73a4a\"}],\"created_at\":\"2026-01-02T03:04:05Z\",\"updated_at\":\"2026-01-03T03:04:05Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "issues": [
+        {
+          "number": 1,
+          "url": "https://api.github.com/repos/acme/widgets/issues/1",
+          "title": "First",
+          "body": "Body of First",
+          "state": "open",
+          "labels": [
+            {
+              "name": "bug",
+              "color": "d73a4a"
+            }
+          ],
+          "created_at": "2026-01-02T03:04:05Z",
+          "updated_at": "2026-01-03T03:04:05Z"
+        },
+        {
+          "number": 2,
+          "url": "https://api.github.com/repos/acme/widgets/issues/2",
+          "title": "Second",
+          "body": "Body of Second",
+          "state": "open",
+          "labels": [
+            {
+              "name": "bug",
+              "color": "d73a4a"
+            }
+          ],
+          "created_at": "2026-01-02T03:04:05Z",
+          "updated_at": "2026-01-03T03:04:05Z"
+        }
+      ]
+    }
+  }
+}

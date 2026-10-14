@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "get-icon-body-through-an-alias",
+  "env": {},
+  "params": {
+    "iconId": "mdi:house"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/mdi.json?icons=house",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"prefix\":\"mdi\",\"icons\":{},\"aliases\":{\"house\":{\"parent\":\"home\",\"body\":\"<path d=\\\"M1 1\\\"/>\"}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "body": "<path d=\"M1 1\"/>"
+    }
+  }
+}

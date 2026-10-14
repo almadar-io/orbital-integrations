@@ -1,0 +1,455 @@
+{
+  "service": "docker",
+  "case": "logs",
+  "env": {},
+  "steps": [
+    {
+      "action": "run",
+      "params": {
+        "image": "app:1",
+        "name": "api"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.04296875,
+        0.25,
+        0.45703125,
+        0.6640625,
+        0.87109375,
+        0.078125,
+        0.28515625,
+        0.4921875,
+        0.69921875,
+        0.90625,
+        0.11328125,
+        0.3203125,
+        0.52734375,
+        0.734375,
+        0.94140625,
+        0.1484375
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "name": "api",
+          "status": "running",
+          "ports": []
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126"
+      },
+      "clockMs": 1760000005000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4",
+            "2025-10-09T08:53:24.000Z [info] Container api — heartbeat #5",
+            "2025-10-09T08:53:25.000Z [info] Container api — heartbeat #6",
+            "2025-10-09T08:53:26.000Z [info] Container api — heartbeat #7",
+            "2025-10-09T08:53:27.000Z [info] Container api — heartbeat #8",
+            "2025-10-09T08:53:28.000Z [info] Container api — heartbeat #9",
+            "2025-10-09T08:53:29.000Z [info] Container api — heartbeat #10",
+            "2025-10-09T08:53:30.000Z [info] Container api — heartbeat #11",
+            "2025-10-09T08:53:31.000Z [info] Container api — heartbeat #12",
+            "2025-10-09T08:53:32.000Z [info] Container api — heartbeat #13",
+            "2025-10-09T08:53:33.000Z [info] Container api — heartbeat #14",
+            "2025-10-09T08:53:34.000Z [info] Container api — heartbeat #15",
+            "2025-10-09T08:53:35.000Z [info] Container api — heartbeat #16",
+            "2025-10-09T08:53:36.000Z [info] Container api — heartbeat #17",
+            "2025-10-09T08:53:37.000Z [info] Container api — heartbeat #18",
+            "2025-10-09T08:53:38.000Z [info] Container api — heartbeat #19",
+            "2025-10-09T08:53:39.000Z [info] Container api — heartbeat #20",
+            "2025-10-09T08:53:40.000Z [info] Container api — heartbeat #21",
+            "2025-10-09T08:53:41.000Z [info] Container api — heartbeat #22",
+            "2025-10-09T08:53:42.000Z [info] Container api — heartbeat #23",
+            "2025-10-09T08:53:43.000Z [info] Container api — heartbeat #24",
+            "2025-10-09T08:53:44.000Z [info] Container api — heartbeat #25",
+            "2025-10-09T08:53:45.000Z [info] Container api — heartbeat #26",
+            "2025-10-09T08:53:46.000Z [info] Container api — heartbeat #27",
+            "2025-10-09T08:53:47.000Z [info] Container api — heartbeat #28",
+            "2025-10-09T08:53:48.000Z [info] Container api — heartbeat #29",
+            "2025-10-09T08:53:49.000Z [info] Container api — heartbeat #30",
+            "2025-10-09T08:53:50.000Z [info] Container api — heartbeat #31",
+            "2025-10-09T08:53:51.000Z [info] Container api — heartbeat #32",
+            "2025-10-09T08:53:52.000Z [info] Container api — heartbeat #33",
+            "2025-10-09T08:53:53.000Z [info] Container api — heartbeat #34",
+            "2025-10-09T08:53:54.000Z [info] Container api — heartbeat #35",
+            "2025-10-09T08:53:55.000Z [info] Container api — heartbeat #36",
+            "2025-10-09T08:53:56.000Z [info] Container api — heartbeat #37",
+            "2025-10-09T08:53:57.000Z [info] Container api — heartbeat #38",
+            "2025-10-09T08:53:58.000Z [info] Container api — heartbeat #39",
+            "2025-10-09T08:53:59.000Z [info] Container api — heartbeat #40",
+            "2025-10-09T08:54:00.000Z [info] Container api — heartbeat #41",
+            "2025-10-09T08:54:01.000Z [info] Container api — heartbeat #42",
+            "2025-10-09T08:54:02.000Z [info] Container api — heartbeat #43",
+            "2025-10-09T08:54:03.000Z [info] Container api — heartbeat #44",
+            "2025-10-09T08:54:04.000Z [info] Container api — heartbeat #45",
+            "2025-10-09T08:54:05.000Z [info] Container api — heartbeat #46",
+            "2025-10-09T08:54:06.000Z [info] Container api — heartbeat #47",
+            "2025-10-09T08:54:07.000Z [info] Container api — heartbeat #48",
+            "2025-10-09T08:54:08.000Z [info] Container api — heartbeat #49",
+            "2025-10-09T08:54:09.000Z [info] Container api — heartbeat #50",
+            "2025-10-09T08:54:10.000Z [info] Container api — heartbeat #51",
+            "2025-10-09T08:54:11.000Z [info] Container api — heartbeat #52",
+            "2025-10-09T08:54:12.000Z [info] Container api — heartbeat #53",
+            "2025-10-09T08:54:13.000Z [info] Container api — heartbeat #54",
+            "2025-10-09T08:54:14.000Z [info] Container api — heartbeat #55",
+            "2025-10-09T08:54:15.000Z [info] Container api — heartbeat #56",
+            "2025-10-09T08:54:16.000Z [info] Container api — heartbeat #57",
+            "2025-10-09T08:54:17.000Z [info] Container api — heartbeat #58",
+            "2025-10-09T08:54:18.000Z [info] Container api — heartbeat #59",
+            "2025-10-09T08:54:19.000Z [info] Container api — heartbeat #60",
+            "2025-10-09T08:54:20.000Z [info] Container api — heartbeat #61",
+            "2025-10-09T08:54:21.000Z [info] Container api — heartbeat #62",
+            "2025-10-09T08:54:22.000Z [info] Container api — heartbeat #63",
+            "2025-10-09T08:54:23.000Z [info] Container api — heartbeat #64",
+            "2025-10-09T08:54:24.000Z [info] Container api — heartbeat #65",
+            "2025-10-09T08:54:25.000Z [info] Container api — heartbeat #66",
+            "2025-10-09T08:54:26.000Z [info] Container api — heartbeat #67",
+            "2025-10-09T08:54:27.000Z [info] Container api — heartbeat #68",
+            "2025-10-09T08:54:28.000Z [info] Container api — heartbeat #69",
+            "2025-10-09T08:54:29.000Z [info] Container api — heartbeat #70",
+            "2025-10-09T08:54:30.000Z [info] Container api — heartbeat #71",
+            "2025-10-09T08:54:31.000Z [info] Container api — heartbeat #72",
+            "2025-10-09T08:54:32.000Z [info] Container api — heartbeat #73",
+            "2025-10-09T08:54:33.000Z [info] Container api — heartbeat #74",
+            "2025-10-09T08:54:34.000Z [info] Container api — heartbeat #75",
+            "2025-10-09T08:54:35.000Z [info] Container api — heartbeat #76",
+            "2025-10-09T08:54:36.000Z [info] Container api — heartbeat #77",
+            "2025-10-09T08:54:37.000Z [info] Container api — heartbeat #78",
+            "2025-10-09T08:54:38.000Z [info] Container api — heartbeat #79",
+            "2025-10-09T08:54:39.000Z [info] Container api — heartbeat #80",
+            "2025-10-09T08:54:40.000Z [info] Container api — heartbeat #81",
+            "2025-10-09T08:54:41.000Z [info] Container api — heartbeat #82",
+            "2025-10-09T08:54:42.000Z [info] Container api — heartbeat #83",
+            "2025-10-09T08:54:43.000Z [info] Container api — heartbeat #84",
+            "2025-10-09T08:54:44.000Z [info] Container api — heartbeat #85",
+            "2025-10-09T08:54:45.000Z [info] Container api — heartbeat #86",
+            "2025-10-09T08:54:46.000Z [info] Container api — heartbeat #87",
+            "2025-10-09T08:54:47.000Z [info] Container api — heartbeat #88",
+            "2025-10-09T08:54:48.000Z [info] Container api — heartbeat #89",
+            "2025-10-09T08:54:49.000Z [info] Container api — heartbeat #90",
+            "2025-10-09T08:54:50.000Z [info] Container api — heartbeat #91",
+            "2025-10-09T08:54:51.000Z [info] Container api — heartbeat #92",
+            "2025-10-09T08:54:52.000Z [info] Container api — heartbeat #93",
+            "2025-10-09T08:54:53.000Z [info] Container api — heartbeat #94",
+            "2025-10-09T08:54:54.000Z [info] Container api — heartbeat #95",
+            "2025-10-09T08:54:55.000Z [info] Container api — heartbeat #96",
+            "2025-10-09T08:54:56.000Z [info] Container api — heartbeat #97",
+            "2025-10-09T08:54:57.000Z [info] Container api — heartbeat #98",
+            "2025-10-09T08:54:58.000Z [info] Container api — heartbeat #99",
+            "2025-10-09T08:54:59.000Z [info] Container api — heartbeat #100"
+          ],
+          "lineCount": 100
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 3
+      },
+      "clockMs": 1760000005001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3"
+          ],
+          "lineCount": 3
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 1
+      },
+      "clockMs": 1760000005002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Container api is now running"
+          ],
+          "lineCount": 1
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 5
+      },
+      "clockMs": 1760000005003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4",
+            "2025-10-09T08:53:24.000Z [info] Container api — heartbeat #5"
+          ],
+          "lineCount": 5
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 0
+      },
+      "clockMs": 1760000005004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running"
+          ],
+          "lineCount": 2
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": -1
+      },
+      "clockMs": 1760000005005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Container api is now running"
+          ],
+          "lineCount": 1
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 2.5
+      },
+      "clockMs": 1760000005006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3"
+          ],
+          "lineCount": 2
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 6,
+        "since": "2025-10-09T08:53:22.000Z"
+      },
+      "clockMs": 1760000005007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4",
+            "2025-10-09T08:53:24.000Z [info] Container api — heartbeat #5",
+            "2025-10-09T08:53:25.000Z [info] Container api — heartbeat #6"
+          ],
+          "lineCount": 4
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 6,
+        "since": "2025-10-09T08:53:22Z"
+      },
+      "clockMs": 1760000005008,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4",
+            "2025-10-09T08:53:24.000Z [info] Container api — heartbeat #5",
+            "2025-10-09T08:53:25.000Z [info] Container api — heartbeat #6"
+          ],
+          "lineCount": 4
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 6,
+        "since": "2999-01-01"
+      },
+      "clockMs": 1760000005009,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [],
+          "lineCount": 0
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 6,
+        "since": "yesterday-ish"
+      },
+      "clockMs": 1760000005010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [],
+          "lineCount": 0
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 6,
+        "since": ""
+      },
+      "clockMs": 1760000005011,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:22.000Z [info] Container api — heartbeat #3",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4",
+            "2025-10-09T08:53:24.000Z [info] Container api — heartbeat #5",
+            "2025-10-09T08:53:25.000Z [info] Container api — heartbeat #6"
+          ],
+          "lineCount": 6
+        }
+      }
+    },
+    {
+      "action": "stop",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126"
+      },
+      "clockMs": 1760000009000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "status": "exited",
+          "stoppedAt": 1760000009000
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+        "tail": 4
+      },
+      "clockMs": 1760000009001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "containerId": "0b4075aadf14497eb3e81d5287bcf126",
+          "logs": [
+            "2025-10-09T08:53:20.000Z [info] Starting container api from image app:1",
+            "2025-10-09T08:53:20.000Z [info] Container api is now running",
+            "2025-10-09T08:53:29.000Z [info] Container api stopped",
+            "2025-10-09T08:53:23.000Z [info] Container api — heartbeat #4"
+          ],
+          "lineCount": 4
+        }
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "zz"
+      },
+      "clockMs": 1760000009002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Container not found: zz"
+      }
+    }
+  ]
+}

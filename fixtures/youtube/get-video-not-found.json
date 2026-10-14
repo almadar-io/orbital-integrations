@@ -1,0 +1,32 @@
+{
+  "service": "youtube",
+  "action": "getVideo",
+  "case": "get-video-not-found",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "videoId": "nope"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=nope&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"kind\":\"youtube#videoListResponse\",\"items\":[]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Video not found: nope"
+  }
+}

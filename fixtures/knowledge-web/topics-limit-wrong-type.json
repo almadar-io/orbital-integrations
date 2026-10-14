@@ -1,0 +1,19 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-limit-wrong-type",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {
+    "limit": "many"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Param 'limit' must be a number"
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

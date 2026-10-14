@@ -1,0 +1,47 @@
+{
+  "service": "stripe",
+  "action": "cancelSubscription",
+  "case": "cancel-subscription-at-period-end",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "subscriptionId": "sub_1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/subscriptions/sub_1",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "cancel_at_period_end=true"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"sub_1\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"cancel_at_period_end\":true,\"current_period_start\":1767225600,\"current_period_end\":1769904000,\"items\":{\"object\":\"list\",\"data\":[{\"id\":\"si_1\",\"object\":\"subscription_item\",\"quantity\":1,\"price\":{\"id\":\"price_solo_test\",\"object\":\"price\"}}],\"has_more\":false}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "subscriptionId": "sub_1",
+      "customerId": "cus_1",
+      "status": "active",
+      "priceId": "price_solo_test",
+      "quantity": 1,
+      "currentPeriodStart": "2026-01-01T00:00:00.000Z",
+      "currentPeriodEnd": "2026-02-01T00:00:00.000Z",
+      "cancelAtPeriodEnd": true,
+      "tier": "solo"
+    }
+  }
+}

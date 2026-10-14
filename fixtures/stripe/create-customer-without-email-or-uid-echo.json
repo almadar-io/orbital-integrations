@@ -1,0 +1,42 @@
+{
+  "service": "stripe",
+  "action": "createCustomer",
+  "case": "create-customer-without-email-or-uid-echo",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "email": "ada@example.com",
+    "almadarUid": "uid-8"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/customers",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "email=ada%40example.com&metadata[almadarUid]=uid-8"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"cus_2\",\"object\":\"customer\",\"email\":null}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "customerId": "cus_2",
+      "email": "",
+      "almadarUid": ""
+    }
+  }
+}

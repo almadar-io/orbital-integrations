@@ -1,0 +1,97 @@
+{
+  "service": "knowledge",
+  "action": "answerQuestion",
+  "case": "answer-question-empty-answer",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "graphId": "g1",
+    "conceptId": "Light",
+    "question": "Why?"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g1\",\"fields\":{\"id\":{\"stringValue\":\"g1\"},\"seedConceptId\":{\"stringValue\":\"Light\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"g1\"},\"nodes\":{\"mapValue\":{\"fields\":{\"g1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g1\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g1\"},\"seedConceptId\":{\"stringValue\":\"Light\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Light\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Light\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Light\"},\"name\":{\"stringValue\":\"Light\"},\"description\":{\"stringValue\":\"Light description\"},\"layer\":{\"integerValue\":\"1\"},\"sequence\":{\"integerValue\":\"1\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Water\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Water\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Water\"},\"name\":{\"stringValue\":\"Water\"},\"description\":{\"stringValue\":\"Water description\"},\"layer\":{\"integerValue\":\"1\"},\"sequence\":{\"integerValue\":\"2\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Photosynthesis\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Photosynthesis\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Photosynthesis\"},\"name\":{\"stringValue\":\"Photosynthesis\"},\"description\":{\"stringValue\":\"Photosynthesis description\"},\"layer\":{\"integerValue\":\"2\"},\"sequence\":{\"integerValue\":\"1\"},\"card\":{\"mapValue\":{\"fields\":{\"hook\":{\"stringValue\":\"Plants eat light.\"},\"beat\":{\"stringValue\":\"Chlorophyll captures light to make sugar.\"},\"check\":{\"nullValue\":null}}}}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"goal-g1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g1\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g1\"},\"name\":{\"stringValue\":\"Plants\"},\"description\":{\"stringValue\":\"How plants live\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"botany\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"layer-2\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"layer-2\"},\"type\":{\"stringValue\":\"Layer\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"layer-2\"},\"layerNumber\":{\"integerValue\":\"2\"},\"goal\":{\"stringValue\":\"How plants feed\"},\"prompt\":{\"stringValue\":\"\"},\"response\":{\"stringValue\":\"\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"review\":{\"stringValue\":\"Review text\"},\"exploreCandidates\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"name\":{\"stringValue\":\"Chemosynthesis\"},\"description\":{\"stringValue\":\"Sugar from chemical energy.\"}}}},{\"mapValue\":{\"fields\":{\"name\":{\"stringValue\":\"Water\"},\"description\":{\"stringValue\":\"already there\"}}}}]}}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"lesson-Light\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"lesson-Light\"},\"type\":{\"stringValue\":\"Lesson\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"lesson-Light\"},\"content\":{\"stringValue\":\"Light is energy.\"},\"generatedAt\":{\"integerValue\":\"1700000000000\"},\"notes\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"n1\"},\"text\":{\"stringValue\":\"remember\"},\"selectedText\":{\"stringValue\":\"energy\"},\"timestamp\":{\"integerValue\":\"1700000000000\"}}}}]}},\"questions\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"q1\"},\"question\":{\"stringValue\":\"Why?\"},\"answer\":{\"stringValue\":\"Because.\"},\"selectedText\":{\"stringValue\":\"\"},\"timestamp\":{\"integerValue\":\"1700000000000\"}}}}]}}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"course-Intro\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"course-Intro\"},\"type\":{\"stringValue\":\"Course\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"course-Intro\"},\"title\":{\"stringValue\":\"Intro\"},\"description\":{\"stringValue\":\"First course\"},\"modules\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"title\":{\"stringValue\":\"Level 1\"},\"conceptRefs\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"nodeId\":{\"stringValue\":\"Light\"}}}},{\"mapValue\":{\"fields\":{\"nodeId\":{\"stringValue\":\"Water\"}}}}]}}}}}]}},\"publishStatus\":{\"stringValue\":\"draft\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"progress-learner-1-Light\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"progress-learner-1-Light\"},\"type\":{\"stringValue\":\"Progress\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"progress-learner-1-Light\"},\"studentUserId\":{\"stringValue\":\"learner-1\"},\"conceptId\":{\"stringValue\":\"Light\"},\"masteryLevel\":{\"integerValue\":\"3\"},\"lastStudied\":{\"integerValue\":\"1698272000000\"},\"bloomAnswered\":{\"mapValue\":{}},\"bloomLevelsCompleted\":{\"arrayValue\":{}}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"g1\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Light\"},{\"stringValue\":\"Water\"},{\"stringValue\":\"Photosynthesis\"}]}},\"Layer\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"layer-2\"}]}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"goal-g1\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"lesson-Light\"}]}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"course-Intro\"}]}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"progress-learner-1-Light\"}]}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g1-containsConcept-Light\"},\"source\":{\"stringValue\":\"g1\"},\"target\":{\"stringValue\":\"Light\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g1-containsConcept-Water\"},\"source\":{\"stringValue\":\"g1\"},\"target\":{\"stringValue\":\"Water\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g1-containsConcept-Photosynthesis\"},\"source\":{\"stringValue\":\"g1\"},\"target\":{\"stringValue\":\"Photosynthesis\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g1-hasLearningGoal-goal-g1\"},\"source\":{\"stringValue\":\"g1\"},\"target\":{\"stringValue\":\"goal-g1\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Photosynthesis-hasPrerequisite-Light\"},\"source\":{\"stringValue\":\"Photosynthesis\"},\"target\":{\"stringValue\":\"Light\"},\"type\":{\"stringValue\":\"hasPrerequisite\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Photosynthesis-hasPrerequisite-Water\"},\"source\":{\"stringValue\":\"Photosynthesis\"},\"target\":{\"stringValue\":\"Water\"},\"type\":{\"stringValue\":\"hasPrerequisite\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Light-hasLesson-lesson-Light\"},\"source\":{\"stringValue\":\"Light\"},\"target\":{\"stringValue\":\"lesson-Light\"},\"type\":{\"stringValue\":\"hasLesson\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-layer-2-containsConcept-Photosynthesis\"},\"source\":{\"stringValue\":\"layer-2\"},\"target\":{\"stringValue\":\"Photosynthesis\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/users/learner-1:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"knowledgeGraphs\"}],\"select\":{\"fields\":[{\"fieldPath\":\"id\"}]}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"document\":{\"name\":\"projects/p/databases/(default)/documents/users/learner-1/knowledgeGraphs/g1\",\"fields\":{\"id\":{\"stringValue\":\"g1\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.3,\"stream\":true,\"stream_options\":{\"include_usage\":true},\"messages\":[{\"role\":\"system\",\"content\":\"## Role\\nYou are an expert educational assistant helping a learner understand concepts at the intermediate level.\\n\\n## Guidelines\\n- Answer the question directly and clearly\\n- Tailor your response to the learner's level\\n- Use examples when helpful\\n- Be concise but thorough\\n- Format your response in clear, readable Markdown\\n\\n## Diagrams (Mermaid)\\n```mermaid fenced blocks are rendered as live diagrams. Use one only when a diagram carries structure prose cannot, and follow this syntax exactly:\\n- Put the diagram type on the first line (`graph TD`, `sequenceDiagram`, `stateDiagram-v2`, `flowchart LR`, …) and close every `subgraph` with `end`.\\n- ALWAYS wrap node label text in double quotes: `B[\\\"Scripting Engine (Vimscript)\\\"]`, never `B[Scripting Engine (Vimscript)]`. An unquoted label is a parse error the moment it contains `(`, `)`, `[`, `]`, `{`, `}`, `|`, `#`, `;` or a quote, and the whole diagram fails to render.\\n- Quote edge labels the same way: `A -->|\\\"calls (sync)\\\"| B`.\\n- Quote `subgraph` titles: `subgraph \\\"Vim Core (Monolithic)\\\"`.\\n- Keep labels plain text — no HTML, no `<br>`, no markdown emphasis inside a label.\"},{\"role\":\"user\",\"content\":\"## Context\\n**Concept**: Light\\n\\nLight description\\n\\n## Question\\nWhy?\\n\\n## Task\\nProvide a clear, helpful answer to this question, tailored for a intermediate level learner.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "text/event-stream"
+        },
+        "body": "data: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" \"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "The model returned an empty answer"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ]
+  ],
+  "progress": [
+    {
+      "phase": "start",
+      "text": "",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": " ",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "visualizations": []
+}

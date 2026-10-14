@@ -1,0 +1,45 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "name": "download",
+    "path": "/downloads",
+    "props": {
+      "os": "mac",
+      "arm": true,
+      "size": 3,
+      "ratio": 0.25
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"download\",\"d\":\"orb.almadar.io\",\"u\":\"/downloads\",\"p\":{\"os\":\"mac\",\"arm\":true,\"size\":3,\"ratio\":0.25}}"
+      },
+      "response": {
+        "status": 202,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

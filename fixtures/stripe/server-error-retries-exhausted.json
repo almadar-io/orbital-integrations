@@ -1,0 +1,75 @@
+{
+  "service": "stripe",
+  "action": "createCustomer",
+  "case": "server-error-retries-exhausted",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "email": "ada@example.com",
+    "almadarUid": "uid-7"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/customers",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "email=ada%40example.com&metadata[almadarUid]=uid-7"
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"type\":\"api_error\",\"message\":\"Service unavailable (1)\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/customers",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "email=ada%40example.com&metadata[almadarUid]=uid-7"
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"type\":\"api_error\",\"message\":\"Service unavailable (2)\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/customers",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "email=ada%40example.com&metadata[almadarUid]=uid-7"
+      },
+      "response": {
+        "status": 503,
+        "body": "{\"error\":{\"type\":\"api_error\",\"message\":\"Service unavailable (3)\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Service unavailable (3)"
+  }
+}

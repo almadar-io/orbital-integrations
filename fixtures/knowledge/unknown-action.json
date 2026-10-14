@@ -1,0 +1,19 @@
+{
+  "service": "knowledge",
+  "action": "dropDatabase",
+  "case": "unknown-action",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "knowledge has no node action 'dropDatabase'"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

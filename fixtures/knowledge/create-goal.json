@@ -1,0 +1,194 @@
+{
+  "service": "knowledge",
+  "action": "createGoalWithGraph",
+  "case": "create-goal",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "anchorAnswer": "  Haskell  "
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.3,\"stream\":true,\"stream_options\":{\"include_usage\":true},\"messages\":[{\"role\":\"system\",\"content\":\"You are an expert learning advisor that helps users create structured, actionable learning goals.\\n\\nYour task is to analyze a user's learning aspiration and generate a comprehensive learning goal.\\n\\nKey principles:\\n- Create a clear, specific, and achievable learning goal\\n- The \\\"title\\\" MUST be the bare canonical subject name only (e.g. \\\"Haskell\\\", \\\"Linear Algebra\\\", \\\"Organic Chemistry\\\", \\\"React\\\"). NEVER add ANY prefix or suffix: not \\\"Master\\\", \\\"Mastering\\\", \\\"Core\\\", \\\"Essential\\\", \\\"Fundamentals\\\", \\\"Learning\\\", \\\"Understanding\\\", \\\"Introduction to\\\", \\\"A guide to\\\", \\\"The Complete\\\", or any similar word. Output the subject name and nothing else.\\n- Infer the most appropriate goal type (common types: \\\"certification\\\", \\\"skill_mastery\\\", \\\"language_level\\\", \\\"project_completion\\\", or suggest a custom type if it fits better)\\n- Make the goal actionable and measurable\\n- \\\"customMetadata\\\" is flat: each value is a string, number, boolean or null (e.g. {\\\"difficulty\\\": \\\"beginner\\\", \\\"focus\\\": \\\"conversation\\\"})\\n- \\\"keywords\\\" are domain search terms a learner might use that are not the subject name itself (e.g. [\\\"JVM\\\",\\\"runtime\\\",\\\"bytecode\\\"])\\n\\nOutput format:\\nReturn a JSON object with this structure:\\n{\\n  \\\"title\\\": \\\"Bare canonical subject name only\\\",\\n  \\\"description\\\": \\\"Detailed description of the learning goal\\\",\\n  \\\"type\\\": \\\"goal_type_here\\\",\\n  \\\"target\\\": \\\"Specific target (e.g., 'AWS Certified Solutions Architect', 'B1 Spanish', 'Publish research paper')\\\",\\n  \\\"estimatedTime\\\": 120,\\n  \\\"keywords\\\": [\\\"term\\\"],\\n  \\\"milestones\\\": [\\n    { \\\"id\\\": \\\"m1\\\", \\\"title\\\": \\\"Milestone title\\\", \\\"description\\\": \\\"Milestone description\\\", \\\"targetDate\\\": null, \\\"completed\\\": false }\\n  ],\\n  \\\"customMetadata\\\": {}\\n}\\n\\nReturn ONLY the JSON object, no additional text.\"},{\"role\":\"user\",\"content\":\"The user answered the anchor question \\\"What's something you've always wanted to learn?\\\" with:\\n\\n\\\"Haskell\\\"\\n\\nGenerate a comprehensive learning goal based on this information.\\n\\nReturn the JSON object with the goal structure.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "text/event-stream"
+        },
+        "body": "data: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"{\\\"title\\\":\\\"Haskell\\\",\\\"description\\\":\\\"Lea\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"rn pure functional programming.\\\",\\\"typ\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"e\\\":\\\"skill_mastery\\\",\\\"target\\\":\\\"Write a \"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"parser\\\",\\\"estimatedTime\\\":80,\\\"keywords\\\"\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\":[\\\"monads\\\",\\\"lazy\\\"],\\\"milestones\\\":[{\\\"id\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\\\":\\\"m1\\\",\\\"title\\\":\\\"Syntax\\\",\\\"description\\\"\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\":\\\"Read Haskell\\\",\\\"targetDate\\\":null,\\\"co\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"mpleted\\\":false},{\\\"title\\\":\\\"Monads\\\"},{\\\"\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"title\\\":\\\"Parsers\\\",\\\"description\\\":\\\"Build\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" one\\\"}],\\\"customMetadata\\\":{\\\"difficulty\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\\\":\\\"beginner\\\",\\\"topics\\\":[\\\"types\\\",\\\"IO\\\"]}\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"}\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\",\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMQ==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"Haskell\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"Haskell\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"Haskell\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Haskell\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Haskell\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Haskell\"},\"name\":{\"stringValue\":\"Haskell\"},\"description\":{\"stringValue\":\"Haskell: Learn pure functional programming.\"},\"goal\":{\"stringValue\":\"Haskell: Learn pure functional programming.\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"Haskell\"},\"description\":{\"stringValue\":\"Learn pure functional programming.\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"Write a parser\"},\"estimatedTime\":{\"integerValue\":\"80\"},\"keywords\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"monads\"},{\"stringValue\":\"lazy\"}]}},\"customMetadata\":{\"mapValue\":{\"fields\":{\"graphId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"milestones\":{\"stringValue\":\"[{\\\"id\\\":\\\"m1\\\",\\\"title\\\":\\\"Syntax\\\",\\\"description\\\":\\\"Read Haskell\\\",\\\"targetDate\\\":null,\\\"completed\\\":false},{\\\"id\\\":\\\"m2\\\",\\\"title\\\":\\\"Monads\\\",\\\"targetDate\\\":null,\\\"completed\\\":false},{\\\"id\\\":\\\"m3\\\",\\\"title\\\":\\\"Parsers\\\",\\\"description\\\":\\\"Build one\\\",\\\"targetDate\\\":null,\\\"completed\\\":false}]\"},\"shortTermGoals\":{\"stringValue\":\"[]\"},\"difficulty\":{\"stringValue\":\"beginner\"},\"topics\":{\"stringValue\":\"[\\\"types\\\",\\\"IO\\\"]\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Haskell\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-Haskell\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"Haskell\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-Haskell\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"Haskell\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasLearningGoal-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"}}],\"transaction\":\"dHgtMQ==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "graphId": "00000000-0000-4000-8000-000000000001",
+      "goalTitle": "Haskell",
+      "description": "Learn pure functional programming.",
+      "milestones": [
+        "Syntax",
+        "Monads",
+        "Parsers"
+      ],
+      "difficulty": "beginner"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [
+    "00000000-0000-4000-8000-000000000001",
+    "00000000-0000-4000-8000-000000000002"
+  ],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [
+    {
+      "phase": "start",
+      "text": "",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "{\"title\":\"Haskell\",\"description\":\"Lea",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "step",
+      "text": "Haskell",
+      "model": "deepseek-v4-flash",
+      "field": "title"
+    },
+    {
+      "phase": "step",
+      "text": "Lea",
+      "model": "deepseek-v4-flash",
+      "field": "description"
+    },
+    {
+      "phase": "delta",
+      "text": "rn pure functional programming.\",\"typ",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "e\":\"skill_mastery\",\"target\":\"Write a ",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "step",
+      "text": "Learn pure functional programming.",
+      "model": "deepseek-v4-flash",
+      "field": "description"
+    },
+    {
+      "phase": "delta",
+      "text": "parser\",\"estimatedTime\":80,\"keywords\"",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": ":[\"monads\",\"lazy\"],\"milestones\":[{\"id",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "\":\"m1\",\"title\":\"Syntax\",\"description\"",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": ":\"Read Haskell\",\"targetDate\":null,\"co",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "mpleted\":false},{\"title\":\"Monads\"},{\"",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "title\":\"Parsers\",\"description\":\"Build",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "step",
+      "text": "Syntax",
+      "model": "deepseek-v4-flash",
+      "field": "milestone"
+    },
+    {
+      "phase": "step",
+      "text": "Monads",
+      "model": "deepseek-v4-flash",
+      "field": "milestone"
+    },
+    {
+      "phase": "delta",
+      "text": " one\"}],\"customMetadata\":{\"difficulty",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "\":\"beginner\",\"topics\":[\"types\",\"IO\"]}",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "}",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "step",
+      "text": "Parsers",
+      "model": "deepseek-v4-flash",
+      "field": "milestone"
+    }
+  ],
+  "visualizations": []
+}

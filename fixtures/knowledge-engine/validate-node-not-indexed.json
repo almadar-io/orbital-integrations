@@ -1,0 +1,58 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-node-not-indexed",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_02_NODE_NOT_INDEXED",
+      "severity": "warning",
+      "nodeId": "c1",
+      "message": "Node \"c1\" (type \"Concept\") exists but is not listed in nodeTypes."
+    }
+  ]
+}

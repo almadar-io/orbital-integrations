@@ -1,0 +1,391 @@
+{
+  "service": "database",
+  "case": "guard-and-constructor",
+  "constructorErrors": [
+    {
+      "value": "abc",
+      "message": "Invalid DATABASE_STATEMENT_TIMEOUT_MS: abc"
+    },
+    {
+      "value": "-5",
+      "message": "Invalid DATABASE_STATEMENT_TIMEOUT_MS: -5"
+    },
+    {
+      "value": "0",
+      "message": "Invalid DATABASE_STATEMENT_TIMEOUT_MS: 0"
+    },
+    {
+      "value": "1e999",
+      "message": "Invalid DATABASE_STATEMENT_TIMEOUT_MS: 1e999"
+    },
+    {
+      "value": "NaN",
+      "message": "Invalid DATABASE_STATEMENT_TIMEOUT_MS: NaN"
+    }
+  ],
+  "vectors": [
+    {
+      "sql": "SELECT id, name FROM users",
+      "ok": true
+    },
+    {
+      "sql": "SELECT * FROM orders WHERE id = $1 AND total > $2;",
+      "ok": true
+    },
+    {
+      "sql": "WITH recent AS (SELECT * FROM events ORDER BY id) SELECT * FROM recent",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1 -- DROP TABLE users\n",
+      "ok": true
+    },
+    {
+      "sql": "/* DELETE FROM users */ SELECT 1",
+      "ok": true
+    },
+    {
+      "sql": "/* nested /* comment */ still comment DELETE */ SELECT 1",
+      "ok": true
+    },
+    {
+      "sql": "SELECT * FROM notes WHERE body = 'delete this into that'",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 'it''s fine'",
+      "ok": true
+    },
+    {
+      "sql": "SELECT E'\\' ; DROP TABLE x; --'",
+      "ok": true
+    },
+    {
+      "sql": "SELECT '\\'; DROP TABLE users; --'",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": "SELECT \"delete\" FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT \"weird\"\"name\" FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $$ DELETE FROM x; $$",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $tag$ DROP; $tag$ AS body",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $1, $2",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $a FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $$unterminated",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 'unterminated",
+      "ok": true
+    },
+    {
+      "sql": "/* unterminated comment SELECT 1",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "SELECT 1; SELECT 2",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": "SELECT 1; DROP TABLE users",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": ";;; SELECT 1 ;;;",
+      "ok": true
+    },
+    {
+      "sql": ";",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "   \n\t ",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "-- only a comment",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "INSERT INTO users (name) VALUES ('x')",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "UPDATE users SET name = $1",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "DELETE FROM users",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "MERGE INTO t USING s ON true WHEN MATCHED THEN DELETE",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "CREATE TABLE t (id int)",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "DROP TABLE users",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "ALTER TABLE users ADD COLUMN age int",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "TRUNCATE users",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "GRANT ALL ON t TO x",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "COPY t TO STDOUT",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "CALL do_it()",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "SHOW ALL",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "EXPLAIN SELECT 1",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "VALUES (1)",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "select 1",
+      "ok": true
+    },
+    {
+      "sql": "Select 1",
+      "ok": true
+    },
+    {
+      "sql": "WITH x AS (SELECT 1) SELECT * FROM x",
+      "ok": true
+    },
+    {
+      "sql": "with x as (delete from t returning *) select * from x",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: DELETE"
+    },
+    {
+      "sql": "WITH x AS (INSERT INTO t VALUES (1) RETURNING *) SELECT * FROM x",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: INSERT"
+    },
+    {
+      "sql": "WITH x AS (UPDATE t SET a = 1 RETURNING *) SELECT * FROM x",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: UPDATE"
+    },
+    {
+      "sql": "SELECT * INTO backup FROM orders",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: INTO"
+    },
+    {
+      "sql": "SELECT * FROM orders FOR UPDATE",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: FOR"
+    },
+    {
+      "sql": "SELECT * FROM orders FOR SHARE",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: FOR"
+    },
+    {
+      "sql": "SELECT * FROM orders FOR NO KEY UPDATE",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: FOR"
+    },
+    {
+      "sql": "SELECT format('%s', 1) FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT insert_count FROM stats",
+      "ok": true
+    },
+    {
+      "sql": "SELECT updated_at, deleted FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT t.into FROM t",
+      "ok": false,
+      "reason": "Keyword not allowed in a read-only query: INTO"
+    },
+    {
+      "sql": "SELECT for_each FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT x AS \"INTO\" FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT\nid\nFROM\nt",
+      "ok": true
+    },
+    {
+      "sql": "SELECT /* c1 */ 1 /* c2 */",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1 -- c1\n -- c2\n",
+      "ok": true
+    },
+    {
+      "sql": "SELECT e'a\\'b' ; SELECT 2",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": "SELECT E'\\' FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT eE'x' FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $1::text || $$a;b$$",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1 /* ; */ ; ",
+      "ok": true
+    },
+    {
+      "sql": "SELECT é FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT ‮ FROM t",
+      "ok": true
+    },
+    {
+      "sql": "﻿SELECT 1",
+      "ok": true
+    },
+    {
+      "sql": "SELECT a.b$c, _x1 FROM t$1",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $$a$$$$b$$",
+      "ok": true
+    },
+    {
+      "sql": "SELECT $a$ x $b$ y $b$ z $a$",
+      "ok": true
+    },
+    {
+      "sql": "﻿",
+      "ok": false,
+      "reason": "Empty statement"
+    },
+    {
+      "sql": "",
+      "ok": false,
+      "reason": "Only SELECT statements are allowed"
+    },
+    {
+      "sql": "SELECT 1;",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": " SELECT 1 ",
+      "ok": true
+    },
+    {
+      "sql": " SELECT 1 ",
+      "ok": true
+    },
+    {
+      "sql": "éSELECT 1",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1é",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1 ;﻿; SELECT 2",
+      "ok": false,
+      "reason": "Only a single statement is allowed"
+    },
+    {
+      "sql": "SELECT 😀 FROM t",
+      "ok": true
+    },
+    {
+      "sql": "SELECT 1 WHERE x = $1 OR y = $2",
+      "ok": true
+    },
+    {
+      "sql": "WITH RECURSIVE r(n) AS (SELECT 1 UNION ALL SELECT n+1 FROM r WHERE n < 5) SELECT * FROM r",
+      "ok": true
+    }
+  ]
+}

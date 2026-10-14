@@ -1,0 +1,78 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-timestamps-and-version",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "version": 0,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 5000.5,
+        "updatedAt": 4000
+      },
+      "c2": {
+        "id": "c2",
+        "type": "Concept",
+        "properties": {
+          "id": "c2",
+          "name": "c2",
+          "description": "c2 d"
+        },
+        "createdAt": 10,
+        "updatedAt": 10
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1",
+        "c2"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_12_TIMESTAMPS",
+      "severity": "warning",
+      "nodeId": "c1",
+      "message": "Node \"c1\" has updatedAt (4000) < createdAt (5000.5)."
+    },
+    {
+      "code": "KG_INV_12_VERSION_NONPOSITIVE",
+      "severity": "warning",
+      "message": "Graph \"g1\" has version 0 which is < 1."
+    }
+  ]
+}

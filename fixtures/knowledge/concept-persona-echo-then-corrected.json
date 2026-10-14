@@ -1,0 +1,116 @@
+{
+  "service": "knowledge",
+  "action": "conceptPersona",
+  "case": "concept-persona-echo-then-corrected",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "conceptLabel": "Gravity"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/concept-personas/c:gravity\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/concept-personas/c:gravity\",\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.3,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You identify the single most historically credited HUMAN originator, inventor, or creator of a learning concept, then greet a learner in their voice. The concept may be a programming language, framework, library, algorithm, data structure, mathematical/scientific concept, theory, or technique. Use the concept name alone to determine the DISCIPLINE and disambiguate it. Reply ONLY with compact JSON: {\\\"name\\\":<a SPECIFIC REAL HUMAN BEING's full canonical name as it would title a Wikipedia article, e.g. \\\"Isaac Newton\\\", \\\"Brendan Eich\\\">,\\\"description\\\":<one sentence, max ~20 words: who they are + key contribution>,\\\"greeting\\\":<one warm first-person sentence, in character, mentioning the concept>}. HARD RULES: \\\"name\\\" MUST be a human being. It must NEVER be the concept name itself, nor an animal, object, place, or product. If the concept is an invention, name its inventor/creator. If no single person is credited, name the most iconic human contributor or the field's founder. Never invent a fictional person.\"},{\"role\":\"user\",\"content\":\"Concept: Gravity\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"name\\\":\\\"Gravity\\\",\\\"description\\\":\\\"English physicist.\\\",\\\"greeting\\\":\\\"Hello, I am Gravity!\\\"}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.2,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You identify the single most historically credited HUMAN originator, inventor, or creator of a learning concept, then greet a learner in their voice. The concept may be a programming language, framework, library, algorithm, data structure, mathematical/scientific concept, theory, or technique. Use the concept name alone to determine the DISCIPLINE and disambiguate it. Reply ONLY with compact JSON: {\\\"name\\\":<a SPECIFIC REAL HUMAN BEING's full canonical name as it would title a Wikipedia article, e.g. \\\"Isaac Newton\\\", \\\"Brendan Eich\\\">,\\\"description\\\":<one sentence, max ~20 words: who they are + key contribution>,\\\"greeting\\\":<one warm first-person sentence, in character, mentioning the concept>}. HARD RULES: \\\"name\\\" MUST be a human being. It must NEVER be the concept name itself, nor an animal, object, place, or product. If the concept is an invention, name its inventor/creator. If no single person is credited, name the most iconic human contributor or the field's founder. Never invent a fictional person.\"},{\"role\":\"user\",\"content\":\"Concept: Gravity\\n\\nIMPORTANT: \\\"Gravity\\\" is the concept itself, not a person. You MUST name the real human being who created or pioneered \\\"Gravity\\\".\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"name\\\":\\\"Isaac Newton\\\",\\\"description\\\":\\\"English physicist.\\\",\\\"greeting\\\":\\\"Hello, I am Isaac Newton!\\\"}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageimages|description|extracts&explaintext=1&exintro=1&piprop=thumbnail&pithumbsize=240&titles=Isaac%20Newton",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"query\":{\"pages\":{\"1\":{\"title\":\"Isaac Newton\",\"description\":\"English physicist and mathematician\",\"extract\":\"Sir Isaac Newton was an English polymath.\",\"thumbnail\":{\"source\":\"https://upload.wikimedia.org/newton.jpg\"}}}}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"name\":{\"stringValue\":\"Isaac Newton\"},\"description\":{\"stringValue\":\"English physicist and mathematician\"},\"portraitUrl\":{\"stringValue\":\"https://upload.wikimedia.org/newton.jpg\"},\"greeting\":{\"stringValue\":\"Hello, I am Isaac Newton!\"},\"bio\":{\"stringValue\":\"Sir Isaac Newton was an English polymath.\"},\"cachedAt\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/concept-personas/c:gravity\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "name": "Isaac Newton",
+      "description": "English physicist and mathematician",
+      "portraitUrl": "https://upload.wikimedia.org/newton.jpg",
+      "greeting": "Hello, I am Isaac Newton!",
+      "instructions": "You are Isaac Newton. English physicist and mathematician\n\nYour biography (factual grounding, from Wikipedia):\nSir Isaac Newton was an English polymath.\n\nA learner is studying \"Gravity\". Reply in first person, in character as Isaac Newton, warmly and concisely (max ~120 words). Draw on your real life and contributions above. Stay factual to the biography; if asked something outside it, say plainly that you do not know rather than invent. Keep the conversation on \"Gravity\" and bring the learner back to it if they drift. Do not break character."
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

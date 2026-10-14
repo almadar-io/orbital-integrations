@@ -1,0 +1,32 @@
+{
+  "service": "accounting",
+  "action": "exportInvoices",
+  "case": "export-invoices-quoting",
+  "env": {},
+  "params": {
+    "invoices": [
+      {
+        "id": "inv-1",
+        "number": "INV-001",
+        "customer": "Smith, \"Bob\" & Co",
+        "issuedAt": "2026-01-02",
+        "dueAt": "2026-02-01",
+        "currency": "a\rb",
+        "net": 100,
+        "tax": 19,
+        "gross": 119,
+        "status": "line\nbreak"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "id,number,customer,issuedAt,dueAt,currency,net,tax,gross,status\r\ninv-1,INV-001,\"Smith, \"\"Bob\"\" & Co\",2026-01-02,2026-02-01,\"a\rb\",100,19,119,\"line\nbreak\"\r\n",
+      "filename": "invoices-export-2026-03-09.csv",
+      "count": 1
+    }
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

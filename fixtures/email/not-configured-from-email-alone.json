@@ -1,0 +1,19 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "not-configured-from-email-alone",
+  "env": {
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "NOT_CONFIGURED",
+    "message": "Integration not configured: email. Set SENDGRID_API_KEY / RESEND_API_KEY / FROM_EMAIL."
+  }
+}

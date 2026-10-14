@@ -1,0 +1,33 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-server-error-500",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 500,
+        "body": "boom"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "KFlow /api/user/jump-back-in answered 500"
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

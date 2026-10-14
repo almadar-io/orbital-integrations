@@ -1,0 +1,19 @@
+{
+  "service": "knowledge",
+  "action": "setPreferences",
+  "case": "preferences-set-empty",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": ": expandModel or explainModel required"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

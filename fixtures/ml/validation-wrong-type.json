@@ -1,0 +1,19 @@
+{
+  "service": "ml",
+  "action": "infer",
+  "case": "validation-wrong-type",
+  "env": {
+    "MASAR_URL": "{base}",
+    "MASAR_ML_TRAIT": "inference-serving"
+  },
+  "params": {
+    "model": 7,
+    "input": {}
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for ml.infer: model: Expected string, got number"
+  }
+}

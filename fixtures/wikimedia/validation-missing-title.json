@@ -1,0 +1,13 @@
+{
+  "service": "wikimedia",
+  "action": "getPage",
+  "case": "validation-missing-title",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for wikimedia.getPage: title: Missing required parameter: title"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "send-sms-body-needs-encoding",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "Zoë's café: 5 (five)! 50% off * ~ & more=1\nline two"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=%2B4915112345678&From=%2B15005550006&Body=Zo%C3%AB%27s%20caf%C3%A9%3A%205%20%28five%29%21%2050%25%20off%20%2A%20~%20%26%20more%3D1%0Aline%20two"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\"account_sid\":\"AC00000000000000000000000000000000\",\"sid\":\"SM33333333333333333333333333333333\",\"status\":\"queued\",\"to\":\"+4915112345678\",\"from\":\"+15005550006\",\"body\":\"hi\",\"num_segments\":\"1\",\"direction\":\"outbound-api\",\"date_created\":\"Mon, 16 Mar 2026 10:00:00 +0000\",\"uri\":\"/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages/SM33333333333333333333333333333333.json\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sid": "SM33333333333333333333333333333333",
+      "status": "queued"
+    }
+  }
+}

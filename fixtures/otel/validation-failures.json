@@ -1,0 +1,102 @@
+{
+  "service": "otel",
+  "case": "validation-failures",
+  "env": {},
+  "steps": [
+    {
+      "action": "startSpan",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.startSpan: name: Missing required parameter: name"
+      }
+    },
+    {
+      "action": "startSpan",
+      "params": {
+        "name": 5
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.startSpan: name: Expected string, got number"
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "m"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.recordMetric: value: Missing required parameter: value"
+      }
+    },
+    {
+      "action": "recordMetric",
+      "params": {
+        "name": "m",
+        "value": "high"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.recordMetric: value: Expected number, got string"
+      }
+    },
+    {
+      "action": "endSpan",
+      "params": {
+        "status": "ok"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.endSpan: spanId: Missing required parameter: spanId"
+      }
+    },
+    {
+      "action": "getMetrics",
+      "params": {
+        "extra": 1
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.getMetrics: extra: Unknown parameter: extra (declared: )"
+      }
+    },
+    {
+      "action": "flush",
+      "params": {},
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for otel.flush: action: Unknown action: flush"
+      }
+    }
+  ]
+}

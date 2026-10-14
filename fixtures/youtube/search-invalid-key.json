@@ -1,0 +1,32 @@
+{
+  "service": "youtube",
+  "action": "search",
+  "case": "search-invalid-key",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"code\":400,\"message\":\"API key not valid. Please pass a valid API key.\",\"errors\":[{\"message\":\"API key not valid. Please pass a valid API key.\",\"domain\":\"youtube.quota\",\"reason\":\"badRequest\"}],\"status\":\"ERROR\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "API key not valid. Please pass a valid API key."
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "service": "knowledge",
+  "action": "sendMessage",
+  "case": "send-message-flagged-off-topic",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "connectionId": "c1",
+    "content": "buy now",
+    "activeBadgeId": "b1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/connections/c1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1\",\"fields\":{\"callerUid\":{\"stringValue\":\"learner-1\"},\"peerUid\":{\"stringValue\":\"learner-2\"},\"participants\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"learner-1\"},{\"stringValue\":\"learner-2\"}]}},\"origin\":{\"mapValue\":{\"fields\":{\"kind\":{\"stringValue\":\"concept\"},\"canonicalId\":{\"stringValue\":\"light\"}}}},\"badges\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b0\"},\"label\":{\"stringValue\":\"Photons\"},\"kind\":{\"stringValue\":\"subtopic\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b1\"},\"label\":{\"stringValue\":\"Waves\"},\"kind\":{\"stringValue\":\"subtopic\"}}}}]}},\"activeBadgeId\":{\"stringValue\":\"b0\"},\"status\":{\"stringValue\":\"active\"},\"createdAt\":{\"integerValue\":\"1699999999000\"},\"lastActivityAt\":{\"integerValue\":\"1699999999000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"senderUid\":{\"stringValue\":\"learner-1\"},\"content\":{\"stringValue\":\"buy now\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"activeBadgeId\":{\"stringValue\":\"b1\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1/messages/CCCCCCCCCCCCCCCCCCCC\"},\"currentDocument\":{\"exists\":false}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"lastActivityAt\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1\"},\"updateMask\":{\"fieldPaths\":[\"lastActivityAt\"]},\"currentDocument\":{\"exists\":true}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You moderate a knowledge discussion scoped to one topic. Reply ONLY with compact JSON: {\\\"score\\\":<0.0-1.0>,\\\"reason\\\":<short>}. \\\"score\\\" is how on-topic the message is to the topic. Greeting/social-only/off-topic/spam means a low score.\"},{\"role\":\"user\",\"content\":\"Topic: Waves\\nMessage: buy now\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"score\\\":0.05,\\\"reason\\\":\\\"spam\\\"}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"moderation\":{\"mapValue\":{\"fields\":{\"score\":{\"doubleValue\":0.05},\"flagged\":{\"booleanValue\":true},\"reason\":{\"stringValue\":\"spam\"}}}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/c1/messages/CCCCCCCCCCCCCCCCCCCC\"},\"updateMask\":{\"fieldPaths\":[\"moderation\"]},\"currentDocument\":{\"exists\":true}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "messageId": "CCCCCCCCCCCCCCCCCCCC"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ],
+    [
+      40,
+      3
+    ],
+    [
+      40,
+      4
+    ],
+    [
+      40,
+      5
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

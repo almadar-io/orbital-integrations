@@ -1,0 +1,16 @@
+{
+  "service": "knowledge-web",
+  "action": "dropDatabase",
+  "case": "unknown-action",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "knowledge has no action 'dropDatabase'"
+  }
+}

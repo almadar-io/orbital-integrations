@@ -1,0 +1,37 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "sendgrid-server-error",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":{\"email\":\"noreply@almadar.test\"},\"subject\":\"Welcome\",\"personalizations\":[{\"to\":[{\"email\":\"ada@example.com\"}]}],\"content\":[{\"value\":\"<p>Hello Ada</p>\",\"type\":\"text/html\"}]}"
+      },
+      "response": {
+        "status": 503,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Service Unavailable"
+  }
+}

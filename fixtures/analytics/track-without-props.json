@@ -1,0 +1,40 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track-without-props",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "name": "install",
+    "path": "/",
+    "domain": "docs.almadar.io"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"install\",\"d\":\"docs.almadar.io\",\"u\":\"/\"}"
+      },
+      "response": {
+        "status": 202,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "app.example.com",
+    "referrer": "",
+    "screenWidth": null
+  }
+}

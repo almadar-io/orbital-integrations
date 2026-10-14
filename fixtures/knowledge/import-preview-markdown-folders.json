@@ -1,0 +1,66 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-markdown-folders",
+  "env": {},
+  "params": {
+    "adapter": "markdown",
+    "documents": [
+      {
+        "ref": "plants/botany.md",
+        "title": "",
+        "raw": "# Botany\nPlants."
+      },
+      {
+        "ref": "plants/zoology/cells.md",
+        "title": "",
+        "raw": "# Cells\n## Membrane\nThin."
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "units": [
+        {
+          "ref": "folder:plants",
+          "targetEntity": "Concept",
+          "title": "plants",
+          "parentRef": ""
+        },
+        {
+          "ref": "doc:plants/botany.md",
+          "targetEntity": "LearningGoal",
+          "title": "Botany",
+          "parentRef": "folder:plants"
+        },
+        {
+          "ref": "folder:plants/zoology",
+          "targetEntity": "Concept",
+          "title": "zoology",
+          "parentRef": "folder:plants"
+        },
+        {
+          "ref": "doc:plants/zoology/cells.md",
+          "targetEntity": "LearningGoal",
+          "title": "Cells",
+          "parentRef": "folder:plants/zoology"
+        },
+        {
+          "ref": "doc:plants/zoology/cells.md/h:membrane",
+          "targetEntity": "Concept",
+          "title": "Membrane",
+          "parentRef": "doc:plants/zoology/cells.md"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

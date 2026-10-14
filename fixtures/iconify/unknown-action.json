@@ -1,0 +1,13 @@
+{
+  "service": "iconify",
+  "action": "listCollections",
+  "case": "unknown-action",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for iconify.listCollections: action: Unknown action: listCollections"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "deletePath",
+  "case": "delete-path-blank-id",
+  "env": {},
+  "params": {
+    "graphId": ""
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "graphId: String must contain at least 1 character(s)"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

@@ -1,0 +1,22 @@
+{
+  "service": "llm",
+  "action": "classifyMany",
+  "case": "openai-classify-many-no-items",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "items": [],
+    "categories": [
+      "billing"
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "verdicts": []
+    }
+  }
+}

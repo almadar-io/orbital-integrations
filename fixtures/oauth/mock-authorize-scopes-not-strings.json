@@ -1,0 +1,31 @@
+{
+  "service": "oauth",
+  "case": "mock-authorize-scopes-not-strings",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "myspace",
+        "scopes": [
+          "ok",
+          5,
+          null,
+          [
+            "x"
+          ]
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "[\n  {\n    \"received\": \"myspace\",\n    \"code\": \"invalid_enum_value\",\n    \"options\": [\n      \"google\",\n      \"github\",\n      \"auth0\"\n    ],\n    \"path\": [\n      \"provider\"\n    ],\n    \"message\": \"Invalid enum value. Expected 'google' | 'github' | 'auth0', received 'myspace'\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"number\",\n    \"path\": [\n      \"scopes\",\n      1\n    ],\n    \"message\": \"Expected string, received number\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"null\",\n    \"path\": [\n      \"scopes\",\n      2\n    ],\n    \"message\": \"Expected string, received null\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"array\",\n    \"path\": [\n      \"scopes\",\n      3\n    ],\n    \"message\": \"Expected string, received array\"\n  }\n]"
+      }
+    }
+  ]
+}

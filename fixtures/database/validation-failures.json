@@ -1,0 +1,131 @@
+{
+  "service": "database",
+  "case": "validation-failures",
+  "env": {},
+  "setup": {
+    "processEnv": {
+      "ORDERS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "REPORTS_DB_URL": "postgres://reader:test-key@reports.internal:5432/reports",
+      "ALIAS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "EMPTY_DB_URL": ""
+    }
+  },
+  "steps": [
+    {
+      "action": "query",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: connectionRef: Missing required parameter: connectionRef; sql: Missing required parameter: sql"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: sql: Missing required parameter: sql"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: connectionRef: Missing required parameter: connectionRef"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": 5,
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: connectionRef: Expected string, got number"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": 7
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: sql: Expected string, got number"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT 1",
+        "extra": true
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for database.query: extra: Unknown parameter: extra (declared: connectionRef, params, sql)"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    }
+  ]
+}

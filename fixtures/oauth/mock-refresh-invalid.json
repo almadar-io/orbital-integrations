@@ -1,0 +1,22 @@
+{
+  "service": "oauth",
+  "case": "mock-refresh-invalid",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "refresh",
+      "params": {
+        "refreshToken": "nope"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid refresh token"
+      }
+    }
+  ]
+}

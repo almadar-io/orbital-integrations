@@ -1,0 +1,82 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-compose",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[{\"id\":\"p1\",\"type\":\"learningPath\",\"title\":\"Graph Algorithms\",\"lastAccessedAt\":1799913600000,\"progress\":{\"completedLessons\":3,\"totalLessons\":10,\"progressPercentage\":30},\"metadata\":{}},{\"id\":\"p2\",\"type\":\"learningPath\",\"title\":\"Spanish B1\",\"lastAccessedAt\":1799827200000,\"progress\":{\"completedLessons\":10,\"totalLessons\":10,\"progressPercentage\":100},\"metadata\":{}},{\"id\":\"p3\",\"type\":\"learningPath\",\"title\":\"Old Interest\",\"lastAccessedAt\":1792224000000,\"metadata\":{}}]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/learning/goals",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"goals\":[{\"id\":\"g1\",\"graphId\":\"x\",\"title\":\"Pass the algorithms interview\",\"description\":\"\",\"type\":\"career\",\"target\":\"Senior engineer interview\",\"createdAt\":1798272000000,\"updatedAt\":1799740800000}]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/statistics/recent-activity?limit=50",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"activity\":[{\"id\":\"a1\",\"type\":\"concept_studied\",\"resourceId\":\"c1\",\"resourceName\":\"Dijkstra\",\"timestamp\":1799913600000},{\"id\":\"a2\",\"type\":\"course_accessed\",\"resourceId\":\"k1\",\"resourceName\":\"Course k1\",\"timestamp\":1799913600000},{\"id\":\"a3\",\"type\":\"concept_studied\",\"resourceId\":\"c2\",\"resourceName\":\"Graph Algorithms\",\"timestamp\":1799568000000}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "topics": [
+        {
+          "label": "Dijkstra",
+          "keywords": [],
+          "weight": 0.9666666666666667
+        },
+        {
+          "label": "Pass the algorithms interview",
+          "keywords": [
+            "Senior engineer interview"
+          ],
+          "weight": 0.9
+        },
+        {
+          "label": "Graph Algorithms",
+          "keywords": [],
+          "weight": 0.8333333333333334
+        }
+      ]
+    }
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

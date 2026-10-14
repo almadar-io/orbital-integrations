@@ -1,0 +1,16 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "validation-unknown-param",
+  "env": {},
+  "params": {
+    "iconId": "a:b",
+    "size": 24
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for iconify.getIconBody: size: Unknown parameter: size (declared: iconId)"
+  }
+}

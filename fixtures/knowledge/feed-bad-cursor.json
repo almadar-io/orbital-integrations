@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "feed",
+  "case": "feed-bad-cursor",
+  "env": {},
+  "params": {
+    "cursor": "nonsense"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "The feed cursor is not one this feed returned"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

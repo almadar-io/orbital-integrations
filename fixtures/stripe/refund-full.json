@@ -1,0 +1,42 @@
+{
+  "service": "stripe",
+  "action": "refund",
+  "case": "refund-full",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "paymentIntentId": "pi_1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/refunds",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "payment_intent=pi_1"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"re_2\",\"object\":\"refund\",\"amount\":2000,\"status\":\"succeeded\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "re_2",
+      "object": "refund",
+      "amount": 2000,
+      "status": "succeeded"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "service": "youtube",
+  "action": "search",
+  "case": "search-client-error-with-a-text-body",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 404,
+        "body": "no route",
+        "headers": {
+          "content-type": "text/plain"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "no route"
+  }
+}

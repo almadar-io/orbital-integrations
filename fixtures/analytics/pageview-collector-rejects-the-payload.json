@@ -1,0 +1,38 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-collector-rejects-the-payload",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"pageview\",\"d\":\"orb.almadar.io\",\"u\":\"/\",\"r\":\"https://news.ycombinator.com/\",\"w\":1440}"
+      },
+      "response": {
+        "status": 400,
+        "body": "bad"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": false
+    }
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

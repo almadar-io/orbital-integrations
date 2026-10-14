@@ -1,0 +1,21 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "validation-unknown-param",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+1",
+    "body": "x",
+    "mediaUrl": "https://x/y.png"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for twilio.sendSMS: mediaUrl: Unknown parameter: mediaUrl (declared: body, from, to)"
+  }
+}

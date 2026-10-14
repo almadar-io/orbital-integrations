@@ -1,0 +1,35 @@
+{
+  "service": "esign",
+  "action": "downloadDocument",
+  "case": "download-document-not-found",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": "env-9"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/restapi/v2.1/accounts/acct-1/envelopes/env-9/documents/combined",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/pdf",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 404,
+        "body": "{\"errorCode\":\"ENVELOPE_DOES_NOT_EXIST\",\"message\":\"The envelope does not exist.\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "DocuSign error 404: {\"errorCode\":\"ENVELOPE_DOES_NOT_EXIST\",\"message\":\"The envelope does not exist.\"}"
+  }
+}

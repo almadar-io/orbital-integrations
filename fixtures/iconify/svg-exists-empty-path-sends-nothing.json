@@ -1,0 +1,16 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "svg-exists-empty-path-sends-nothing",
+  "env": {},
+  "params": {
+    "path": ""
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "exists": false
+    }
+  }
+}

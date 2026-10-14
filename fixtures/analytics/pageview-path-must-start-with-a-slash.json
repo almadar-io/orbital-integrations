@@ -1,0 +1,21 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-path-must-start-with-a-slash",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "docs"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Param 'path' must start with \"/\", got 'docs'"
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

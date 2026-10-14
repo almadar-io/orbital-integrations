@@ -1,0 +1,18 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "validation-wrong-type",
+  "env": {},
+  "params": {
+    "url": "{base}/hooks/orders",
+    "event": "e",
+    "payload": "text"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for webhook.send: payload: Expected object, got string"
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

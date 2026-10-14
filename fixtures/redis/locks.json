@@ -1,0 +1,178 @@
+{
+  "service": "redis",
+  "case": "locks",
+  "env": {},
+  "steps": [
+    {
+      "action": "lock",
+      "params": {
+        "key": "job"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.123456789012
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": true,
+          "lockId": "lock_1760000000000_4fzzzxkw"
+        }
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "job"
+      },
+      "clockMs": 1760000000100,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": false,
+          "lockId": ""
+        }
+      }
+    },
+    {
+      "action": "unlock",
+      "params": {
+        "key": "job",
+        "lockId": "wrong"
+      },
+      "clockMs": 1760000000200,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "released": false
+        }
+      }
+    },
+    {
+      "action": "unlock",
+      "params": {
+        "key": "other",
+        "lockId": "x"
+      },
+      "clockMs": 1760000000250,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "released": false
+        }
+      }
+    },
+    {
+      "action": "unlock",
+      "params": {
+        "key": "job",
+        "lockId": "lock_1760000000000_4fzzzxkw"
+      },
+      "clockMs": 1760000000300,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "released": true
+        }
+      }
+    },
+    {
+      "action": "unlock",
+      "params": {
+        "key": "job",
+        "lockId": "lock_1760000000000_4fzzzxkw"
+      },
+      "clockMs": 1760000000310,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "released": false
+        }
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "short",
+        "ttl": 50
+      },
+      "clockMs": 1760000000400,
+      "randoms": [
+        0.987654321098
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": true,
+          "lockId": "lock_1760000000400_zk00008n"
+        }
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "short",
+        "ttl": 50
+      },
+      "clockMs": 1760000000449,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": false,
+          "lockId": ""
+        }
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "short",
+        "ttl": 50
+      },
+      "clockMs": 1760000000451,
+      "randoms": [
+        0.0000123456
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": true,
+          "lockId": "lock_1760000000451_000kqhom"
+        }
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "tiny"
+      },
+      "clockMs": 1760000000500,
+      "randoms": [
+        0.5
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "acquired": true,
+          "lockId": "lock_1760000000500_i"
+        }
+      }
+    }
+  ]
+}

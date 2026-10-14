@@ -1,0 +1,35 @@
+{
+  "service": "knowledge",
+  "action": "enrichApply",
+  "case": "enrich-apply-invalid-items",
+  "env": {},
+  "params": {
+    "graphId": "g1",
+    "items": [
+      {
+        "ref": "",
+        "kind": "guess"
+      },
+      {
+        "ref": "a",
+        "kind": "concept",
+        "layer": 1.5,
+        "name": "",
+        "description": "x",
+        "reason": "y"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "items.0.kind: Invalid discriminator value. Expected 'concept' | 'prerequisite' | 'relation'; items.1.layer: Expected integer, received float; items.1.name: String must contain at least 1 character(s)"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

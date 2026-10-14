@@ -1,0 +1,45 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "anthropic-generate-options",
+  "env": {
+    "ANTHROPIC_API_KEY": "test-key",
+    "ANTHROPIC_BASE_URL": "{base}"
+  },
+  "params": {
+    "userPrompt": "Say hi",
+    "model": "claude-haiku-4-5",
+    "temperature": 0.2,
+    "maxTokens": 64
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/messages",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "x-api-key": "<redacted>",
+          "anthropic-version": "2023-06-01"
+        },
+        "body": "{\"model\":\"claude-haiku-4-5\",\"stream\":false,\"max_tokens\":64,\"temperature\":0.2,\"messages\":[{\"role\":\"user\",\"content\":\"Say hi\"}],\"system\":[{\"type\":\"text\",\"text\":\"You are a helpful assistant.\",\"cache_control\":{\"type\":\"ephemeral\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"msg_1\",\"type\":\"message\",\"role\":\"assistant\",\"model\":\"claude-sonnet-4-5-20250929\",\"content\":[{\"type\":\"text\",\"text\":\"hi\"}],\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"usage\":{\"input_tokens\":3,\"output_tokens\":1}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "hi",
+      "usage": {
+        "promptTokens": 3,
+        "completionTokens": 1,
+        "totalTokens": 4
+      }
+    }
+  }
+}

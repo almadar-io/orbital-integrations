@@ -1,0 +1,52 @@
+{
+  "service": "banking",
+  "action": "listTransactions",
+  "case": "list-transactions-date-from-only",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "accountId": "acc 1/x",
+    "dateFrom": "2026-01-01"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://bankaccountdata.gocardless.com/api/v2/token/new/",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "body": "{\"secret_id\":\"test-id\",\"secret_key\":\"test-key\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"access\":\"access-abc\",\"access_expires\":86400,\"refresh\":\"refresh-abc\",\"refresh_expires\":2592000}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://bankaccountdata.gocardless.com/api/v2/accounts/acc%201/x/transactions/?date_from=2026-01-01",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "transactions": []
+    }
+  }
+}

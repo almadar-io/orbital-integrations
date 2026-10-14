@@ -1,0 +1,21 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "resend-template-unsupported",
+  "env": {
+    "RESEND_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>",
+    "templateId": "tpl-1"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "templateId is not supported by the resend provider — use sendgrid or drop templateId"
+  }
+}

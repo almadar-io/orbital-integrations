@@ -1,0 +1,18 @@
+{
+  "service": "llm",
+  "action": "embed",
+  "case": "validation-wrong-type",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "texts": "not-an-array"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for llm.embed: texts: Expected array, got string"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "service": "oauth",
+  "case": "real-token-id-token-wrong-audience",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "https://accounts.google.com/.well-known/openid-configuration",
+            "headers": {
+              "accept": "application/json"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "{\"issuer\":\"https://accounts.google.com\",\"authorization_endpoint\":\"https://accounts.google.com/o/oauth2/v2/auth\",\"token_endpoint\":\"https://oauth2.googleapis.com/token\",\"userinfo_endpoint\":\"https://openidconnect.googleapis.com/v1/userinfo\",\"revocation_endpoint\":\"https://oauth2.googleapis.com/revoke\",\"jwks_uri\":\"https://www.googleapis.com/oauth2/v3/certs\",\"id_token_signing_alg_values_supported\":[\"RS256\"]}"
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&scope=openid+email&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256&client_id=client-id-1&response_type=code",
+          "state": "<state>"
+        }
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}"
+      },
+      "exchanges": [
+        {
+          "request": {
+            "method": "POST",
+            "url": "https://oauth2.googleapis.com/token",
+            "headers": {
+              "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+              "accept": "application/json"
+            },
+            "body": "redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&code=auth-code-123&code_verifier=<code_verifier>&grant_type=authorization_code&client_id=client-id-1&client_secret=test-key"
+          },
+          "response": {
+            "status": 200,
+            "body": "{\"access_token\":\"at-1\",\"token_type\":\"Bearer\",\"expires_in\":3599,\"refresh_token\":\"rt-1\",\"scope\":\"openid email\",\"id_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJzb21lb25lLWVsc2UiLCJleHAiOjQxMDI0NDQ4MDAsImlhdCI6MTcwMDAwMDAwMCwic3ViIjoic3ViLTEifQ.c2lnbmF0dXJl\"}"
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "unexpected JWT claim value encountered"
+      }
+    }
+  ]
+}

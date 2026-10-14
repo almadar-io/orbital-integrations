@@ -1,0 +1,18 @@
+{
+  "service": "github",
+  "action": "cloneRepo",
+  "case": "clone-repo-invalid-url",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "repoUrl": "not a url",
+    "targetDir": "/tmp/never-created"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Failed to parse repository URL: not a url"
+  }
+}

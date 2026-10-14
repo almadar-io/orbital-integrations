@@ -1,0 +1,39 @@
+{
+  "service": "twilio",
+  "action": "sendWhatsApp",
+  "case": "send-whatsapp",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "Order shipped"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=whatsapp%3A%2B4915112345678&From=whatsapp%3A%2B15005550006&Body=Order%20shipped"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\"account_sid\":\"AC00000000000000000000000000000000\",\"sid\":\"SM66666666666666666666666666666666\",\"status\":\"queued\",\"to\":\"whatsapp:+4915112345678\",\"from\":\"+15005550006\",\"body\":\"hi\",\"num_segments\":\"1\",\"direction\":\"outbound-api\",\"date_created\":\"Mon, 16 Mar 2026 10:00:00 +0000\",\"uri\":\"/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages/SM66666666666666666666666666666666.json\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sid": "SM66666666666666666666666666666666",
+      "status": "queued"
+    }
+  }
+}

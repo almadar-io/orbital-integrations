@@ -1,0 +1,34 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "search-empty-feed",
+  "env": {},
+  "params": {
+    "query": "zzzzqqqq"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://export.arxiv.org/api/query?search_query=all%3Azzzzqqqq&start=0&max_results=8&sortBy=relevance",
+        "headers": {
+          "accept": "application/atom+xml"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/atom+xml; charset=UTF-8"
+        },
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>http://arxiv.org/api/feed</id>\n  <title>ArXiv Query</title>\n</feed>\n"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "results": []
+    }
+  }
+}

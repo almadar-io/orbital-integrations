@@ -1,0 +1,65 @@
+{
+  "service": "oauth",
+  "case": "real-token-string-expires-in",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "github",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://github.com/login/oauth/authorize?redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&scope=openid+email&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256&client_id=client-id-1&response_type=code",
+          "state": "<state>"
+        }
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}"
+      },
+      "exchanges": [
+        {
+          "request": {
+            "method": "POST",
+            "url": "https://github.com/login/oauth/access_token",
+            "headers": {
+              "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+              "accept": "application/json"
+            },
+            "body": "redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&code=auth-code-123&code_verifier=<code_verifier>&grant_type=authorization_code&client_id=client-id-1&client_secret=test-key"
+          },
+          "response": {
+            "status": 200,
+            "body": "{\"access_token\":\"a\",\"token_type\":\"Bearer\",\"expires_in\":\"120\",\"refresh_token\":\"r\"}"
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "accessToken": "a",
+          "refreshToken": "r",
+          "expiresIn": 120,
+          "tokenType": "bearer",
+          "scope": []
+        }
+      }
+    }
+  ]
+}

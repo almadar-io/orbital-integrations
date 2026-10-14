@@ -1,0 +1,146 @@
+{
+  "service": "oauth",
+  "case": "mock-flow-token-userinfo-refresh-revoke",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google",
+        "scopes": [
+          "openid",
+          "profile"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&scope=openid+profile&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&state=<hex32>&client_id=mock-client-id",
+          "state": "<hex32>"
+        }
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "accessToken": "<hex64>",
+          "refreshToken": "<hex64>",
+          "expiresIn": 3600,
+          "tokenType": "bearer",
+          "scope": [
+            "openid",
+            "profile"
+          ]
+        }
+      }
+    },
+    {
+      "action": "userinfo",
+      "params": {
+        "accessToken": "{{1.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "sub": "<hex16>",
+          "email": "user-<hex8>@google.example.com",
+          "name": "Mock User (google)",
+          "picture": "https://google.example.com/avatar/<hex8>.png"
+        }
+      }
+    },
+    {
+      "action": "refresh",
+      "params": {
+        "refreshToken": "{{1.refreshToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "accessToken": "<hex64>",
+          "expiresIn": 3600
+        }
+      }
+    },
+    {
+      "action": "userinfo",
+      "params": {
+        "accessToken": "{{1.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid access token"
+      }
+    },
+    {
+      "action": "userinfo",
+      "params": {
+        "accessToken": "{{3.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "sub": "<hex16>",
+          "email": "user-<hex8>@google.example.com",
+          "name": "Mock User (google)",
+          "picture": "https://google.example.com/avatar/<hex8>.png"
+        }
+      }
+    },
+    {
+      "action": "revoke",
+      "params": {
+        "token": "{{3.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "revoked": true
+        }
+      }
+    },
+    {
+      "action": "userinfo",
+      "params": {
+        "accessToken": "{{3.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid access token"
+      }
+    },
+    {
+      "action": "revoke",
+      "params": {
+        "token": "{{3.accessToken}}"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "revoked": false
+        }
+      }
+    }
+  ]
+}

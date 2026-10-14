@@ -1,0 +1,122 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-missing-required-properties",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "name": "only name"
+        }
+      },
+      "l1": {
+        "id": "l1",
+        "type": "Layer",
+        "properties": {}
+      },
+      "m1": {
+        "id": "m1",
+        "type": "Milestone",
+        "properties": {
+          "name": "m",
+          "completed": null
+        }
+      },
+      "t1": {
+        "id": "t1",
+        "type": "Translation",
+        "properties": {}
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1"
+      ],
+      "Layer": [
+        "l1"
+      ],
+      "LearningGoal": [],
+      "Milestone": [
+        "m1"
+      ],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [
+        "t1"
+      ],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_10_TRANSLATION_SRC_MISSING",
+      "severity": "error",
+      "nodeId": "t1",
+      "message": "Translation \"t1\" references sourceNodeId \"\" which does not exist."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "c1",
+      "message": "Node \"c1\" (Concept) is missing required property \"description\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "l1",
+      "message": "Node \"l1\" (Layer) is missing required property \"layerNumber\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "m1",
+      "message": "Node \"m1\" (Milestone) is missing required property \"completed\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "t1",
+      "message": "Node \"t1\" (Translation) is missing required property \"sourceNodeId\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "t1",
+      "message": "Node \"t1\" (Translation) is missing required property \"sourceNodeType\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "t1",
+      "message": "Node \"t1\" (Translation) is missing required property \"language\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "t1",
+      "message": "Node \"t1\" (Translation) is missing required property \"status\"."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "service": "metaAds",
+  "action": "listCampaigns",
+  "case": "validation-unknown-param",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {
+    "limit": 5
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for metaAds.listCampaigns: limit: Unknown parameter: limit (declared: accountId, status)"
+  }
+}

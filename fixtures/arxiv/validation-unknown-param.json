@@ -1,0 +1,16 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "validation-unknown-param",
+  "env": {},
+  "params": {
+    "query": "x",
+    "category": "cs"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for arxiv.search: category: Unknown parameter: category (declared: maxResults, query)"
+  }
+}

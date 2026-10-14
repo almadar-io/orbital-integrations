@@ -1,0 +1,18 @@
+{
+  "service": "knowledge-web",
+  "action": "status",
+  "case": "status-signed-out",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "false",
+    "KNOWLEDGE_TEST_ACCOUNT": ""
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "connected": false,
+      "account": ""
+    }
+  }
+}

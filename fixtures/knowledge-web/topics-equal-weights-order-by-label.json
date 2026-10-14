@@ -1,0 +1,85 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-equal-weights-order-by-label",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/learning/goals",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"goals\":[]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/statistics/recent-activity?limit=50",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"activity\":[{\"type\":\"concept_studied\",\"resourceId\":\"r\",\"timestamp\":1799913600000,\"id\":\"1\",\"resourceName\":\"banana\"},{\"type\":\"concept_studied\",\"resourceId\":\"r\",\"timestamp\":1799913600000,\"id\":\"2\",\"resourceName\":\"Apple\"},{\"type\":\"concept_studied\",\"resourceId\":\"r\",\"timestamp\":1799913600000,\"id\":\"3\",\"resourceName\":\"apple\"},{\"type\":\"concept_studied\",\"resourceId\":\"r\",\"timestamp\":1799913600000,\"id\":\"4\",\"resourceName\":\"cherry\"}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "topics": [
+        {
+          "label": "apple",
+          "keywords": [],
+          "weight": 0.9666666666666667
+        },
+        {
+          "label": "Apple",
+          "keywords": [],
+          "weight": 0.9666666666666667
+        },
+        {
+          "label": "banana",
+          "keywords": [],
+          "weight": 0.9666666666666667
+        },
+        {
+          "label": "cherry",
+          "keywords": [],
+          "weight": 0.9666666666666667
+        }
+      ]
+    }
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

@@ -1,0 +1,290 @@
+{
+  "service": "workspace",
+  "case": "not-signed-in",
+  "startMs": 1767225600000,
+  "steps": [
+    {
+      "action": "tree",
+      "params": {
+        "workspace": "app-1"
+      },
+      "principal": null,
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225600000,
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "A workspace needs a signed-in caller"
+      },
+      "objects": []
+    },
+    {
+      "action": "tree",
+      "params": {
+        "workspace": "app-1"
+      },
+      "principal": "user-1",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225601000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "nodes": [
+            {
+              "id": ".almadar",
+              "path": ".almadar",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".almadar/app-marker.json",
+              "path": ".almadar/app-marker.json",
+              "type": "file",
+              "size": 74
+            },
+            {
+              "id": ".almadar/index.json",
+              "path": ".almadar/index.json",
+              "type": "file",
+              "size": 358
+            },
+            {
+              "id": ".almadar/project.orb",
+              "path": ".almadar/project.orb",
+              "type": "file",
+              "size": 497
+            },
+            {
+              "id": ".almadar/sessions",
+              "path": ".almadar/sessions",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".almadar/sessions/Coordinator",
+              "path": ".almadar/sessions/Coordinator",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".almadar/user.orb",
+              "path": ".almadar/user.orb",
+              "type": "file",
+              "size": 417
+            },
+            {
+              "id": ".git",
+              "path": ".git",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/HEAD",
+              "path": ".git/HEAD",
+              "type": "file",
+              "size": 21
+            },
+            {
+              "id": ".git/config",
+              "path": ".git/config",
+              "type": "file",
+              "size": 192
+            },
+            {
+              "id": ".git/description",
+              "path": ".git/description",
+              "type": "file",
+              "size": 73
+            },
+            {
+              "id": ".git/hooks",
+              "path": ".git/hooks",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/hooks/applypatch-msg.sample",
+              "path": ".git/hooks/applypatch-msg.sample",
+              "type": "file",
+              "size": 478
+            },
+            {
+              "id": ".git/hooks/commit-msg.sample",
+              "path": ".git/hooks/commit-msg.sample",
+              "type": "file",
+              "size": 896
+            },
+            {
+              "id": ".git/hooks/fsmonitor-watchman.sample",
+              "path": ".git/hooks/fsmonitor-watchman.sample",
+              "type": "file",
+              "size": 4726
+            },
+            {
+              "id": ".git/hooks/post-update.sample",
+              "path": ".git/hooks/post-update.sample",
+              "type": "file",
+              "size": 189
+            },
+            {
+              "id": ".git/hooks/pre-applypatch.sample",
+              "path": ".git/hooks/pre-applypatch.sample",
+              "type": "file",
+              "size": 424
+            },
+            {
+              "id": ".git/hooks/pre-commit.sample",
+              "path": ".git/hooks/pre-commit.sample",
+              "type": "file",
+              "size": 1649
+            },
+            {
+              "id": ".git/hooks/pre-merge-commit.sample",
+              "path": ".git/hooks/pre-merge-commit.sample",
+              "type": "file",
+              "size": 416
+            },
+            {
+              "id": ".git/hooks/pre-push.sample",
+              "path": ".git/hooks/pre-push.sample",
+              "type": "file",
+              "size": 1374
+            },
+            {
+              "id": ".git/hooks/pre-rebase.sample",
+              "path": ".git/hooks/pre-rebase.sample",
+              "type": "file",
+              "size": 4898
+            },
+            {
+              "id": ".git/hooks/pre-receive.sample",
+              "path": ".git/hooks/pre-receive.sample",
+              "type": "file",
+              "size": 544
+            },
+            {
+              "id": ".git/hooks/prepare-commit-msg.sample",
+              "path": ".git/hooks/prepare-commit-msg.sample",
+              "type": "file",
+              "size": 1492
+            },
+            {
+              "id": ".git/hooks/push-to-checkout.sample",
+              "path": ".git/hooks/push-to-checkout.sample",
+              "type": "file",
+              "size": 2783
+            },
+            {
+              "id": ".git/hooks/sendemail-validate.sample",
+              "path": ".git/hooks/sendemail-validate.sample",
+              "type": "file",
+              "size": 2308
+            },
+            {
+              "id": ".git/hooks/update.sample",
+              "path": ".git/hooks/update.sample",
+              "type": "file",
+              "size": 3650
+            },
+            {
+              "id": ".git/info",
+              "path": ".git/info",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/info/exclude",
+              "path": ".git/info/exclude",
+              "type": "file",
+              "size": 240
+            },
+            {
+              "id": ".git/objects",
+              "path": ".git/objects",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/objects/info",
+              "path": ".git/objects/info",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/objects/pack",
+              "path": ".git/objects/pack",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/refs",
+              "path": ".git/refs",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/refs/heads",
+              "path": ".git/refs/heads",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".git/refs/tags",
+              "path": ".git/refs/tags",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": ".gitignore",
+              "path": ".gitignore",
+              "type": "file",
+              "size": 524
+            },
+            {
+              "id": "orbitals",
+              "path": "orbitals",
+              "type": "directory",
+              "size": 0
+            },
+            {
+              "id": "schema.orb",
+              "path": "schema.orb",
+              "type": "file",
+              "size": 85
+            }
+          ]
+        }
+      },
+      "objects": [
+        "workspaces/user-1/app-1/files/.almadar/app-marker.json",
+        "workspaces/user-1/app-1/files/.almadar/index.json",
+        "workspaces/user-1/app-1/files/.almadar/project.orb",
+        "workspaces/user-1/app-1/files/.almadar/user.orb",
+        "workspaces/user-1/app-1/files/.gitignore",
+        "workspaces/user-1/app-1/files/schema.orb"
+      ]
+    }
+  ],
+  "bucket": {
+    "workspaces/user-1/app-1/files/.almadar/app-marker.json": {
+      "text": "{\n  \"appId\": \"app-1\",\n  \"userId\": \"user-1\",\n  \"createdAt\": 1767225601000\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/index.json": {
+      "text": "{\n  \"schemaVersion\": 2,\n  \"bm25\": {\n    \"documents\": {},\n    \"docFreq\": {},\n    \"docCount\": 0,\n    \"avgDocLen\": 0\n  },\n  \"intent\": {\n    \"entityNameOverrides\": {},\n    \"traitRefImporters\": {},\n    \"ruleCapabilities\": {},\n    \"organism\": {}\n  },\n  \"composed\": {\n    \"events\": {},\n    \"entityNameComposed\": {}\n  },\n  \"recency\": {},\n  \"bakedAt\": 1767225601000\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/project.orb": {
+      "text": "{\n  \"name\": \"ProjectMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Domain knowledge for Untitled\",\n  \"orbitals\": [\n    {\n      \"name\": \"DomainKnowledge\",\n      \"entity\": {\n        \"name\": \"ProjectContext\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"app-1\",\n            \"appId\": \"app-1\",\n            \"projectName\": \"Untitled\",\n            \"lastUpdatedAt\": \"2026-01-01T00:00:01.000Z\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/user-1/app-1/files/.almadar/user.orb": {
+      "text": "{\n  \"name\": \"UserMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"User preferences and learned patterns\",\n  \"orbitals\": [\n    {\n      \"name\": \"PreferenceTracking\",\n      \"entity\": {\n        \"name\": \"UserPreference\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"pref-user-1\",\n            \"userId\": \"user-1\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/user-1/app-1/files/.gitignore": {
+      "text": "# Almadar — version only the app; ignore generated/churny state\n# `.almadar/` is an allowlist: its app state is history, anything else there is scratch.\n/.almadar/*\n!/.almadar/app-marker.json\n!/.almadar/ledger.json\n!/.almadar/project.orb\n!/.almadar/user.orb\n!/.almadar/fill-candidates/\n# A session is churn except each orbital's spec.json: its .orb is derived from it.\n!/.almadar/sessions/\n/.almadar/sessions/*\n!/.almadar/sessions/*/\n/.almadar/sessions/*/**\n!/.almadar/sessions/*/spec.json\n/apps/\n/.almadar-archive.bundle\n"
+    },
+    "workspaces/user-1/app-1/files/schema.orb": {
+      "text": "{\n  \"name\": \"Untitled\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"orbitals\": []\n}"
+    }
+  }
+}

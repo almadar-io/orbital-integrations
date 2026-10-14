@@ -1,0 +1,16 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "validation-wrong-type",
+  "env": {},
+  "params": {
+    "query": "x",
+    "maxResults": "many"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for arxiv.search: maxResults: Expected number, got string"
+  }
+}

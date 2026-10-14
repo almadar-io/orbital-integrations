@@ -1,0 +1,22 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-bad-params",
+  "env": {},
+  "params": {
+    "adapter": "csv",
+    "documents": []
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "adapter: Invalid enum value. Expected 'markdown' | 'paste', received 'csv'; documents: Array must contain at least 1 element(s)"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

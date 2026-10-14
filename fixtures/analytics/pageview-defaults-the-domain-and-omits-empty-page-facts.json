@@ -1,0 +1,38 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-defaults-the-domain-and-omits-empty-page-facts",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"pageview\",\"d\":\"app.example.com\",\"u\":\"/\"}"
+      },
+      "response": {
+        "status": 202,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "app.example.com",
+    "referrer": "",
+    "screenWidth": null
+  }
+}

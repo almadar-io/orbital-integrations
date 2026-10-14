@@ -1,0 +1,40 @@
+{
+  "service": "redis",
+  "case": "redis-url-configured-still-in-memory",
+  "env": {
+    "REDIS_URL": "redis://cache.internal:6379"
+  },
+  "steps": [
+    {
+      "action": "set",
+      "params": {
+        "key": "k",
+        "value": "v"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "k"
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": "v"
+        }
+      }
+    }
+  ]
+}

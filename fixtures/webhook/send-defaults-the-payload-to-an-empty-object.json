@@ -1,0 +1,37 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "send-defaults-the-payload-to-an-empty-object",
+  "env": {},
+  "params": {
+    "url": "{base}/a?x=1&y=2",
+    "event": "user.deleted"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/a?x=1&y=2",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "x-almadar-event": "user.deleted"
+        },
+        "body": "{\"event\":\"user.deleted\",\"payload\":{},\"timestamp\":\"2026-05-17T08:09:10.011Z\"}"
+      },
+      "response": {
+        "status": 204,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": 204,
+      "ok": true,
+      "durationMs": 0
+    }
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

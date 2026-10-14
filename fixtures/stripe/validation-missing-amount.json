@@ -1,0 +1,19 @@
+{
+  "service": "stripe",
+  "action": "createPaymentIntent",
+  "case": "validation-missing-amount",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "currency": "usd"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for stripe.createPaymentIntent: amount: Missing required parameter: amount"
+  }
+}

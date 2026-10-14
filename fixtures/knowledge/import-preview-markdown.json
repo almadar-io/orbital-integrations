@@ -1,0 +1,73 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-markdown",
+  "env": {},
+  "params": {
+    "adapter": "markdown",
+    "documents": [
+      {
+        "ref": "botany.md",
+        "title": "Botany notes",
+        "raw": "# Botany\nPlants are fun.\nQ:: What is a leaf?\nA:: A solar panel.\n\n## Roots\nThey drink.\n**Xylem** — carries water\n```\n# not a heading\n```\n### Hairs\nTiny.\n## Roots\nSecond roots.\nQ:: Unanswered?\n"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "units": [
+        {
+          "ref": "doc:botany.md",
+          "targetEntity": "LearningGoal",
+          "title": "Botany",
+          "parentRef": ""
+        },
+        {
+          "ref": "doc:botany.md#qa:1",
+          "targetEntity": "FlashCard",
+          "title": "What is a leaf?",
+          "parentRef": "doc:botany.md"
+        },
+        {
+          "ref": "doc:botany.md/h:roots",
+          "targetEntity": "Concept",
+          "title": "Roots",
+          "parentRef": "doc:botany.md"
+        },
+        {
+          "ref": "doc:botany.md#qa:2",
+          "targetEntity": "FlashCard",
+          "title": "Xylem",
+          "parentRef": "doc:botany.md/h:roots"
+        },
+        {
+          "ref": "doc:botany.md/h:roots/h:hairs",
+          "targetEntity": "Concept",
+          "title": "Hairs",
+          "parentRef": "doc:botany.md/h:roots"
+        },
+        {
+          "ref": "doc:botany.md/h:roots-2",
+          "targetEntity": "Concept",
+          "title": "Roots",
+          "parentRef": "doc:botany.md"
+        },
+        {
+          "ref": "doc:botany.md#qa:3",
+          "targetEntity": "FlashCard",
+          "title": "Unanswered?",
+          "parentRef": "doc:botany.md/h:roots-2"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

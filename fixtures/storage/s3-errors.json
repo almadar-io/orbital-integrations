@@ -1,0 +1,361 @@
+{
+  "service": "storage",
+  "case": "s3-errors",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "media",
+    "STORAGE_ENDPOINT": "http://s3.recorded.test:9000"
+  },
+  "steps": [
+    {
+      "action": "download",
+      "params": {
+        "bucket": "media",
+        "key": "missing.txt"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/missing.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 404,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "The specified key does not exist."
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "key": "denied.txt",
+        "content": "x"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/denied.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "application/octet-stream",
+              "authorization": "<redacted>"
+            },
+            "body": "x"
+          },
+          "response": {
+            "status": 403,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Access Denied"
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "media",
+        "key": "no-body.txt"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/no-body.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 404,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "UnknownError"
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "Bad_Bucket"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/Bad_Bucket/?list-type=2&max-keys=1000",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 400,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>InvalidBucketName</Code><Message>The specified bucket is not valid.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "The specified bucket is not valid."
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "media",
+        "key": "flaky.txt"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/flaky.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 500,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>InternalError</Code><Message>We encountered an internal error. Please try again.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        },
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/flaky.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 500,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>InternalError</Code><Message>We encountered an internal error. Please try again.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        },
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/flaky.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 500,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>InternalError</Code><Message>We encountered an internal error. Please try again.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "We encountered an internal error. Please try again."
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "media",
+        "key": "throttled.txt"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/throttled.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 503,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>SlowDown</Code><Message>Please reduce your request rate.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        },
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/throttled.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "key": "sig.txt",
+        "content": "x"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/sig.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "application/octet-stream",
+              "authorization": "<redacted>"
+            },
+            "body": "x"
+          },
+          "response": {
+            "status": 403,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Error><Code>SignatureDoesNotMatch</Code><Message>The request signature we calculated does not match.</Message><RequestId>REQ1</RequestId><HostId>HOST1</HostId></Error>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "The request signature we calculated does not match."
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "media",
+        "key": "gateway.txt"
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/gateway.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 502,
+            "body": "bad gateway",
+            "headers": {
+              "content-type": "text/plain"
+            }
+          }
+        },
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/gateway.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 502,
+            "body": "bad gateway",
+            "headers": {
+              "content-type": "text/plain"
+            }
+          }
+        },
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/gateway.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 502,
+            "body": "bad gateway",
+            "headers": {
+              "content-type": "text/plain"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "@aws-sdk XML parse error: unexpected content.\n  Deserialization error: to see the raw response, inspect the hidden field {error}.$response on this object."
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "service": "youtube",
+  "action": "getChannel",
+  "case": "get-channel-not-found",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "channelId": "nope"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=nope&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Channel not found: nope"
+  }
+}

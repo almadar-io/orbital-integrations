@@ -1,0 +1,37 @@
+{
+  "service": "twilio",
+  "action": "sendWhatsApp",
+  "case": "send-whatsapp-not-opted-in",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "Order shipped"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=whatsapp%3A%2B4915112345678&From=whatsapp%3A%2B15005550006&Body=Order%20shipped"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"code\":63016,\"message\":\"Failed to send freeform message because you are outside the allowed window.\",\"more_info\":\"https://www.twilio.com/docs/errors/63016\",\"status\":400}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Failed to send freeform message because you are outside the allowed window."
+  }
+}

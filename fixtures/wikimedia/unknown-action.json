@@ -1,0 +1,15 @@
+{
+  "service": "wikimedia",
+  "action": "search",
+  "case": "unknown-action",
+  "env": {},
+  "params": {
+    "title": "x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for wikimedia.search: action: Unknown action: search"
+  }
+}

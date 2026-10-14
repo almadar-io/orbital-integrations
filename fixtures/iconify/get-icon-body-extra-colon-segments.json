@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "get-icon-body-extra-colon-segments",
+  "env": {},
+  "params": {
+    "iconId": "mdi:home:outline"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/mdi.json?icons=home",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"icons\":{\"home\":{\"body\":\"<g/>\"}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "body": "<g/>"
+    }
+  }
+}

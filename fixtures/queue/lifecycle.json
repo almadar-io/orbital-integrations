@@ -1,0 +1,426 @@
+{
+  "service": "queue",
+  "case": "lifecycle",
+  "env": {},
+  "steps": [
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "work",
+        "payload": {
+          "n": 1
+        }
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.111111111111
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000000_3zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "work",
+        "payload": {
+          "n": 2
+        }
+      },
+      "clockMs": 1760000000001,
+      "randoms": [
+        0.222222222222
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000001_7zzzzz",
+          "position": 1
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "work",
+        "payload": {
+          "n": 3
+        }
+      },
+      "clockMs": 1760000000002,
+      "randoms": [
+        0.333333333333
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000002_bzzzzz",
+          "position": 2
+        }
+      }
+    },
+    {
+      "action": "complete",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "completed": false
+        }
+      }
+    },
+    {
+      "action": "cancel",
+      "params": {
+        "jobId": "job_1760000000002_bzzzzz"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "cancelled": true
+        }
+      }
+    },
+    {
+      "action": "cancel",
+      "params": {
+        "jobId": "job_1760000000002_bzzzzz"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "cancelled": false
+        }
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": "job_1760000000002_bzzzzz"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "status": "pending",
+          "job": null
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "work"
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000000_3zzzzz",
+            "payload": {
+              "n": 1
+            },
+            "enqueuedAt": 1760000000000,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz"
+      },
+      "clockMs": 1760000000008,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "status": "processing",
+          "job": {
+            "id": "job_1760000000000_3zzzzz",
+            "payload": {
+              "n": 1
+            },
+            "enqueuedAt": 1760000000000,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "cancel",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz"
+      },
+      "clockMs": 1760000000009,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "cancelled": false
+        }
+      }
+    },
+    {
+      "action": "complete",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz",
+        "result": {
+          "ok": true
+        }
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "completed": true
+        }
+      }
+    },
+    {
+      "action": "complete",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz"
+      },
+      "clockMs": 1760000000011,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "completed": false
+        }
+      }
+    },
+    {
+      "action": "fail",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz",
+        "error": "late"
+      },
+      "clockMs": 1760000000012,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "failed": false
+        }
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": "job_1760000000000_3zzzzz"
+      },
+      "clockMs": 1760000000013,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "status": "completed",
+          "job": {
+            "id": "job_1760000000000_3zzzzz",
+            "payload": {
+              "n": 1
+            },
+            "enqueuedAt": 1760000000000,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "work"
+      },
+      "clockMs": 1760000000014,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000001_7zzzzz",
+            "payload": {
+              "n": 2
+            },
+            "enqueuedAt": 1760000000001,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "fail",
+      "params": {
+        "jobId": "job_1760000000001_7zzzzz",
+        "error": "boom"
+      },
+      "clockMs": 1760000000015,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "failed": true
+        }
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": "job_1760000000001_7zzzzz"
+      },
+      "clockMs": 1760000000016,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "status": "failed",
+          "job": {
+            "id": "job_1760000000001_7zzzzz",
+            "payload": {
+              "n": 2
+            },
+            "enqueuedAt": 1760000000001,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "work",
+        "payload": "again"
+      },
+      "clockMs": 1760000000017,
+      "randoms": [
+        0.444444444444
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000017_fzzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "work"
+      },
+      "clockMs": 1760000000018,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000017_fzzzzz",
+            "payload": "again",
+            "enqueuedAt": 1760000000017,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "fail",
+      "params": {
+        "jobId": "job_1760000000017_fzzzzz"
+      },
+      "clockMs": 1760000000019,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "failed": true
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "work"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 0,
+          "pending": 0,
+          "processing": 0
+        }
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": "job_unknown"
+      },
+      "clockMs": 1760000000021,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "status": "pending",
+          "job": null
+        }
+      }
+    },
+    {
+      "action": "complete",
+      "params": {
+        "jobId": "job_unknown"
+      },
+      "clockMs": 1760000000022,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "completed": false
+        }
+      }
+    }
+  ]
+}

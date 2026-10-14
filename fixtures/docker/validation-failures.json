@@ -1,0 +1,90 @@
+{
+  "service": "docker",
+  "case": "validation-failures",
+  "env": {},
+  "steps": [
+    {
+      "action": "build",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.build: tag: Missing required parameter: tag"
+      }
+    },
+    {
+      "action": "run",
+      "params": {},
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.run: image: Missing required parameter: image"
+      }
+    },
+    {
+      "action": "run",
+      "params": {
+        "image": "x",
+        "ports": "all"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.run: ports: Expected array, got string"
+      }
+    },
+    {
+      "action": "logs",
+      "params": {
+        "containerId": "x",
+        "tail": "many"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.logs: tail: Expected number, got string"
+      }
+    },
+    {
+      "action": "exec",
+      "params": {
+        "containerId": "x"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.exec: action: Unknown action: exec"
+      }
+    },
+    {
+      "action": "stop",
+      "params": {
+        "containerId": "x",
+        "extra": true
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for docker.stop: extra: Unknown parameter: extra (declared: containerId)"
+      }
+    }
+  ]
+}

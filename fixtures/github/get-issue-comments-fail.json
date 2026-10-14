@@ -1,0 +1,50 @@
+{
+  "service": "github",
+  "action": "getIssue",
+  "case": "get-issue-comments-fail",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "issueNumber": 12
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/issues/12",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"number\":12,\"url\":\"https://api.github.com/repos/acme/widgets/issues/12\",\"title\":\"Twelve\",\"body\":\"Body of Twelve\",\"state\":\"open\",\"labels\":[{\"name\":\"bug\",\"color\":\"d73a4a\"}],\"created_at\":\"2026-01-02T03:04:05Z\",\"updated_at\":\"2026-01-03T03:04:05Z\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/issues/12/comments",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 500,
+        "body": "{\"message\":\"Server Error\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "GitHub API request failed: Server Error"
+  }
+}

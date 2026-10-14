@@ -1,0 +1,44 @@
+{
+  "service": "knowledge",
+  "action": "peers",
+  "case": "peers-none",
+  "env": {},
+  "params": {
+    "nodeKey": "concept:light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/node-activity/concept%253Alight:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"members\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"lastSeenOnNode\"},\"op\":4,\"value\":{\"integerValue\":\"1699395200000\"}}}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"document\":{\"name\":\"projects/p/databases/(default)/documents/node-activity/concept%3Alight/members/learner-1\",\"fields\":{\"lastSeenOnNode\":{\"integerValue\":\"1700000000000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "peers": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

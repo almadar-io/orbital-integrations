@@ -1,0 +1,29 @@
+{
+  "service": "oauth",
+  "case": "mock-authorize-github-subject",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "github",
+        "scopes": [
+          "repo"
+        ],
+        "redirectUri": "https://app.example.com/callback",
+        "subject": "user-1"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://github.com/login/oauth/authorize?response_type=code&scope=repo&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&state=<hex32>&client_id=mock-client-id",
+          "state": "<hex32>"
+        }
+      }
+    }
+  ]
+}

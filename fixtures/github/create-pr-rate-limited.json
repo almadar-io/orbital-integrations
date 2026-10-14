@@ -1,0 +1,44 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "create-pr-rate-limited",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "title": "Add widgets",
+    "body": "x",
+    "baseBranch": "main",
+    "headBranch": "feature/x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/acme/widgets/pulls",
+        "headers": {
+          "content-type": "text/plain;charset=UTF-8",
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"title\":\"Add widgets\",\"body\":\"x\",\"base\":\"main\",\"head\":\"feature/x\",\"draft\":false}"
+      },
+      "response": {
+        "status": 429,
+        "body": "{\"message\":\"API rate limit exceeded\"}",
+        "headers": {
+          "x-ratelimit-remaining": "0",
+          "x-ratelimit-limit": "5000",
+          "x-ratelimit-reset": "1767225600"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "RATE_LIMIT_ERROR",
+    "message": "GitHub API rate limit exceeded"
+  }
+}

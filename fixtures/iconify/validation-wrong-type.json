@@ -1,0 +1,16 @@
+{
+  "service": "iconify",
+  "action": "search",
+  "case": "validation-wrong-type",
+  "env": {},
+  "params": {
+    "query": "x",
+    "limit": "five"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for iconify.search: limit: Expected number, got string"
+  }
+}

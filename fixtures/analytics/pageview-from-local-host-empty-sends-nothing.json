@@ -1,0 +1,22 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-from-local-host-empty-sends-nothing",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": false
+    }
+  },
+  "page": {
+    "hostname": "",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

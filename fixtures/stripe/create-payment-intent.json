@@ -1,0 +1,46 @@
+{
+  "service": "stripe",
+  "action": "createPaymentIntent",
+  "case": "create-payment-intent",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "amount": 2000,
+    "currency": "usd"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/payment_intents",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "amount=2000&currency=usd"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"pi_1\",\"object\":\"payment_intent\",\"amount\":2000,\"currency\":\"usd\",\"status\":\"requires_payment_method\",\"client_secret\":\"pi_1_secret_x\",\"metadata\":{}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "pi_1",
+      "object": "payment_intent",
+      "amount": 2000,
+      "currency": "usd",
+      "status": "requires_payment_method",
+      "client_secret": "pi_1_secret_x",
+      "metadata": {}
+    }
+  }
+}

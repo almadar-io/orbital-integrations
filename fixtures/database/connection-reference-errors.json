@@ -1,0 +1,75 @@
+{
+  "service": "database",
+  "case": "connection-reference-errors",
+  "env": {},
+  "setup": {
+    "processEnv": {
+      "ORDERS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "REPORTS_DB_URL": "postgres://reader:test-key@reports.internal:5432/reports",
+      "ALIAS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "EMPTY_DB_URL": ""
+    }
+  },
+  "steps": [
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "NOT_SET_ANYWHERE",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "Connection reference \"NOT_SET_ANYWHERE\" is not set in the credential store or environment"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "EMPTY_DB_URL",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "Connection reference \"EMPTY_DB_URL\" is not set in the credential store or environment"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "Connection reference \"\" is not set in the credential store or environment"
+      },
+      "driver": {
+        "connects": [],
+        "queries": []
+      },
+      "replies": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "service": "metaAds",
+  "action": "listCampaigns",
+  "case": "list-campaigns-client-error",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://graph.facebook.com/v21.0/act_1234567890/campaigns?fields=id%2Cname%2Cstatus%2Cdaily_budget&access_token=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"(#100) Unsupported get request.\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Meta Graph API error: (#100) Unsupported get request."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "service": "accounting",
+  "action": "exportJournal",
+  "case": "validation-unknown-param",
+  "env": {},
+  "params": {
+    "entries": [],
+    "vendor": "datev"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for accounting.exportJournal: vendor: Unknown parameter: vendor (declared: entries, format)"
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

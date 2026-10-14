@@ -1,0 +1,40 @@
+{
+  "service": "twilio",
+  "action": "sendSMS",
+  "case": "send-sms-error-with-a-text-body",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": "+4915112345678",
+    "body": "hi"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/AC00000000000000000000000000000000/Messages.json",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "To=%2B4915112345678&From=%2B15005550006&Body=hi"
+      },
+      "response": {
+        "status": 503,
+        "body": "Service Unavailable",
+        "headers": {
+          "content-type": "text/plain"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "[HTTP 503] Failed to execute request"
+  }
+}

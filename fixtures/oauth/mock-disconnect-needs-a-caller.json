@@ -1,0 +1,22 @@
+{
+  "service": "oauth",
+  "case": "mock-disconnect-needs-a-caller",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "disconnect",
+      "params": {
+        "provider": "github"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "NOT_CONFIGURED",
+        "message": "No OAuth connection store is installed on this host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "service": "oauth",
+  "case": "mock-validation-missing-required",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for oauth.authorize: scopes: Missing required parameter: scopes; redirectUri: Missing required parameter: redirectUri"
+      }
+    }
+  ]
+}

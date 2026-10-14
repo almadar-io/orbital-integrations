@@ -1,0 +1,16 @@
+{
+  "service": "accounting",
+  "action": "exportInvoices",
+  "case": "validation-invoices-not-an-array",
+  "env": {},
+  "params": {
+    "invoices": "nope"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for accounting.exportInvoices: invoices: Expected array, got string"
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

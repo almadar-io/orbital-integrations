@@ -1,0 +1,45 @@
+{
+  "service": "knowledge",
+  "action": "openConnection",
+  "case": "open-connection-token-issued-to-someone-else",
+  "env": {},
+  "params": {
+    "peerRef": "tok-1",
+    "originKind": "concept",
+    "canonicalId": "light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/peer-tokens/tok-1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/peer-tokens/tok-1\",\"fields\":{\"peerUid\":{\"stringValue\":\"learner-2\"},\"issuedTo\":{\"stringValue\":\"learner-9\"},\"nodeKey\":{\"stringValue\":\"concept:light\"},\"expiresAt\":{\"integerValue\":\"1700000060000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "Peer reference is invalid or expired"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

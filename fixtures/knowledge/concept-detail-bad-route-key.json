@@ -1,0 +1,22 @@
+{
+  "service": "knowledge",
+  "action": "conceptDetail",
+  "case": "concept-detail-bad-route-key",
+  "env": {},
+  "params": {
+    "graphId": "g1",
+    "routeKey": "not a key!"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "Concept not a key! not found"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

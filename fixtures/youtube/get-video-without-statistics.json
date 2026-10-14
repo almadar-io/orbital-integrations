@@ -1,0 +1,33 @@
+{
+  "service": "youtube",
+  "action": "getVideo",
+  "case": "get-video-without-statistics",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "videoId": "vid2"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=vid2&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[{\"id\":\"vid2\",\"snippet\":{\"title\":\"Private stats\"}}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "title": "Private stats"
+    }
+  }
+}

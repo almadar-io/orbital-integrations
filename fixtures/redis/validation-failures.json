@@ -1,0 +1,105 @@
+{
+  "service": "redis",
+  "case": "validation-failures",
+  "env": {},
+  "steps": [
+    {
+      "action": "get",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.get: key: Missing required parameter: key"
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "k"
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.set: value: Missing required parameter: value"
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": 5,
+        "value": "v"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.set: key: Expected string, got number"
+      }
+    },
+    {
+      "action": "expire",
+      "params": {
+        "key": "k",
+        "ttl": "soon"
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.expire: ttl: Expected number, got string"
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "k",
+        "extra": true
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.get: extra: Unknown parameter: extra (declared: key)"
+      }
+    },
+    {
+      "action": "flush",
+      "params": {},
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.flush: action: Unknown action: flush"
+      }
+    },
+    {
+      "action": "lock",
+      "params": {
+        "key": "k",
+        "ttl": "x"
+      },
+      "clockMs": 1760000000060,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for redis.lock: ttl: Expected number, got string"
+      }
+    }
+  ]
+}

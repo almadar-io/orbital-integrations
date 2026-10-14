@@ -1,0 +1,72 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-contains-concept-target-not-concept",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "l1": {
+        "id": "l1",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 1
+        }
+      },
+      "l2": {
+        "id": "l2",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 2
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [
+        "l1",
+        "l2"
+      ],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "l1",
+        "target": "l2",
+        "type": "containsConcept",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_04_CONTAINS_CONCEPT_TGT",
+      "severity": "error",
+      "nodeId": "l2",
+      "message": "containsConcept target \"l2\" is not a Concept."
+    }
+  ]
+}

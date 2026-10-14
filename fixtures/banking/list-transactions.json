@@ -1,0 +1,84 @@
+{
+  "service": "banking",
+  "action": "listTransactions",
+  "case": "list-transactions",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "accountId": "acc-1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://bankaccountdata.gocardless.com/api/v2/token/new/",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "body": "{\"secret_id\":\"test-id\",\"secret_key\":\"test-key\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"access\":\"access-abc\",\"access_expires\":86400,\"refresh\":\"refresh-abc\",\"refresh_expires\":2592000}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://bankaccountdata.gocardless.com/api/v2/accounts/acc-1/transactions/",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"transactions\":{\"booked\":[{\"transactionId\":\"tx-1\",\"transactionAmount\":{\"amount\":\"-45.50\",\"currency\":\"GBP\"},\"bookingDate\":\"2026-02-01\",\"remittanceInformationUnstructured\":\"Coffee beans\",\"creditorName\":\"Bean Co\"},{\"internalTransactionId\":\"int-2\",\"transactionAmount\":{\"amount\":\"1200\",\"currency\":\"GBP\"},\"bookingDate\":\"2026-02-02\",\"remittanceInformationUnstructured\":\"Invoice 7\",\"debtorName\":\"Acme Ltd\"},{\"transactionAmount\":{\"amount\":\"not-a-number\"}},{}],\"pending\":[{\"transactionAmount\":{\"amount\":\"9\",\"currency\":\"GBP\"}}]}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "transactions": [
+        {
+          "id": "tx-1",
+          "amount": -45.5,
+          "currency": "GBP",
+          "date": "2026-02-01",
+          "description": "Coffee beans",
+          "counterparty": "Bean Co"
+        },
+        {
+          "id": "int-2",
+          "amount": 1200,
+          "currency": "GBP",
+          "date": "2026-02-02",
+          "description": "Invoice 7",
+          "counterparty": "Acme Ltd"
+        },
+        {
+          "id": "",
+          "amount": null,
+          "currency": "",
+          "date": "",
+          "description": "",
+          "counterparty": ""
+        },
+        {
+          "id": "",
+          "amount": 0,
+          "currency": "",
+          "date": "",
+          "description": "",
+          "counterparty": ""
+        }
+      ]
+    }
+  }
+}

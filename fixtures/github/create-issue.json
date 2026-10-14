@@ -1,0 +1,43 @@
+{
+  "service": "github",
+  "action": "createIssue",
+  "case": "create-issue",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "title": "It broke",
+    "body": "Steps to reproduce",
+    "labels": [
+      "bug"
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/acme/widgets/issues",
+        "headers": {
+          "content-type": "text/plain;charset=UTF-8",
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"title\":\"It broke\",\"body\":\"Steps to reproduce\",\"labels\":[\"bug\"]}"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\"number\":21,\"url\":\"https://api.github.com/repos/acme/widgets/issues/21\",\"title\":\"It broke\",\"body\":\"Body of It broke\",\"state\":\"open\",\"labels\":[{\"name\":\"bug\",\"color\":\"d73a4a\"}],\"created_at\":\"2026-01-02T03:04:05Z\",\"updated_at\":\"2026-01-03T03:04:05Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "number": 21,
+      "title": "It broke",
+      "url": "https://api.github.com/repos/acme/widgets/issues/21"
+    }
+  }
+}

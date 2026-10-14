@@ -1,0 +1,117 @@
+{
+  "service": "queue",
+  "case": "queues-are-separate",
+  "env": {},
+  "steps": [
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "a",
+        "payload": "x"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.111111111111
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000000_3zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "b",
+        "payload": "y",
+        "priority": 9
+      },
+      "clockMs": 1760000000001,
+      "randoms": [
+        0.222222222222
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000001_7zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "a"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 1,
+          "pending": 1,
+          "processing": 0
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "b"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000001_7zzzzz",
+            "payload": "y",
+            "enqueuedAt": 1760000000001,
+            "priority": 9
+          }
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "a"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 1,
+          "pending": 1,
+          "processing": 0
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "b"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 1,
+          "pending": 0,
+          "processing": 1
+        }
+      }
+    }
+  ]
+}

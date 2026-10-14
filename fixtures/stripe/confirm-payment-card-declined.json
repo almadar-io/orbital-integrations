@@ -1,0 +1,38 @@
+{
+  "service": "stripe",
+  "action": "confirmPayment",
+  "case": "confirm-payment-card-declined",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "paymentIntentId": "pi_1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/payment_intents/pi_1/confirm",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 402,
+        "body": "{\"error\":{\"type\":\"card_error\",\"code\":\"card_declined\",\"message\":\"Your card was declined.\",\"decline_code\":\"generic_decline\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Your card was declined."
+  }
+}

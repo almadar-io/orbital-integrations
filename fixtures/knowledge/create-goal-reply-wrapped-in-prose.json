@@ -1,0 +1,121 @@
+{
+  "service": "knowledge",
+  "action": "createGoalWithGraph",
+  "case": "create-goal-reply-wrapped-in-prose",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "anchorAnswer": "Go"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.3,\"stream\":true,\"stream_options\":{\"include_usage\":true},\"messages\":[{\"role\":\"system\",\"content\":\"You are an expert learning advisor that helps users create structured, actionable learning goals.\\n\\nYour task is to analyze a user's learning aspiration and generate a comprehensive learning goal.\\n\\nKey principles:\\n- Create a clear, specific, and achievable learning goal\\n- The \\\"title\\\" MUST be the bare canonical subject name only (e.g. \\\"Haskell\\\", \\\"Linear Algebra\\\", \\\"Organic Chemistry\\\", \\\"React\\\"). NEVER add ANY prefix or suffix: not \\\"Master\\\", \\\"Mastering\\\", \\\"Core\\\", \\\"Essential\\\", \\\"Fundamentals\\\", \\\"Learning\\\", \\\"Understanding\\\", \\\"Introduction to\\\", \\\"A guide to\\\", \\\"The Complete\\\", or any similar word. Output the subject name and nothing else.\\n- Infer the most appropriate goal type (common types: \\\"certification\\\", \\\"skill_mastery\\\", \\\"language_level\\\", \\\"project_completion\\\", or suggest a custom type if it fits better)\\n- Make the goal actionable and measurable\\n- \\\"customMetadata\\\" is flat: each value is a string, number, boolean or null (e.g. {\\\"difficulty\\\": \\\"beginner\\\", \\\"focus\\\": \\\"conversation\\\"})\\n- \\\"keywords\\\" are domain search terms a learner might use that are not the subject name itself (e.g. [\\\"JVM\\\",\\\"runtime\\\",\\\"bytecode\\\"])\\n\\nOutput format:\\nReturn a JSON object with this structure:\\n{\\n  \\\"title\\\": \\\"Bare canonical subject name only\\\",\\n  \\\"description\\\": \\\"Detailed description of the learning goal\\\",\\n  \\\"type\\\": \\\"goal_type_here\\\",\\n  \\\"target\\\": \\\"Specific target (e.g., 'AWS Certified Solutions Architect', 'B1 Spanish', 'Publish research paper')\\\",\\n  \\\"estimatedTime\\\": 120,\\n  \\\"keywords\\\": [\\\"term\\\"],\\n  \\\"milestones\\\": [\\n    { \\\"id\\\": \\\"m1\\\", \\\"title\\\": \\\"Milestone title\\\", \\\"description\\\": \\\"Milestone description\\\", \\\"targetDate\\\": null, \\\"completed\\\": false }\\n  ],\\n  \\\"customMetadata\\\": {}\\n}\\n\\nReturn ONLY the JSON object, no additional text.\"},{\"role\":\"user\",\"content\":\"The user answered the anchor question \\\"What's something you've always wanted to learn?\\\" with:\\n\\n\\\"Go\\\"\\n\\nGenerate a comprehensive learning goal based on this information.\\n\\nReturn the JSON object with the goal structure.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "text/event-stream"
+        },
+        "body": "data: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Here: \"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"{\\\"title\\\":\\\"Go\\\",\\\"description\\\":\\\"Concurrency.\\\",\\\"type\\\":\\\"skill_mastery\\\",\\\"target\\\":\\\"a server\\\"}\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" done\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\",\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMQ==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"Go\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"Go\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"Go\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Go\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Go\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Go\"},\"name\":{\"stringValue\":\"Go\"},\"description\":{\"stringValue\":\"Go: Concurrency.\"},\"goal\":{\"stringValue\":\"Go: Concurrency.\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"Go\"},\"description\":{\"stringValue\":\"Concurrency.\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"a server\"},\"customMetadata\":{\"mapValue\":{\"fields\":{\"graphId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"milestones\":{\"stringValue\":\"[]\"},\"shortTermGoals\":{\"stringValue\":\"[]\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Go\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-Go\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"Go\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-Go\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"Go\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasLearningGoal-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"}}],\"transaction\":\"dHgtMQ==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "graphId": "00000000-0000-4000-8000-000000000001",
+      "goalTitle": "Go",
+      "description": "Concurrency.",
+      "milestones": [],
+      "difficulty": "intermediate"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [
+    "00000000-0000-4000-8000-000000000001",
+    "00000000-0000-4000-8000-000000000002"
+  ],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [
+    {
+      "phase": "start",
+      "text": "",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "Here: ",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "{\"title\":\"Go\",\"description\":\"Concurrency.\",\"type\":\"skill_mastery\",\"target\":\"a server\"}",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "step",
+      "text": "Go",
+      "model": "deepseek-v4-flash",
+      "field": "title"
+    },
+    {
+      "phase": "step",
+      "text": "Concurrency.",
+      "model": "deepseek-v4-flash",
+      "field": "description"
+    },
+    {
+      "phase": "delta",
+      "text": " done",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "visualizations": []
+}

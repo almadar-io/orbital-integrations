@@ -1,0 +1,156 @@
+{
+  "service": "storage",
+  "case": "s3-signed-urls",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "media",
+    "STORAGE_ENDPOINT": "http://s3.recorded.test:9000",
+    "STORAGE_REGION": "eu-west-1"
+  },
+  "steps": [
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "a/b.txt"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/a/b.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=f5c9a5551fc9f2f2622d1f78b0ec41dd5f5d32890727512828b0b29e802c34b3&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760003600000
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "a/b c.txt",
+        "expiresIn": 60,
+        "operation": "put"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/a/b%20c.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=60&X-Amz-Signature=1c269e49475ea72ab80d35af41cc346af7801616ee082688cbc270a16f5cb292&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject",
+          "expiresAt": 1760000060001
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "x.txt",
+        "expiresIn": 604800,
+        "operation": "get"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/x.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=604800&X-Amz-Signature=2bdc0faadf83180ec5739ab2be18b2f83dfaa9616a75bf9ec6cd627726e9ff44&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760604800002
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "dir/ünï cödé !*'().txt"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/dir/%C3%BCn%C3%AF%20c%C3%B6d%C3%A9%20%21%2A%27%28%29.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=96e10c7ab853e5a80bb6115754109a6860398268855364651ed97a6f42ed1cb4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760003600003
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "a//b/~tilde_under-dash.txt",
+        "operation": "put"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/a//b/~tilde_under-dash.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=c82d0f989745e79d3aa0d828208eb8eff00b6c9201be1efafb3c62138619e8df&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject",
+          "expiresAt": 1760003600004
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "plus+and&amp=eq?q#h%25.txt"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/plus%2Band%26amp%3Deq%3Fq%23h%2525.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=298cdc4d7da0668b24ef8daf246be64b33b4558586fcbdf0fb8e7fd02dc89b6a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760003600005
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "k",
+        "expiresIn": 0
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/k?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=0&X-Amz-Signature=fa6e70d515ff98c56b8aee373aaf7ffe5530bd0f4681d5cec660cdffd9f9b8ff&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760000000006
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "k",
+        "expiresIn": 1.5
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "http://s3.recorded.test:9000/media/k?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=1.5&X-Amz-Signature=7533b61b70468db462ebf24b436564fa89d188973c955849fd0d807d556562de&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760000001507
+        }
+      }
+    }
+  ]
+}

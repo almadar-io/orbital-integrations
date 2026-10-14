@@ -1,0 +1,40 @@
+{
+  "service": "github",
+  "action": "getFile",
+  "case": "get-file-with-ref",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "path": "README.md",
+    "ref": "feature/a b"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/contents/README.md?ref=feature%2Fa%20b",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"path\":\"README.md\",\"sha\":\"def456\",\"size\":5,\"encoding\":\"base64\",\"content\":\"aGVsbG8=\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "path": "README.md",
+      "content": "hello",
+      "sha": "def456",
+      "size": 5
+    }
+  }
+}

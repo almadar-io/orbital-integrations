@@ -1,0 +1,76 @@
+{
+  "service": "knowledge",
+  "action": "peers",
+  "case": "peers-active-and-stale",
+  "env": {},
+  "params": {
+    "nodeKey": "concept:light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/node-activity/concept%253Alight:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"members\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"lastSeenOnNode\"},\"op\":4,\"value\":{\"integerValue\":\"1699395200000\"}}}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"document\":{\"name\":\"projects/p/databases/(default)/documents/node-activity/concept%3Alight/members/learner-2\",\"fields\":{\"lastSeenOnNode\":{\"integerValue\":\"1699999940000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"},{\"document\":{\"name\":\"projects/p/databases/(default)/documents/node-activity/concept%3Alight/members/learner-1\",\"fields\":{\"lastSeenOnNode\":{\"integerValue\":\"1700000000000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"peerUid\":{\"stringValue\":\"learner-2\"},\"issuedTo\":{\"stringValue\":\"learner-1\"},\"nodeKey\":{\"stringValue\":\"concept:light\"},\"expiresAt\":{\"integerValue\":\"1700000600000\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/peer-tokens/AgICAgICAgICAgICAgICAgIC\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "peers": [
+        {
+          "peerRef": "AgICAgICAgICAgICAgICAgIC",
+          "handle": "peer-fff82e",
+          "conceptsCompleted": 0,
+          "convergencePct": 0,
+          "activeNow": true
+        }
+      ]
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      18,
+      2
+    ],
+    [
+      40,
+      3
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

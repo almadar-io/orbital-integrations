@@ -1,0 +1,38 @@
+{
+  "service": "analytics",
+  "action": "pageview",
+  "case": "pageview-fractional-screen-width",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "path": "/"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/e",
+        "headers": {
+          "content-type": "text/plain",
+          "accept": "*/*"
+        },
+        "body": "{\"n\":\"pageview\",\"d\":\"orb.almadar.io\",\"u\":\"/\",\"r\":\"https://news.ycombinator.com/\",\"w\":390.5}"
+      },
+      "response": {
+        "status": 200,
+        "body": "ok"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "sent": true
+    }
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 390.5
+  }
+}

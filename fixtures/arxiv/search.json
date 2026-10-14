@@ -1,0 +1,54 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "search",
+  "env": {},
+  "params": {
+    "query": "attention transformer"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://export.arxiv.org/api/query?search_query=all%3Aattention%20transformer&start=0&max_results=8&sortBy=relevance",
+        "headers": {
+          "accept": "application/atom+xml"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/atom+xml; charset=UTF-8"
+        },
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>http://arxiv.org/api/feed</id>\n  <title>ArXiv Query</title>\n  <entry>\n    <id>http://arxiv.org/abs/1706.03762v7</id>\n    <updated>2023-08-02T00:41:18Z</updated>\n    <published>2017-06-12T17:57:34Z</published>\n    <title>Attention Is All\n      You Need</title>\n    <summary>  The dominant sequence transduction models\n    are based on complex recurrent networks.  </summary>\n    <author>\n      <name>Ashish Vaswani</name>\n    </author>\n    <author><name> Noam Shazeer </name></author>\n    <link href=\"http://arxiv.org/abs/1706.03762v7\" rel=\"alternate\" type=\"text/html\"/>\n    <link title=\"pdf\" href=\"http://arxiv.org/pdf/1706.03762v7\" rel=\"related\" type=\"application/pdf\"/>\n    <arxiv:primary_category xmlns:arxiv=\"http://arxiv.org/schemas/atom\" term=\"cs.CL\" scheme=\"http://arxiv.org/schemas/atom\"/>\n  </entry>\n  <entry>\n    <id>http://arxiv.org/abs/2001.00001v1</id>\n    <published>2020-01-01T00:00:00Z</published>\n    <title>A <i>Bare</i> Entry</title>\n    <summary>Only an id link.</summary>\n  </entry>\n</feed>\n"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "results": [
+        {
+          "id": "http://arxiv.org/abs/1706.03762v7",
+          "title": "Attention Is All You Need",
+          "summary": "The dominant sequence transduction models are based on complex recurrent networks.",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer"
+          ],
+          "published": "2017-06-12T17:57:34Z",
+          "url": "http://arxiv.org/abs/1706.03762v7"
+        },
+        {
+          "id": "http://arxiv.org/abs/2001.00001v1",
+          "title": "A Bare Entry",
+          "summary": "Only an id link.",
+          "authors": [],
+          "published": "2020-01-01T00:00:00Z",
+          "url": "http://arxiv.org/abs/2001.00001v1"
+        }
+      ]
+    }
+  }
+}

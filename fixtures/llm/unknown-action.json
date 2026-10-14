@@ -1,0 +1,16 @@
+{
+  "service": "llm",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for llm.nope: action: Unknown action: nope"
+  }
+}

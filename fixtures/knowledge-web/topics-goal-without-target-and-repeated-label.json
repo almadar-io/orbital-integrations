@@ -1,0 +1,77 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-goal-without-target-and-repeated-label",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[{\"title\":\"Calculus\",\"lastAccessedAt\":1799827200000}]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/learning/goals",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"goals\":[{\"title\":\"Calculus\",\"target\":\"Exam\",\"updatedAt\":1799913600000},{\"title\":\"Linear algebra\",\"target\":\"\",\"updatedAt\":1799654400000}]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/statistics/recent-activity?limit=50",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"activity\":[]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "topics": [
+        {
+          "label": "Calculus",
+          "keywords": [
+            "Exam"
+          ],
+          "weight": 0.9666666666666667
+        },
+        {
+          "label": "Linear algebra",
+          "keywords": [],
+          "weight": 0.8666666666666667
+        }
+      ]
+    }
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

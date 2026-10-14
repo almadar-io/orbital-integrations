@@ -1,0 +1,18 @@
+{
+  "service": "esign",
+  "action": "getEnvelopeStatus",
+  "case": "validation-wrong-type",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": 7
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for esign.getEnvelopeStatus: envelopeId: Expected string, got number"
+  }
+}

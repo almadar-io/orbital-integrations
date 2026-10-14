@@ -1,0 +1,18 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "missing-token",
+  "env": {},
+  "params": {
+    "title": "t",
+    "body": "b",
+    "baseBranch": "main",
+    "headBranch": "x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "GITHUB_TOKEN not configured"
+  }
+}

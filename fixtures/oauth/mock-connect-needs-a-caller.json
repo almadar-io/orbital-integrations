@@ -1,0 +1,24 @@
+{
+  "service": "oauth",
+  "case": "mock-connect-needs-a-caller",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "connect",
+      "params": {
+        "provider": "google",
+        "code": "c",
+        "state": "s"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "AUTH_ERROR",
+        "message": "A provider connection needs a signed-in caller"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-signed-out",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "false",
+    "KNOWLEDGE_TEST_ACCOUNT": ""
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "Not connected"
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

@@ -1,0 +1,18 @@
+{
+  "service": "knowledge-web",
+  "action": "status",
+  "case": "status-connected",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "connected": true,
+      "account": "me@example.com"
+    }
+  }
+}

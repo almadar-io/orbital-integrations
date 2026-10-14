@@ -1,0 +1,19 @@
+{
+  "service": "banking",
+  "action": "listAccounts",
+  "case": "validation-unknown-param",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id",
+    "GOCARDLESS_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "requisitionId": "r",
+    "bogus": true
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for banking.listAccounts: bogus: Unknown parameter: bogus (declared: requisitionId)"
+  }
+}

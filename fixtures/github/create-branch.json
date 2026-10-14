@@ -1,0 +1,20 @@
+{
+  "service": "github",
+  "action": "createBranch",
+  "case": "create-branch",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_WORK_DIR": "{workdir}"
+  },
+  "params": {
+    "branchName": "feature/new"
+  },
+  "setup": "git-repo",
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "message": "Successfully created branch: feature/new"
+    }
+  }
+}

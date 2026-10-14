@@ -1,0 +1,25 @@
+{
+  "service": "oauth",
+  "case": "real-token-unknown-state",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "token",
+      "params": {
+        "code": "c",
+        "state": "never-issued"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid or expired state token: never-issued"
+      }
+    }
+  ]
+}

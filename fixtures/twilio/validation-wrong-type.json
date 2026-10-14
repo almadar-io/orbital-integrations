@@ -1,0 +1,20 @@
+{
+  "service": "twilio",
+  "action": "sendWhatsApp",
+  "case": "validation-wrong-type",
+  "env": {
+    "TWILIO_ACCOUNT_SID": "AC00000000000000000000000000000000",
+    "TWILIO_AUTH_TOKEN": "test-key",
+    "TWILIO_PHONE_NUMBER": "+15005550006"
+  },
+  "params": {
+    "to": 4915112345678,
+    "body": "x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for twilio.sendWhatsApp: to: Expected string, got number"
+  }
+}

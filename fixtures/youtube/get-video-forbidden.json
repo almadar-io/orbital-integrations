@@ -1,0 +1,32 @@
+{
+  "service": "youtube",
+  "action": "getVideo",
+  "case": "get-video-forbidden",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "videoId": "vid1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=vid1&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{\"code\":403,\"message\":\"Access Not Configured.\",\"errors\":[{\"message\":\"Access Not Configured.\",\"domain\":\"youtube.quota\",\"reason\":\"accessNotConfigured\"}],\"status\":\"ERROR\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Access Not Configured."
+  }
+}

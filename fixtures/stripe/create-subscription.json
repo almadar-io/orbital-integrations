@@ -1,0 +1,52 @@
+{
+  "service": "stripe",
+  "action": "createSubscription",
+  "case": "create-subscription",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "customerId": "cus_1",
+    "tier": "teams",
+    "quantity": 4,
+    "metadata": {
+      "almadarUid": "uid-7"
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/subscriptions",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "customer=cus_1&items[0][price]=price_teams_test&items[0][quantity]=4&metadata[almadarUid]=uid-7&proration_behavior=create_prorations&automatic_tax[enabled]=true"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"sub_5\",\"object\":\"subscription\",\"customer\":\"cus_1\",\"status\":\"active\",\"cancel_at_period_end\":false,\"current_period_start\":1767225600,\"current_period_end\":1769904000,\"items\":{\"data\":[{\"id\":\"si_5\",\"quantity\":4,\"price\":{\"id\":\"price_teams_test\"}}]}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "subscriptionId": "sub_5",
+      "customerId": "cus_1",
+      "status": "active",
+      "priceId": "price_teams_test",
+      "quantity": 4,
+      "currentPeriodStart": "2026-01-01T00:00:00.000Z",
+      "currentPeriodEnd": "2026-02-01T00:00:00.000Z",
+      "cancelAtPeriodEnd": false,
+      "tier": "teams"
+    }
+  }
+}

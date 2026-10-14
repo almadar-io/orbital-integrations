@@ -1,0 +1,190 @@
+{
+  "service": "knowledge-engine",
+  "case": "mutate-delete-relationships-by-type",
+  "kind": "mutate",
+  "now": 1700000000123,
+  "input": {
+    "graph": {
+      "id": "g1",
+      "createdAt": 1000,
+      "updatedAt": 2000,
+      "version": 3,
+      "nodes": {
+        "a": {
+          "id": "a",
+          "type": "Concept",
+          "properties": {
+            "id": "a",
+            "name": "a",
+            "description": "a d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        },
+        "b": {
+          "id": "b",
+          "type": "Concept",
+          "properties": {
+            "id": "b",
+            "name": "b",
+            "description": "b d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        },
+        "c": {
+          "id": "c",
+          "type": "Concept",
+          "properties": {
+            "id": "c",
+            "name": "c",
+            "description": "c d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        }
+      },
+      "nodeTypes": {
+        "Graph": [],
+        "Concept": [
+          "a",
+          "b",
+          "c"
+        ],
+        "Layer": [],
+        "LearningGoal": [],
+        "Milestone": [],
+        "PracticeExercise": [],
+        "Lesson": [],
+        "ConceptMetadata": [],
+        "GraphMetadata": [],
+        "FlashCard": [],
+        "Story": [],
+        "Course": [],
+        "Assessment": [],
+        "Translation": [],
+        "LanguageConfig": [],
+        "Student": [],
+        "ScheduleSlot": [],
+        "Progress": [],
+        "Enrollment": [],
+        "AssessmentSubmission": [],
+        "Achievement": [],
+        "StudentPreferences": [],
+        "CourseCategory": [],
+        "CourseTemplate": []
+      },
+      "relationships": [
+        {
+          "id": "r1",
+          "source": "a",
+          "target": "b",
+          "type": "hasChild",
+          "direction": "forward"
+        },
+        {
+          "id": "r2",
+          "source": "a",
+          "target": "b",
+          "type": "hasParent",
+          "direction": "forward"
+        },
+        {
+          "id": "r3",
+          "source": "b",
+          "target": "c",
+          "type": "hasChild",
+          "direction": "forward"
+        }
+      ]
+    },
+    "op": {
+      "op": "deleteRelationshipsByType",
+      "type": "hasChild"
+    }
+  },
+  "output": {
+    "ok": true,
+    "result": 2,
+    "saved": {
+      "id": "g1",
+      "createdAt": 1000,
+      "updatedAt": 1700000000123,
+      "version": 3,
+      "nodes": {
+        "a": {
+          "id": "a",
+          "type": "Concept",
+          "properties": {
+            "id": "a",
+            "name": "a",
+            "description": "a d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        },
+        "b": {
+          "id": "b",
+          "type": "Concept",
+          "properties": {
+            "id": "b",
+            "name": "b",
+            "description": "b d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        },
+        "c": {
+          "id": "c",
+          "type": "Concept",
+          "properties": {
+            "id": "c",
+            "name": "c",
+            "description": "c d"
+          },
+          "createdAt": 1000,
+          "updatedAt": 1000
+        }
+      },
+      "nodeTypes": {
+        "Graph": [],
+        "Concept": [
+          "a",
+          "b",
+          "c"
+        ],
+        "Layer": [],
+        "LearningGoal": [],
+        "Milestone": [],
+        "PracticeExercise": [],
+        "Lesson": [],
+        "ConceptMetadata": [],
+        "GraphMetadata": [],
+        "FlashCard": [],
+        "Story": [],
+        "Course": [],
+        "Assessment": [],
+        "Translation": [],
+        "LanguageConfig": [],
+        "Student": [],
+        "ScheduleSlot": [],
+        "Progress": [],
+        "Enrollment": [],
+        "AssessmentSubmission": [],
+        "Achievement": [],
+        "StudentPreferences": [],
+        "CourseCategory": [],
+        "CourseTemplate": []
+      },
+      "relationships": [
+        {
+          "id": "r2",
+          "source": "a",
+          "target": "b",
+          "type": "hasParent",
+          "direction": "forward"
+        }
+      ]
+    }
+  }
+}

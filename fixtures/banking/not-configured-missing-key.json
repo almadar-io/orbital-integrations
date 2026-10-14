@@ -1,0 +1,17 @@
+{
+  "service": "banking",
+  "action": "listAccounts",
+  "case": "not-configured-missing-key",
+  "env": {
+    "GOCARDLESS_SECRET_ID": "test-id"
+  },
+  "params": {
+    "requisitionId": "r"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "NOT_CONFIGURED",
+    "message": "Integration not configured: banking. Set GOCARDLESS_SECRET_ID / GOCARDLESS_SECRET_KEY."
+  }
+}

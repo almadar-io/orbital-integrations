@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "get-icon-body",
+  "env": {},
+  "params": {
+    "iconId": "mdi:home"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/mdi.json?icons=home",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"prefix\":\"mdi\",\"icons\":{\"home\":{\"body\":\"<path d=\\\"M10 20v-6h4v6\\\"/>\"}},\"width\":24,\"height\":24}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "body": "<path d=\"M10 20v-6h4v6\"/>"
+    }
+  }
+}

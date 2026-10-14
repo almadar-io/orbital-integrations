@@ -1,0 +1,39 @@
+{
+  "service": "apikeys",
+  "case": "mint",
+  "env": {
+    "ALMADAR_API_KEY_SALT": "00112233445566778899"
+  },
+  "steps": [
+    {
+      "action": "mint",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "plaintext": "{{API_KEY_PREFIX}}1dd0206b7ab84cc87b8a39232c0ac1b4b7965592d060411d0dcf35ca90ea4fc6",
+          "keyHash": "e9ebf789d22e829429750948d3dacdb8d5c859ce42861a27e0fc26d8c7c9b718",
+          "lastFour": "4fc6"
+        }
+      }
+    },
+    {
+      "action": "mint",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "plaintext": "{{API_KEY_PREFIX}}a8fbfc2d5c11281c7182dff11b2ca59c36436f04071cfab893853c0722b7469a",
+          "keyHash": "406686174645698eb9219ec7ffed4ddccd54c7675bca575aecfc258dbd9e17f5",
+          "lastFour": "469a"
+        }
+      }
+    }
+  ]
+}

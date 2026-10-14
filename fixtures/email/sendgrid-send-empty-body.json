@@ -1,0 +1,42 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "sendgrid-send-empty-body",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": ""
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":{\"email\":\"noreply@almadar.test\"},\"subject\":\"Welcome\",\"personalizations\":[{\"to\":[{\"email\":\"ada@example.com\"}]}],\"content\":[{\"value\":\"\",\"type\":\"text/html\"}]}"
+      },
+      "response": {
+        "status": 202,
+        "body": "",
+        "headers": {
+          "x-message-id": "sg-msg-8"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "sg-msg-8",
+      "status": "sent"
+    }
+  }
+}

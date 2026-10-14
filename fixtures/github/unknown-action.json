@@ -1,0 +1,17 @@
+{
+  "service": "github",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for github.nope: action: Unknown action: nope"
+  }
+}

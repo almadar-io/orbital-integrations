@@ -1,0 +1,104 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-violations-keep-node-order",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "seedConceptId": "missing",
+    "nodes": {
+      "z-last": {
+        "id": "z-last",
+        "type": "Concept",
+        "properties": {}
+      },
+      "a-first": {
+        "id": "a-first",
+        "type": "Layer",
+        "properties": {}
+      },
+      "m-mid": {
+        "id": "m-mid",
+        "type": "Concept",
+        "properties": {
+          "id": "m-mid",
+          "name": "m-mid",
+          "description": "m-mid d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_01_SEED_MISSING",
+      "severity": "error",
+      "message": "seedConceptId \"missing\" does not reference an existing node."
+    },
+    {
+      "code": "KG_INV_02_NODE_NOT_INDEXED",
+      "severity": "warning",
+      "nodeId": "z-last",
+      "message": "Node \"z-last\" (type \"Concept\") exists but is not listed in nodeTypes."
+    },
+    {
+      "code": "KG_INV_02_NODE_NOT_INDEXED",
+      "severity": "warning",
+      "nodeId": "a-first",
+      "message": "Node \"a-first\" (type \"Layer\") exists but is not listed in nodeTypes."
+    },
+    {
+      "code": "KG_INV_02_NODE_NOT_INDEXED",
+      "severity": "warning",
+      "nodeId": "m-mid",
+      "message": "Node \"m-mid\" (type \"Concept\") exists but is not listed in nodeTypes."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "z-last",
+      "message": "Node \"z-last\" (Concept) is missing required property \"name\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "z-last",
+      "message": "Node \"z-last\" (Concept) is missing required property \"description\"."
+    },
+    {
+      "code": "KG_INV_13_MISSING_PROP",
+      "severity": "warning",
+      "nodeId": "a-first",
+      "message": "Node \"a-first\" (Layer) is missing required property \"layerNumber\"."
+    }
+  ]
+}

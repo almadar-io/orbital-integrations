@@ -1,0 +1,35 @@
+{
+  "service": "github",
+  "action": "getFile",
+  "case": "get-file-not-found",
+  "env": {
+    "GITHUB_TOKEN": "test-key"
+  },
+  "params": {
+    "owner": "acme",
+    "repo": "widgets",
+    "path": "missing.txt"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/contents/missing.txt",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 404,
+        "body": "{\"message\":\"Not Found\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "GitHub API request failed: Not Found"
+  }
+}

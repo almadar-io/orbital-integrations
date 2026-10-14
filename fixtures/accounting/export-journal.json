@@ -1,0 +1,36 @@
+{
+  "service": "accounting",
+  "action": "exportJournal",
+  "case": "export-journal",
+  "env": {},
+  "params": {
+    "entries": [
+      {
+        "date": "2026-01-02",
+        "account": "1200",
+        "description": "Sale, \"net\"",
+        "debit": 100,
+        "credit": 0,
+        "reference": "R-1"
+      },
+      {
+        "date": "2026-01-03",
+        "account": "8400",
+        "description": "Revenue",
+        "debit": 0,
+        "credit": 100,
+        "reference": "R-1"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "date,account,description,debit,credit,reference\r\n2026-01-02,1200,\"Sale, \"\"net\"\"\",100,0,R-1\r\n2026-01-03,8400,Revenue,0,100,R-1\r\n",
+      "filename": "journal-export-2027-12-31.csv",
+      "count": 2
+    }
+  },
+  "now": "2027-12-31T00:00:00.000Z"
+}

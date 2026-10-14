@@ -1,0 +1,33 @@
+{
+  "service": "drive",
+  "action": "listFiles",
+  "case": "refresh-token-needs-reauth",
+  "env": {
+    "GOOGLE_DRIVE_REFRESH_TOKEN": "test-refresh-token",
+    "OAUTH_CLIENT_ID": "test-client-id",
+    "OAUTH_CLIENT_SECRET": "test-client-secret"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://oauth2.googleapis.com/token",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "*/*"
+        },
+        "body": "refresh_token=test-refresh-token&client_id=test-client-id&client_secret=test-client-secret&grant_type=refresh_token"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":\"invalid_grant\",\"error_description\":\"reauth related error (invalid_rapt)\",\"error_subtype\":\"invalid_rapt\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "{\"error\":\"invalid_grant\",\"error_description\":\"reauth related error (invalid_rapt)\",\"error_subtype\":\"invalid_rapt\"}"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "service": "oauth",
+  "case": "mock-validation-wrong-type",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "refresh",
+      "params": {
+        "refreshToken": 5
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for oauth.refresh: refreshToken: Expected string, got number"
+      }
+    }
+  ]
+}

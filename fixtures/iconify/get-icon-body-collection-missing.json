@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "getIconBody",
+  "case": "get-icon-body-collection-missing",
+  "env": {},
+  "params": {
+    "iconId": "nope:thing"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/nope.json?icons=thing",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 404,
+        "body": "{\"error\":\"not found\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "body": null
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "service": "storage",
+  "case": "s3-aws-default-region",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "media"
+  },
+  "steps": [
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "media",
+        "key": "a/b.txt"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "https://media.s3.us-east-1.amazonaws.com/a/b.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=2090647512ab766c87756a3ff440a6270c0cae0fb1300423aa376dcf25bbaeaa&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+          "expiresAt": 1760003600000
+        }
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "",
+        "key": "d.txt",
+        "operation": "put"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "url": "https://media.s3.us-east-1.amazonaws.com/d.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=6d4480315d0a8d490b931b4e2cb3b1d2d1b5893a6da8f7c908e3f75d1017bc24&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject",
+          "expiresAt": 1760003600001
+        }
+      }
+    }
+  ]
+}

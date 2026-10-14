@@ -1,0 +1,51 @@
+{
+  "service": "otel",
+  "case": "unknown-span",
+  "env": {},
+  "steps": [
+    {
+      "action": "endSpan",
+      "params": {
+        "spanId": "nope"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ended": false
+        }
+      }
+    },
+    {
+      "action": "addEvent",
+      "params": {
+        "spanId": "nope",
+        "name": "x"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "added": false
+        }
+      }
+    },
+    {
+      "action": "getSpan",
+      "params": {
+        "spanId": "nope"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": null
+      }
+    }
+  ]
+}

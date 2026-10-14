@@ -1,0 +1,43 @@
+{
+  "service": "llm",
+  "action": "classify",
+  "case": "anthropic-classify",
+  "env": {
+    "ANTHROPIC_API_KEY": "test-key",
+    "ANTHROPIC_BASE_URL": "{base}"
+  },
+  "params": {
+    "text": "The invoice is overdue",
+    "categories": [
+      "billing",
+      "support"
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/messages",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "x-api-key": "<redacted>",
+          "anthropic-version": "2023-06-01"
+        },
+        "body": "{\"model\":\"claude-sonnet-4-5-20250929\",\"stream\":false,\"max_tokens\":8192,\"temperature\":0.1,\"messages\":[{\"role\":\"user\",\"content\":\"The invoice is overdue\"}],\"system\":[{\"type\":\"text\",\"text\":\"You are a text classifier. Classify the given text into one of these categories: billing, support. Return JSON with: category, confidence (0-1), and reasoning.\",\"cache_control\":{\"type\":\"ephemeral\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"msg_1\",\"type\":\"message\",\"role\":\"assistant\",\"model\":\"claude-sonnet-4-5-20250929\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"category\\\":\\\"billing\\\",\\\"confidence\\\":0.9,\\\"reasoning\\\":\\\"mentions an invoice\\\"}\"}],\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"usage\":{\"input_tokens\":3,\"output_tokens\":1}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "category": "billing",
+      "confidence": 0.9,
+      "reasoning": "mentions an invoice"
+    }
+  }
+}

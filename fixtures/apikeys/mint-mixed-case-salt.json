@@ -1,0 +1,24 @@
+{
+  "service": "apikeys",
+  "case": "mint-mixed-case-salt",
+  "env": {
+    "ALMADAR_API_KEY_SALT": "AbCdEf0123456789"
+  },
+  "steps": [
+    {
+      "action": "mint",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "plaintext": "{{API_KEY_PREFIX}}0ac386926ea356c91396029a6173f65b86a15009a4616def46ced59bbd8f07c3",
+          "keyHash": "1173dc2fe5ad9c77247842481c59feaf1df5c9a1bb4e47598a51f68acd181349",
+          "lastFour": "07c3"
+        }
+      }
+    }
+  ]
+}

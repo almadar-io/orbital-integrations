@@ -1,0 +1,20 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "validation-unknown-param",
+  "env": {},
+  "params": {
+    "url": "{base}/hooks/orders",
+    "event": "e",
+    "headers": {
+      "a": "b"
+    }
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for webhook.send: headers: Unknown parameter: headers (declared: event, payload, secret, url)"
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

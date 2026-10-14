@@ -1,0 +1,43 @@
+{
+  "service": "stripe",
+  "action": "createCustomer",
+  "case": "create-customer-with-display-name",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "email": "ada@example.com",
+    "almadarUid": "uid-7",
+    "displayName": "Ada Lovelace"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/customers",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "email=ada%40example.com&name=Ada%20Lovelace&metadata[almadarUid]=uid-7"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"cus_1\",\"object\":\"customer\",\"email\":\"ada@example.com\",\"metadata\":{\"almadarUid\":\"uid-7\"},\"name\":\"Ada Lovelace\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "customerId": "cus_1",
+      "email": "ada@example.com",
+      "almadarUid": "uid-7"
+    }
+  }
+}

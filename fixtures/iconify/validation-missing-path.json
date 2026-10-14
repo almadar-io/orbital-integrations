@@ -1,0 +1,13 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "validation-missing-path",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for iconify.svgExists: path: Missing required parameter: path"
+  }
+}

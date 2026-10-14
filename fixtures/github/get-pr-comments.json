@@ -1,0 +1,53 @@
+{
+  "service": "github",
+  "action": "getPRComments",
+  "case": "get-pr-comments",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "prNumber": 7
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/pulls/7/comments",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"id\":1,\"body\":\"Looks good\",\"user\":{\"login\":\"alice\"},\"created_at\":\"2026-01-02T04:05:06Z\"},{\"id\":2,\"body\":\"Needs a test\",\"user\":{\"login\":\"bob\"},\"created_at\":\"2026-01-02T04:05:06Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "comments": [
+        {
+          "id": 1,
+          "body": "Looks good",
+          "user": {
+            "login": "alice"
+          },
+          "created_at": "2026-01-02T04:05:06Z"
+        },
+        {
+          "id": 2,
+          "body": "Needs a test",
+          "user": {
+            "login": "bob"
+          },
+          "created_at": "2026-01-02T04:05:06Z"
+        }
+      ]
+    }
+  }
+}

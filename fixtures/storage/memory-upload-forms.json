@@ -1,0 +1,375 @@
+{
+  "service": "storage",
+  "case": "memory-upload-forms",
+  "env": {
+    "STORAGE_BUCKET": "dev-bucket"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "notes/a.txt",
+        "content": "hello"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "notes/a.txt",
+          "bucket": "b",
+          "size": 5,
+          "etag": "\"5d41402abc4b2a76b9719d911017c592\"",
+          "id": "notes/a.txt",
+          "url": "data:application/octet-stream;base64,aGVsbG8="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "notes/b.txt",
+        "content": "x",
+        "contentType": "text/markdown",
+        "metadata": {
+          "owner": "ada"
+        }
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "notes/b.txt",
+          "bucket": "b",
+          "size": 1,
+          "etag": "\"9dd4e461268c8034f5c8564e155c67a6\"",
+          "id": "notes/b.txt",
+          "url": "data:text/markdown;base64,eA=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "img/p.png",
+        "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "img/p.png",
+          "bucket": "b",
+          "size": 14,
+          "etag": "\"889541037126eeed978cc93426fb98b7\"",
+          "id": "img/p.png",
+          "url": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "txt/u.txt",
+        "content": "data:text/plain,hello%20world%20%E2%9C%93"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "txt/u.txt",
+          "bucket": "b",
+          "size": 15,
+          "etag": "\"c66b209f42b6db33bed461b09f6185b6\"",
+          "id": "txt/u.txt",
+          "url": "data:text/plain;base64,aGVsbG8gd29ybGQg4pyT"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "data/o.json",
+        "content": {
+          "a": 1,
+          "b": [
+            true,
+            null
+          ],
+          "c": "é"
+        }
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.upload: content: Expected string, got object"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "empty.txt",
+        "content": ""
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "empty.txt",
+          "bucket": "b",
+          "size": 0,
+          "etag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+          "id": "empty.txt",
+          "url": "data:application/octet-stream;base64,"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "",
+        "key": "fallback.txt",
+        "content": "uses the default bucket"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "fallback.txt",
+          "bucket": "dev-bucket",
+          "size": 23,
+          "etag": "\"61121321b748c02e407f10cead368e1f\"",
+          "id": "fallback.txt",
+          "url": "data:application/octet-stream;base64,dXNlcyB0aGUgZGVmYXVsdCBidWNrZXQ="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "name": "photo one (1).png",
+          "size": 14,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        },
+        "acl": "public"
+      },
+      "clockMs": 1760000000007,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "1760000000007-photo_one__1_.png",
+          "bucket": "b",
+          "size": 14,
+          "etag": "\"889541037126eeed978cc93426fb98b7\"",
+          "id": "1760000000007-photo_one__1_.png",
+          "url": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "name": "raw.bin",
+          "size": 3,
+          "type": "application/pdf",
+          "content": "AAEC"
+        }
+      },
+      "clockMs": 1760000000008,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "1760000000008-raw.bin",
+          "bucket": "b",
+          "size": 4,
+          "etag": "\"4799a3a832d3ca68864f7b49f61a5fdf\"",
+          "id": "1760000000008-raw.bin",
+          "url": "data:application/pdf;base64,QUFFQw=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "name": "big.png",
+          "size": 20,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        },
+        "maxSize": 10
+      },
+      "clockMs": 1760000000009,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Upload rejected: big.png is 20 bytes (max 10)"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "name": "edge.png",
+          "size": 10,
+          "type": "image/png",
+          "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        },
+        "maxSize": 10
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "1760000000010-edge.png",
+          "bucket": "b",
+          "size": 14,
+          "etag": "\"889541037126eeed978cc93426fb98b7\"",
+          "id": "1760000000010-edge.png",
+          "url": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "name": "empty.png",
+          "size": 0,
+          "type": "image/png"
+        }
+      },
+      "clockMs": 1760000000011,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Upload rejected: file payload for 'empty.png' carries no content — the uploader must include the base64 data URL"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "file": {
+          "size": 1
+        },
+        "key": "k",
+        "content": "falls back to the pair"
+      },
+      "clockMs": 1760000000012,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "k",
+          "bucket": "b",
+          "size": 22,
+          "etag": "\"8cc161e0b672e01220f5d4efd9608ba2\"",
+          "id": "k",
+          "url": "data:application/octet-stream;base64,ZmFsbHMgYmFjayB0byB0aGUgcGFpcg=="
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "only-key"
+      },
+      "clockMs": 1760000000013,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "upload requires either `file` (with content) or the `key` + `content` pair"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "content": "only content"
+      },
+      "clockMs": 1760000000014,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "upload requires either `file` (with content) or the `key` + `content` pair"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "",
+        "content": "x"
+      },
+      "clockMs": 1760000000015,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "upload requires either `file` (with content) or the `key` + `content` pair"
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "b",
+        "key": "bad-uri",
+        "content": "data:text/plain,%E0%A4%A"
+      },
+      "clockMs": 1760000000016,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "URI malformed"
+      }
+    }
+  ]
+}

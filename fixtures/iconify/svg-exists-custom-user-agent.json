@@ -1,0 +1,35 @@
+{
+  "service": "iconify",
+  "action": "svgExists",
+  "case": "svg-exists-custom-user-agent",
+  "env": {
+    "ICONIFY_USER_AGENT": "Probe/3.1",
+    "ICONIFY_TIMEOUT_MS": "2500"
+  },
+  "params": {
+    "path": "mdi/home.svg"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/mdi/home.svg",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Probe/3.1"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 2L2 7l10 5 10-5z\"/></svg>"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "exists": true
+    }
+  }
+}

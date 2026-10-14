@@ -1,0 +1,23 @@
+{
+  "service": "oauth",
+  "case": "mock-validation-unknown-param",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "revoke",
+      "params": {
+        "token": "t",
+        "bogus": 1
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for oauth.revoke: bogus: Unknown parameter: bogus (declared: token)"
+      }
+    }
+  ]
+}

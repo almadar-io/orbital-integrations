@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "setPreferences",
+  "case": "preferences-set-unknown-model",
+  "env": {},
+  "params": {
+    "expandModel": "gpt-nope"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "expandModel: unknown model; expected one of qwen3-30b-a3b, deepseek-v4-flash"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

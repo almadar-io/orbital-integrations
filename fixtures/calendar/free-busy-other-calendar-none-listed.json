@@ -1,0 +1,52 @@
+{
+  "service": "calendar",
+  "action": "freeBusy",
+  "case": "free-busy-other-calendar-none-listed",
+  "env": {
+    "GOOGLE_CALENDAR_SA_KEY": "eyJjbGllbnRfZW1haWwiOiJyZWNvcmRlckBhbG1hZGFyLXRlc3QuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJwcml2YXRlX2tleSI6Ii0tLS0tQkVHSU4gUFJJVkFURSBLRVktLS0tLVxuTUlJRXZRSUJBREFOQmdrcWhraUc5dzBCQVFFRkFBU0NCS2N3Z2dTakFnRUFBb0lCQVFDZ0lncGhjSW1EUm9CcVxuRnRKQTlUWW85NHRVR3k5MW16ckY4NDNiMUUxM0F1UGpoN0lONG9WTjd3ZEtuejYvTERRd3gvRFRBMjgzUkhtNFxuYnMzZnU3U3BKZUIrUURyOWp2OEp2RzZhS0x4T3k1Y1JOMThNMCtwLzNhWTdGZU9Eazl0VC83aWloeHh4UFV0SVxuc0VaQXZyV29OeW9xWnFHYzluVndVSjBTRjlMRWxnWDY3M2dXY3Fld0lWR3U1elpSK0NRWlQ3M21QMitJTWRKclxuMG9ZbzZINUtNclZMTTF4QVNCekpVWGhkZndVckVzUnNUUjhVMlFDcEg3dkdueWw1TGQ0b3JEcjUvZ3VlVy96aVxuRVUyNlUvOU1KeXBRd1JOMzlDL0VPZGRGSmxPM3g0WTVTMnF3YndmVEVRd2FtYVg2cnJQZE1lYWxHZ0tjck9wY1xuYWFUMHJqalhBZ01CQUFFQ2dnRUFEYjR1SnVPcUlaYVU0Y1g0b0hPTEJPUU4xSmVLc0t5MFZCWE5lRzdWZ1IvQlxuNEI2ZXROdGFkbkJMcjJkUVVzYmY2Y25YREwwUU4rMk1CcnlYdFpwZDdHQmdUbVdEeW93UnJrdTZNRWZMdFhWNlxuanhNeCtKOWRVa0Q3Q2JvY3J3ZXEvS0FIUUFlWmRNeCtZQXdrMDF5cXFYZW1pa0lKbjdkMUo4RDdZZmlpY1pXTlxucm9xQXBJQ25KbVFzWEREUW51SXMvUFBSb0dFOEpSWUxmWGFaR2Q3Z2MrSUI0UXkzclg2b013SGErR0kvREVZVlxub0pXbUR6Z211Nm1PQjhOSUdRelQ5ZTduZHhSM09lem42NWFacEs2OERLZGs2RUx0UEV0SHJzTWN2aE4vc21aZVxuZCtBMHBkV2FjdDZEZDV4UUUraXhVWFBnOGhuUmhYVjJSVU50NUpCMXJRS0JnUURhWXNaRmZpdU96bTZ0VmRuclxubWpBdkRDQkkyKyszbjl3L2ZhaDFlbzdYdlljSVNJcUJqdW1PaVNjNFZZMDF6WC9rZHExZzhCbm4yZzlGK1ZjVFxuNmo4OE51OFJiREg5MzZzOW9SNGl2QXF1aXU4bVI4VVFBSEltZDNzOW8wMnhmRGVHb2Q2ZDBCaXd5bS96TTJYVFxueE54Um1NbmhqMFVVaXdrMy9JL2cvam1vVFFLQmdRQzd0cjBkRU9FaTVKaVlpdmxkWkpEZDhsenNXV1o1ajFmdlxuOEsrM3JYYXlnaGNVWlQyemhIUVRWRms1Q0pnOVFzNEd1dzVpTDZrWHJmQmMrMDVUZlVhUlFFZ09jMG1qaWt2a1xuZkVGVVpqUDdKVlQ3dm9kNDNQWGxicEpXSCttSHVZWFBHMUhzS29uT0F2Ymd4dnphWHNBWlpBMmJ6MFZ3RjlTTFxuL3JCL3RvazNzd0tCZ1FEVi8weUM5R3dDZUU4RUU4aURrb2Y4MGtrZ25FUi9EMnRuMjk2am9BRXhiMHRPMXFiQ1xuNWlQL3hHNW1TWThpVmNrcE94SVNsN1VLK1NkV1Rrc0IvTjBTU0ZKa0pEMm9wUERNWjRGOFQvKzNvZlZPOGEwdFxuVFFLT3B5NWc3QkZLQm9yeXB0UGFtUHhZNFVacWJzY3RpUTdMOW9oOU8wTmFLaFJTaEc4STdwWFpVUUtCZ0F6RVxuejNSc3M0UFdIUE16Y09jRGNqOUd2ejlzaldYemREM2tGMi9kSXRmZHRZZ3pvdERWVDdnSTR0RFlYdEs3K3B2R1xubWFIZ01CWm1SSlZ1bXROZkVDL05PWm1TQ2c1UDEvM0EzZ2pKc3Z1QWZKbHJTbmZVUC8zTldiTDJGTUtnd2hObVxuZmxvY1FxZDYyQ1JPSk9FTjFPOWxPTy9DVjZ6YVVpRDd3REhQenVHMUFvR0FJbExHdHZ0TkNxdzEwWG5GV0drbVxueHErcmMzbmhtOWVpYy9wbUo1bmtqTzdRRzNhZFFlcFRSd0lXaVRESml2RmVLTWZienBhM1crZTh0NlBkVHVKQ1xuRTRZUlBIQkNsVTZzd3kzUytZUURBSVNob3VQSVNlaEVZRzdjKzFPRU91aS8waURmTDZMaWpGWkZ6eWZOOFpBelxuRlk4MkJIeDIxUkpkbXRyeHhOMWt4K0U9XG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXG4ifQ=="
+  },
+  "params": {
+    "timeMin": "2026-01-01T00:00:00Z",
+    "timeMax": "2026-01-02T00:00:00Z",
+    "calendarId": "team@group.calendar.google.com"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/oauth2/v4/token",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json"
+        },
+        "body": "grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJyZWNvcmRlckBhbG1hZGFyLXRlc3QuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2FsZW5kYXIiLCJhdWQiOiJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjQvdG9rZW4iLCJleHAiOjE3NjAwMDM2MDAsImlhdCI6MTc2MDAwMDAwMH0.CWQp6ugPYhjIuNEDjp0aUjG9VKAg7gcBcazwwCjZw10nrk53dDnjtK4QpTSQKun33kKzhF_4SUUp0hHK48kgn7XydHfO743JlIcTR5cAH1-ls9wmDNKVwGPOfXPhBjWfgF4x4x-hf0b4yB8BJ1ljsye-GZjxfaHJRAJvl7LFcOTqvEjvBSGpEvhzzMLriKya7P-2Va9VG21AxdcYO4gEsDb0nnCLG847yUSRoWaL9ESVOH2mj1m9Q2boJQ_kNgd8NxLrZnbzeAzq01ZYFqGXZdAp1df-7NnFtIfmxAz-uTc3r43ibaJZXatAqajyg2Lrmiqsc3g5EvAv1423DOQ4Jg"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"access_token\":\"ya29.test-token\",\"expires_in\":3599,\"token_type\":\"Bearer\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/calendar/v3/freeBusy",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"timeMin\":\"2026-01-01T00:00:00Z\",\"timeMax\":\"2026-01-02T00:00:00Z\",\"items\":[{\"id\":\"team@group.calendar.google.com\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"calendars\":{\"primary\":{\"busy\":[]}}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "busy": []
+    }
+  }
+}

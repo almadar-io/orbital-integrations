@@ -1,0 +1,245 @@
+{
+  "service": "database",
+  "case": "live-pg-vectors",
+  "queries": [
+    {
+      "sql": "SELECT 1::int2 a, 2::int4 b, 3::int8 c, 1.5::float4 d, 2.25::float8 e, 12345.6789::numeric f, true g, 'héllo'::text h, 'x'::varchar(3) i, 'ab'::char(4) j, '{\"a\":[1,2]}'::jsonb k, '{\"b\":1}'::json l, 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::uuid m, '2025-10-09 08:53:20.123456+00'::timestamptz n, '2025-10-09 08:53:20'::timestamp o, '2025-10-09'::date p, '\\x0102'::bytea q, ARRAY[1,2,NULL]::int4[] r, ARRAY['a','b']::text[] s, NULL::int4 t, '12:34:56'::time u, 0.1::float4 v, 'NaN'::float8 w, (-12.50)::numeric x, 123456789012345678::int8 y, 'a'::\"char\" z",
+      "params": []
+    },
+    {
+      "sql": "SELECT $1::int + $2::int AS sum, $3::text AS t, $4::boolean AS b, $5 AS u, $6::numeric AS n, $7::jsonb AS j",
+      "params": [
+        1,
+        2,
+        "x",
+        true,
+        "unknown-typed",
+        10.5,
+        "{\"a\":1}"
+      ]
+    },
+    {
+      "sql": "SELECT $1::text AS a, $2::int AS b",
+      "params": [
+        null,
+        null
+      ]
+    },
+    {
+      "sql": "SELECT generate_series(1,3) AS n",
+      "params": []
+    },
+    {
+      "sql": "SELECT * FROM (VALUES (1,'a'),(2,'b')) AS t(id,name) WHERE id > $1",
+      "params": [
+        1
+      ]
+    },
+    {
+      "sql": "SELECT 1 WHERE false",
+      "params": []
+    },
+    {
+      "sql": "SELECT * FROM nope_table",
+      "params": []
+    },
+    {
+      "sql": "SELECT 0.000001::numeric a, 100000000::numeric b, 1e20::numeric c, 0::numeric d, 12345678901234567890.123456789::numeric e, (-0.5)::numeric f",
+      "params": []
+    },
+    {
+      "sql": "SELECT '{1,2}'::int8[] a, '{{1,2},{3,4}}'::int4[] b, '{}'::int4[] c, '{\"a b\",NULL}'::text[] d, ARRAY[true,false] e, ARRAY[1.5,2.5]::float8[] f",
+      "params": []
+    },
+    {
+      "sql": "SELECT ARRAY[$1,$2]::text[] AS a",
+      "params": [
+        "x",
+        "y"
+      ]
+    },
+    {
+      "sql": "SELECT '1999-12-31 23:59:59.999999+00'::timestamptz a, '1970-01-01'::date b",
+      "params": []
+    }
+  ],
+  "results": [
+    {
+      "rows": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": "3",
+          "d": 1.5,
+          "e": 2.25,
+          "f": "12345.6789",
+          "g": true,
+          "h": "héllo",
+          "i": "x",
+          "j": "ab  ",
+          "k": {
+            "a": [
+              1,
+              2
+            ]
+          },
+          "l": {
+            "b": 1
+          },
+          "m": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+          "n": "2025-10-09T08:53:20.123Z",
+          "o": "2025-10-09T08:53:20.000Z",
+          "p": "2025-10-09T00:00:00.000Z",
+          "q": {
+            "type": "Buffer",
+            "data": [
+              1,
+              2
+            ]
+          },
+          "r": [
+            1,
+            2,
+            null
+          ],
+          "s": [
+            "a",
+            "b"
+          ],
+          "t": null,
+          "u": "12:34:56",
+          "v": 0.1,
+          "w": null,
+          "x": "-12.50",
+          "y": "123456789012345678",
+          "z": "a"
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "sum": 3,
+          "t": "x",
+          "b": true,
+          "u": "unknown-typed",
+          "n": "10.5",
+          "j": {
+            "a": 1
+          }
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "a": null,
+          "b": null
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "n": 1
+        },
+        {
+          "n": 2
+        },
+        {
+          "n": 3
+        }
+      ],
+      "rowCount": 3
+    },
+    {
+      "rows": [
+        {
+          "id": 2,
+          "name": "b"
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [],
+      "rowCount": 0
+    },
+    {
+      "error": {
+        "message": "relation \"nope_table\" does not exist",
+        "code": "42P01"
+      }
+    },
+    {
+      "rows": [
+        {
+          "a": "0.000001",
+          "b": "100000000",
+          "c": "100000000000000000000",
+          "d": "0",
+          "e": "12345678901234567890.123456789",
+          "f": "-0.5"
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "a": [
+            "1",
+            "2"
+          ],
+          "b": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "c": [],
+          "d": [
+            "a b",
+            null
+          ],
+          "e": [
+            true,
+            false
+          ],
+          "f": [
+            1.5,
+            2.5
+          ]
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "a": [
+            "x",
+            "y"
+          ]
+        }
+      ],
+      "rowCount": 1
+    },
+    {
+      "rows": [
+        {
+          "a": "1999-12-31T23:59:59.999Z",
+          "b": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "rowCount": 1
+    }
+  ]
+}

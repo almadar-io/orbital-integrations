@@ -1,0 +1,43 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "openai-generate-gpt5-completion-tokens",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "userPrompt": "Say hi",
+    "model": "gpt-5.1",
+    "maxTokens": 32
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-5.1\",\"stream\":false,\"messages\":[{\"role\":\"developer\",\"content\":\"You are a helpful assistant.\"},{\"role\":\"user\",\"content\":\"Say hi\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"hi\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "hi",
+      "usage": {
+        "promptTokens": 3,
+        "completionTokens": 1,
+        "totalTokens": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "service": "queue",
+  "case": "same-instant-same-draw-collides",
+  "env": {},
+  "steps": [
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "dup",
+        "payload": "first"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.111111111111
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000000_3zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "dup",
+        "payload": "second"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.111111111111
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000000_3zzzzz",
+          "position": 1
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "dup"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 1,
+          "pending": 1,
+          "processing": 0
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "dup"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000000_3zzzzz",
+            "payload": "second",
+            "enqueuedAt": 1760000000000,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "dup"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": null
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "dup"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": null
+        }
+      }
+    }
+  ]
+}

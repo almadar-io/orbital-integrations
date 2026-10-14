@@ -1,0 +1,39 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "create-pr-forbidden",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "title": "Add widgets",
+    "body": "x",
+    "baseBranch": "main",
+    "headBranch": "feature/x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/acme/widgets/pulls",
+        "headers": {
+          "content-type": "text/plain;charset=UTF-8",
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"title\":\"Add widgets\",\"body\":\"x\",\"base\":\"main\",\"head\":\"feature/x\",\"draft\":false}"
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"message\":\"Resource not accessible by personal access token\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "GitHub API authentication failed: Resource not accessible by personal access token"
+  }
+}

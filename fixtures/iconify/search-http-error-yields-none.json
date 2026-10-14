@@ -1,0 +1,32 @@
+{
+  "service": "iconify",
+  "action": "search",
+  "case": "search-http-error-yields-none",
+  "env": {},
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/search?query=x&limit=1",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 429,
+        "body": "{\"error\":\"rate limited\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "icons": []
+    }
+  }
+}

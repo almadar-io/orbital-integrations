@@ -1,0 +1,35 @@
+{
+  "service": "esign",
+  "action": "getEnvelopeStatus",
+  "case": "get-envelope-status-unauthorized",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": "env-1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/restapi/v2.1/accounts/acct-1/envelopes/env-1",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 401,
+        "body": "{\"errorCode\":\"AUTHORIZATION_INVALID_TOKEN\",\"message\":\"The access token provided is expired.\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "DocuSign error 401: {\"errorCode\":\"AUTHORIZATION_INVALID_TOKEN\",\"message\":\"The access token provided is expired.\"}"
+  }
+}

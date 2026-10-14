@@ -1,0 +1,120 @@
+{
+  "service": "knowledge",
+  "action": "openConnection",
+  "case": "open-connection-badges-fall-back-to-the-topic",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "peerRef": "tok-1",
+    "originKind": "path",
+    "canonicalId": "p1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/peer-tokens/tok-1\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/peer-tokens/tok-1\",\"fields\":{\"peerUid\":{\"stringValue\":\"learner-2\"},\"issuedTo\":{\"stringValue\":\"learner-1\"},\"nodeKey\":{\"stringValue\":\"concept:light\"},\"expiresAt\":{\"integerValue\":\"1700000060000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.4,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You pick discussion sub-topics for a knowledge peer-connection. Return JSON {\\\"labels\\\":[...]} with 3-5 short strings (max 6 words each): the most useful sub-topics two learners might discuss for the given topic. No prose, no numbering.\"},{\"role\":\"user\",\"content\":\"Topic (path): p1\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"bad request\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.4,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You pick discussion sub-topics for a knowledge peer-connection. Return JSON {\\\"labels\\\":[...]} with 3-5 short strings (max 6 words each): the most useful sub-topics two learners might discuss for the given topic. No prose, no numbering.\"},{\"role\":\"user\",\"content\":\"Topic (path): p1\\n\\n[Previous attempt failed with: 400 bad request]\\nPlease output valid JSON that matches the expected schema.\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"bad request\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.4,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You pick discussion sub-topics for a knowledge peer-connection. Return JSON {\\\"labels\\\":[...]} with 3-5 short strings (max 6 words each): the most useful sub-topics two learners might discuss for the given topic. No prose, no numbering.\"},{\"role\":\"user\",\"content\":\"Topic (path): p1\\n\\n[Previous attempt failed with: 400 bad request]\\nPlease output valid JSON that matches the expected schema.\"}]}"
+      },
+      "response": {
+        "status": 400,
+        "body": "{\"error\":{\"message\":\"bad request\"}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"callerUid\":{\"stringValue\":\"learner-1\"},\"peerUid\":{\"stringValue\":\"learner-2\"},\"participants\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"learner-1\"},{\"stringValue\":\"learner-2\"}]}},\"origin\":{\"mapValue\":{\"fields\":{\"kind\":{\"stringValue\":\"path\"},\"canonicalId\":{\"stringValue\":\"p1\"}}}},\"badges\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"b0\"},\"label\":{\"stringValue\":\"p1\"},\"kind\":{\"stringValue\":\"subtopic\"}}}}]}},\"activeBadgeId\":{\"stringValue\":\"b0\"},\"status\":{\"stringValue\":\"active\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"lastActivityAt\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/connections/CCCCCCCCCCCCCCCCCCCC\"},\"currentDocument\":{\"exists\":false}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "connectionId": "CCCCCCCCCCCCCCCCCCCC"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ],
+    [
+      40,
+      3
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

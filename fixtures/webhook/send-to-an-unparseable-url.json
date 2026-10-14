@@ -1,0 +1,17 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "send-to-an-unparseable-url",
+  "env": {},
+  "params": {
+    "url": "not a url",
+    "event": "ping"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "Invalid URL"
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

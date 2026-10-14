@@ -1,0 +1,93 @@
+{
+  "service": "knowledge",
+  "action": "conceptIcon",
+  "case": "concept-icon-devicon",
+  "env": {},
+  "params": {
+    "label": "TypeScript"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:typescript\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:typescript\",\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/devicon/typescript.svg",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/devicon.json?icons=typescript",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"prefix\":\"devicon\",\"icons\":{\"typescript\":{\"body\":\"<path fill=\\\"#007acc\\\"/>\"}}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"label\":{\"stringValue\":\"TypeScript\"},\"icon\":{\"stringValue\":\"devicon:typescript\"},\"tone\":{\"stringValue\":\"dark\"},\"fetchedAt\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:typescript\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "icon": "devicon:typescript",
+      "tone": "dark"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

@@ -1,0 +1,16 @@
+{
+  "service": "email",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "SENDGRID_API_KEY": "test-key",
+    "FROM_EMAIL": "noreply@almadar.test"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for email.nope: action: Unknown action: nope"
+  }
+}

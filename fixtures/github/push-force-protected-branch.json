@@ -1,0 +1,20 @@
+{
+  "service": "github",
+  "action": "push",
+  "case": "push-force-protected-branch",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_WORK_DIR": "{workdir}"
+  },
+  "params": {
+    "branchName": "Main",
+    "force": true
+  },
+  "setup": "git-repo",
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Force push to protected branch 'Main' is not allowed"
+  }
+}

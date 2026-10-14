@@ -1,0 +1,123 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-lesson-wrong-type-and-empty-content",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "c1": {
+        "id": "c1",
+        "type": "Concept",
+        "properties": {
+          "id": "c1",
+          "name": "c1",
+          "description": "c1 d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      },
+      "les1": {
+        "id": "les1",
+        "type": "Lesson",
+        "properties": {
+          "content": "",
+          "generatedAt": 1
+        }
+      },
+      "les2": {
+        "id": "les2",
+        "type": "Lesson",
+        "properties": {
+          "content": "text",
+          "generatedAt": 1
+        }
+      },
+      "les3": {
+        "id": "les3",
+        "type": "Lesson",
+        "properties": {
+          "content": 7,
+          "generatedAt": 1
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "c1"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [
+        "les1",
+        "les2",
+        "les3"
+      ],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "c1",
+        "target": "c1",
+        "type": "hasLesson",
+        "direction": "forward"
+      },
+      {
+        "id": "r2",
+        "source": "c1",
+        "target": "les1",
+        "type": "hasLesson",
+        "direction": "forward"
+      },
+      {
+        "id": "r3",
+        "source": "c1",
+        "target": "les2",
+        "type": "hasLesson",
+        "direction": "forward"
+      },
+      {
+        "id": "r4",
+        "source": "c1",
+        "target": "les3",
+        "type": "hasLesson",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_05_LESSON_TYPE",
+      "severity": "error",
+      "nodeId": "c1",
+      "message": "hasLesson target \"c1\" is type \"Concept\", expected \"Lesson\"."
+    },
+    {
+      "code": "KG_INV_05_LESSON_EMPTY",
+      "severity": "warning",
+      "nodeId": "les1",
+      "message": "Lesson \"les1\" has empty content."
+    }
+  ]
+}

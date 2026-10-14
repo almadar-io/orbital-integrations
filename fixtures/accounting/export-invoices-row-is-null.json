@@ -1,0 +1,18 @@
+{
+  "service": "accounting",
+  "action": "exportInvoices",
+  "case": "export-invoices-row-is-null",
+  "env": {},
+  "params": {
+    "invoices": [
+      null
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "invoices export: every row must be an object"
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

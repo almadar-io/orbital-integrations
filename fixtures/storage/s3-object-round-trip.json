@@ -1,0 +1,371 @@
+{
+  "service": "storage",
+  "case": "s3-object-round-trip",
+  "env": {
+    "STORAGE_ACCESS_KEY_ID": "test-access-key-id",
+    "STORAGE_SECRET_ACCESS_KEY": "test-key",
+    "STORAGE_BUCKET": "media",
+    "STORAGE_ENDPOINT": "http://s3.recorded.test:9000"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "key": "a/one.txt",
+        "content": "hello",
+        "contentType": "text/plain"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/a/one.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "text/plain",
+              "authorization": "<redacted>"
+            },
+            "body": "hello"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {
+              "etag": "\"9b2cf535f27731c974343645a3985328\""
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "a/one.txt",
+          "bucket": "media",
+          "size": 5,
+          "etag": "\"5d41402abc4b2a76b9719d911017c592\"",
+          "id": "a/one.txt",
+          "url": "http://s3.recorded.test:9000/media/a/one.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=a23999793e7fa61edbb972aa77cffbbbb0b408239ddbde08ebe776001631249b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "key": "a/file name+plus.txt",
+        "content": "x",
+        "acl": "public"
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/a/file%20name%2Bplus.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "application/octet-stream",
+              "authorization": "<redacted>"
+            },
+            "body": "x"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {
+              "etag": "\"1\""
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "a/file name+plus.txt",
+          "bucket": "media",
+          "size": 1,
+          "etag": "\"9dd4e461268c8034f5c8564e155c67a6\"",
+          "id": "a/file name+plus.txt",
+          "url": "http://s3.recorded.test:9000/media/a/file name+plus.txt"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "media",
+        "key": "private.json",
+        "content": "{\"a\":1}"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/private.json?x-id=PutObject",
+            "headers": {
+              "content-type": "application/octet-stream",
+              "authorization": "<redacted>"
+            },
+            "body": "{\"a\":1}"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {
+              "etag": "\"2\""
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "private.json",
+          "bucket": "media",
+          "size": 7,
+          "etag": "\"bb6cb5c68df4652941caf652a366f2d8\"",
+          "id": "private.json",
+          "url": "http://s3.recorded.test:9000/media/private.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=92a2c31be50404eb45efca6743e90b8640db27983d4054c3d1889dc223ea7496&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+        }
+      }
+    },
+    {
+      "action": "upload",
+      "params": {
+        "bucket": "",
+        "key": "default-bucket.txt",
+        "content": "d"
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "PUT",
+            "url": "http://s3.recorded.test:9000/media/default-bucket.txt?x-id=PutObject",
+            "headers": {
+              "content-type": "application/octet-stream",
+              "authorization": "<redacted>"
+            },
+            "body": "d"
+          },
+          "response": {
+            "status": 200,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "key": "default-bucket.txt",
+          "bucket": "media",
+          "size": 1,
+          "etag": "\"8277e0910d750195b448797616e091ad\"",
+          "id": "default-bucket.txt",
+          "url": "http://s3.recorded.test:9000/media/default-bucket.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=test-access-key-id%2F20251009%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251009T085320Z&X-Amz-Expires=3600&X-Amz-Signature=64dfd2fa6959f9a66761f5dbc0fe7cd0937f4ff73a637aae12ffa224afe0cbd4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+        }
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "media",
+        "key": "a/one.txt"
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/a/one.txt?x-id=GetObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "hello from s3",
+            "headers": {
+              "content-type": "text/plain",
+              "etag": "\"3\""
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "content": "aGVsbG8gZnJvbSBzMw==",
+          "contentType": "text/plain",
+          "size": 13,
+          "metadata": {}
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "media",
+        "prefix": "a/",
+        "maxKeys": 2
+      },
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/?list-type=2&max-keys=2&prefix=a%2F",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>media</Name><Prefix></Prefix><KeyCount>2</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>true</IsTruncated><NextContinuationToken>token-2==</NextContinuationToken><Contents><Key>a/one.txt</Key><LastModified>2025-10-09T08:53:20.000Z</LastModified><ETag>&quot;abc&quot;</ETag><Size>5</Size><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>a/two & three.txt</Key><LastModified>2025-10-10T01:02:03.456Z</LastModified><ETag>&quot;abc&quot;</ETag><Size>12</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "a/one.txt",
+              "size": 5,
+              "lastModified": 1760000000000
+            },
+            {
+              "key": "a/two & three.txt",
+              "size": 12,
+              "lastModified": 1760058123456
+            }
+          ],
+          "truncated": true,
+          "nextToken": "token-2=="
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "media"
+      },
+      "clockMs": 1760000000060,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/?list-type=2&max-keys=1000",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>media</Name><Prefix></Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "media",
+        "prefix": "p/",
+        "maxKeys": 5,
+        "continuationToken": "token-2=="
+      },
+      "clockMs": 1760000000065,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "http://s3.recorded.test:9000/media/?continuation-token=token-2%3D%3D&list-type=2&max-keys=5&prefix=p%2F",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ListBucketResult xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\"><Name>media</Name><Prefix></Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>p/x.txt</Key><LastModified>2025-01-01T00:00:00Z</LastModified><ETag>&quot;abc&quot;</ETag><Size>0</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>",
+            "headers": {
+              "content-type": "application/xml"
+            }
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "p/x.txt",
+              "size": 0,
+              "lastModified": 1735689600000
+            }
+          ],
+          "truncated": false
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": "media",
+        "key": "a/one.txt"
+      },
+      "clockMs": 1760000000070,
+      "randoms": [],
+      "exchanges": [
+        {
+          "request": {
+            "method": "DELETE",
+            "url": "http://s3.recorded.test:9000/media/a/one.txt?x-id=DeleteObject",
+            "headers": {
+              "authorization": "<redacted>"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 204,
+            "body": "",
+            "headers": {}
+          }
+        }
+      ],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    }
+  ]
+}

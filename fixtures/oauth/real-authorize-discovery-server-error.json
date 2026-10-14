@@ -1,0 +1,44 @@
+{
+  "service": "oauth",
+  "case": "real-authorize-discovery-server-error",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [
+        {
+          "request": {
+            "method": "GET",
+            "url": "https://accounts.google.com/.well-known/openid-configuration",
+            "headers": {
+              "accept": "application/json"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 500,
+            "body": "upstream down"
+          }
+        }
+      ],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "unexpected HTTP response status code"
+      }
+    }
+  ]
+}

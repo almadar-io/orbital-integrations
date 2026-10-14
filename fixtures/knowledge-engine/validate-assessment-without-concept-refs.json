@@ -1,0 +1,68 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-assessment-without-concept-refs",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "as1": {
+        "id": "as1",
+        "type": "Assessment",
+        "properties": {
+          "title": "t",
+          "conceptRefs": []
+        }
+      },
+      "as2": {
+        "id": "as2",
+        "type": "Assessment",
+        "properties": {
+          "title": "t",
+          "conceptRefs": [
+            "c"
+          ]
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [
+        "as1",
+        "as2"
+      ],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": [
+    {
+      "code": "KG_INV_09_ASSESSMENT_NO_CONCEPTS",
+      "severity": "warning",
+      "nodeId": "as1",
+      "message": "Assessment \"as1\" has no conceptRefs."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "service": "oauth",
+  "case": "mock-unknown-action",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "nope",
+      "params": {},
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for oauth.nope: action: Unknown action: nope"
+      }
+    }
+  ]
+}

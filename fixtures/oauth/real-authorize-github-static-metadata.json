@@ -1,0 +1,31 @@
+{
+  "service": "oauth",
+  "case": "real-authorize-github-static-metadata",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_CLIENT_ID": "client-id-1",
+    "OAUTH_CLIENT_SECRET": "test-key",
+    "OAUTH_REDIRECT_URI": "https://app.example.com/default-callback"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "github",
+        "scopes": [
+          "repo",
+          "read:user"
+        ],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://github.com/login/oauth/authorize?redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&scope=repo+read%3Auser&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256&client_id=client-id-1&response_type=code",
+          "state": "<state>"
+        }
+      }
+    }
+  ]
+}

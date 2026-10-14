@@ -1,0 +1,191 @@
+{
+  "service": "storage",
+  "case": "memory-upload-many",
+  "env": {
+    "STORAGE_BUCKET": "dev-bucket"
+  },
+  "steps": [
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": [
+          {
+            "name": "a.png",
+            "size": 14,
+            "type": "image/png",
+            "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+          },
+          {
+            "name": "b c.png",
+            "size": 14,
+            "type": "image/png",
+            "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+          }
+        ],
+        "acl": "public"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "1760000000000-a.png",
+              "key": "1760000000000-a.png",
+              "url": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM=",
+              "name": "a.png",
+              "sizeBytes": 14,
+              "mimeType": "image/png"
+            },
+            {
+              "id": "1760000000000-b_c.png",
+              "key": "1760000000000-b_c.png",
+              "url": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM=",
+              "name": "b c.png",
+              "sizeBytes": 14,
+              "mimeType": "image/png"
+            }
+          ],
+          "count": 2
+        }
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": [
+          {
+            "name": "skip",
+            "size": 1,
+            "type": "x"
+          },
+          7,
+          null,
+          {
+            "name": "ok.txt",
+            "size": 2,
+            "type": "text/plain",
+            "content": "hi"
+          }
+        ]
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Upload rejected: file payload for 'skip' carries no content — the uploader must include the base64 data URL"
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": [
+          {
+            "name": "ok.txt",
+            "size": 2,
+            "type": "text/plain",
+            "content": "hi"
+          },
+          7,
+          "x"
+        ]
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "items": [
+            {
+              "id": "1760000000002-ok.txt",
+              "key": "1760000000002-ok.txt",
+              "url": "data:text/plain;base64,aGk=",
+              "name": "ok.txt",
+              "sizeBytes": 2,
+              "mimeType": "text/plain"
+            }
+          ],
+          "count": 1
+        }
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": []
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "uploadMany requires a non-empty `files` array (UploadDropZone batch shape)"
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": [
+          {
+            "name": "big.png",
+            "size": 20,
+            "type": "image/png",
+            "content": "data:image/png;base64,ZmFrZS1wbmctYnl0ZXM="
+          }
+        ],
+        "maxSize": 5
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Upload rejected: big.png is 20 bytes (max 5)"
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "keys": [
+            {
+              "key": "1760000000000-a.png",
+              "size": 14,
+              "lastModified": 1760000000000
+            },
+            {
+              "key": "1760000000000-b_c.png",
+              "size": 14,
+              "lastModified": 1760000000000
+            },
+            {
+              "key": "1760000000002-ok.txt",
+              "size": 2,
+              "lastModified": 1760000000002
+            }
+          ],
+          "truncated": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "service": "github",
+  "action": "push",
+  "case": "push-branch",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_WORK_DIR": "{workdir}"
+  },
+  "params": {
+    "branchName": "main"
+  },
+  "setup": "git-repo",
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "message": "Successfully pushed branch: main"
+    }
+  }
+}

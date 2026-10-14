@@ -1,0 +1,54 @@
+{
+  "service": "knowledge",
+  "action": "createGoalWithGraph",
+  "case": "create-goal-reply-is-not-json",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "anchorAnswer": "Haskell"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"deepseek-v4-flash\",\"temperature\":0.3,\"stream\":true,\"stream_options\":{\"include_usage\":true},\"messages\":[{\"role\":\"system\",\"content\":\"You are an expert learning advisor that helps users create structured, actionable learning goals.\\n\\nYour task is to analyze a user's learning aspiration and generate a comprehensive learning goal.\\n\\nKey principles:\\n- Create a clear, specific, and achievable learning goal\\n- The \\\"title\\\" MUST be the bare canonical subject name only (e.g. \\\"Haskell\\\", \\\"Linear Algebra\\\", \\\"Organic Chemistry\\\", \\\"React\\\"). NEVER add ANY prefix or suffix: not \\\"Master\\\", \\\"Mastering\\\", \\\"Core\\\", \\\"Essential\\\", \\\"Fundamentals\\\", \\\"Learning\\\", \\\"Understanding\\\", \\\"Introduction to\\\", \\\"A guide to\\\", \\\"The Complete\\\", or any similar word. Output the subject name and nothing else.\\n- Infer the most appropriate goal type (common types: \\\"certification\\\", \\\"skill_mastery\\\", \\\"language_level\\\", \\\"project_completion\\\", or suggest a custom type if it fits better)\\n- Make the goal actionable and measurable\\n- \\\"customMetadata\\\" is flat: each value is a string, number, boolean or null (e.g. {\\\"difficulty\\\": \\\"beginner\\\", \\\"focus\\\": \\\"conversation\\\"})\\n- \\\"keywords\\\" are domain search terms a learner might use that are not the subject name itself (e.g. [\\\"JVM\\\",\\\"runtime\\\",\\\"bytecode\\\"])\\n\\nOutput format:\\nReturn a JSON object with this structure:\\n{\\n  \\\"title\\\": \\\"Bare canonical subject name only\\\",\\n  \\\"description\\\": \\\"Detailed description of the learning goal\\\",\\n  \\\"type\\\": \\\"goal_type_here\\\",\\n  \\\"target\\\": \\\"Specific target (e.g., 'AWS Certified Solutions Architect', 'B1 Spanish', 'Publish research paper')\\\",\\n  \\\"estimatedTime\\\": 120,\\n  \\\"keywords\\\": [\\\"term\\\"],\\n  \\\"milestones\\\": [\\n    { \\\"id\\\": \\\"m1\\\", \\\"title\\\": \\\"Milestone title\\\", \\\"description\\\": \\\"Milestone description\\\", \\\"targetDate\\\": null, \\\"completed\\\": false }\\n  ],\\n  \\\"customMetadata\\\": {}\\n}\\n\\nReturn ONLY the JSON object, no additional text.\"},{\"role\":\"user\",\"content\":\"The user answered the anchor question \\\"What's something you've always wanted to learn?\\\" with:\\n\\n\\\"Haskell\\\"\\n\\nGenerate a comprehensive learning goal based on this information.\\n\\nReturn the JSON object with the goal structure.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "text/event-stream"
+        },
+        "body": "data: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"I would love to help!\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": "SERVICE_ERROR",
+    "message": "Failed to parse the model response as JSON"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [
+    {
+      "phase": "start",
+      "text": "",
+      "model": "deepseek-v4-flash"
+    },
+    {
+      "phase": "delta",
+      "text": "I would love to help!",
+      "model": "deepseek-v4-flash"
+    }
+  ],
+  "visualizations": []
+}

@@ -1,0 +1,31 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "search-http-400-yields-no-results",
+  "env": {},
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://export.arxiv.org/api/query?search_query=all%3Ax&start=0&max_results=8&sortBy=relevance",
+        "headers": {
+          "accept": "application/atom+xml"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 400,
+        "body": "<feed><entry><id>e</id></entry></feed>"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "results": []
+    }
+  }
+}

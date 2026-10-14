@@ -1,0 +1,48 @@
+{
+  "service": "knowledge",
+  "action": "conceptPersona",
+  "case": "concept-persona-cached",
+  "env": {},
+  "params": {
+    "conceptLabel": "Gravity"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/concept-personas/c:gravity\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/concept-personas/c:gravity\",\"fields\":{\"name\":{\"stringValue\":\"Isaac Newton\"},\"description\":{\"stringValue\":\"English physicist.\"},\"portraitUrl\":{\"stringValue\":\"\"},\"greeting\":{\"stringValue\":\"Hi\"},\"bio\":{\"stringValue\":\"Born 1643.\"},\"cachedAt\":{\"integerValue\":\"1699913600000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "name": "Isaac Newton",
+      "description": "English physicist.",
+      "portraitUrl": "",
+      "greeting": "Hi",
+      "instructions": "You are Isaac Newton. English physicist.\n\nYour biography (factual grounding, from Wikipedia):\nBorn 1643.\n\nA learner is studying \"Gravity\". Reply in first person, in character as Isaac Newton, warmly and concisely (max ~120 words). Draw on your real life and contributions above. Stay factual to the biography; if asked something outside it, say plainly that you do not know rather than invent. Keep the conversation on \"Gravity\" and bring the learner back to it if they drift. Do not break character."
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

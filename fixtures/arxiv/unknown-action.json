@@ -1,0 +1,15 @@
+{
+  "service": "arxiv",
+  "action": "fetchPaper",
+  "case": "unknown-action",
+  "env": {},
+  "params": {
+    "id": "1"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for arxiv.fetchPaper: action: Unknown action: fetchPaper"
+  }
+}

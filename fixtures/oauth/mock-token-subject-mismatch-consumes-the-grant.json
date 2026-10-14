@@ -1,0 +1,58 @@
+{
+  "service": "oauth",
+  "case": "mock-token-subject-mismatch-consumes-the-grant",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "google",
+        "scopes": [
+          "openid",
+          "email"
+        ],
+        "redirectUri": "https://app.example.com/callback",
+        "subject": "user-1"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&scope=openid+email&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&state=<hex32>&client_id=mock-client-id",
+          "state": "<hex32>"
+        }
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}",
+        "subject": "user-2"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "OAuth completion refused: the completing subject is not the one that started the authorization"
+      }
+    },
+    {
+      "action": "token",
+      "params": {
+        "code": "auth-code-123",
+        "state": "{{0.state}}",
+        "subject": "user-1"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": null,
+        "message": "Invalid or expired state token: <hex32>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "service": "stripe",
+  "action": "createCheckoutSession",
+  "case": "create-checkout-session-price-not-configured",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key"
+  },
+  "params": {
+    "tier": "solo",
+    "quantity": 1,
+    "successUrl": "https://app.example.com/billing/success",
+    "cancelUrl": "https://app.example.com/billing/cancel"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "STRIPE_PRICE_SOLO not configured"
+  }
+}

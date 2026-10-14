@@ -1,0 +1,63 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-metadata-counts-match",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "a": {
+        "id": "a",
+        "type": "Concept",
+        "properties": {
+          "id": "a",
+          "name": "a",
+          "description": "a d"
+        },
+        "createdAt": 1000,
+        "updatedAt": 1000
+      },
+      "meta": {
+        "id": "meta",
+        "type": "GraphMetadata",
+        "properties": {
+          "totalConcepts": 1,
+          "totalRelationships": 0
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [
+        "a"
+      ],
+      "Layer": [],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [
+        "meta"
+      ],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": []
+  },
+  "output": []
+}

@@ -1,0 +1,36 @@
+{
+  "service": "youtube",
+  "action": "getVideo",
+  "case": "get-video",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "videoId": "vid1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=vid1&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"kind\":\"youtube#videoListResponse\",\"items\":[{\"kind\":\"youtube#video\",\"id\":\"vid1\",\"snippet\":{\"title\":\"Intro\",\"description\":\"Hello\"},\"statistics\":{\"viewCount\":\"1042\",\"likeCount\":\"57\",\"favoriteCount\":\"0\"}}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "title": "Intro",
+      "description": "Hello",
+      "viewCount": "1042",
+      "likeCount": "57"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "service": "queue",
+  "case": "validation-failures",
+  "env": {},
+  "steps": [
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "q"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.enqueue: payload: Missing required parameter: payload"
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "payload": 1
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.enqueue: queue: Missing required parameter: queue"
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "q",
+        "payload": 1,
+        "delay": "soon"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.enqueue: delay: Expected number, got string"
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {},
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.dequeue: queue: Missing required parameter: queue"
+      }
+    },
+    {
+      "action": "status",
+      "params": {
+        "jobId": 7
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.status: jobId: Expected string, got number"
+      }
+    },
+    {
+      "action": "purge",
+      "params": {
+        "queue": "q"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.purge: action: Unknown action: purge"
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "q",
+        "extra": 1
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for queue.size: extra: Unknown parameter: extra (declared: queue)"
+      }
+    }
+  ]
+}

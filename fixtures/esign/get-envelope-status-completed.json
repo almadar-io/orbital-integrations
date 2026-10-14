@@ -1,0 +1,37 @@
+{
+  "service": "esign",
+  "action": "getEnvelopeStatus",
+  "case": "get-envelope-status-completed",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "envelopeId": "env-1"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/restapi/v2.1/accounts/acct-1/envelopes/env-1",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"envelopeId\":\"env-1\",\"status\":\"completed\",\"completedDateTime\":\"2026-01-02T10:00:00.0000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": "completed",
+      "completedAt": "2026-01-02T10:00:00.0000000Z"
+    }
+  }
+}

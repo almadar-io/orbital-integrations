@@ -1,0 +1,41 @@
+{
+  "service": "stripe",
+  "action": "createPortalSession",
+  "case": "create-portal-session",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "customerId": "cus_1",
+    "returnUrl": "https://app.example.com/billing"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/billing_portal/sessions",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "customer=cus_1&return_url=https%3A%2F%2Fapp.example.com%2Fbilling"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"bps_1\",\"object\":\"billing_portal.session\",\"url\":\"https://billing.stripe.com/p/session/bps_1\",\"customer\":\"cus_1\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "url": "https://billing.stripe.com/p/session/bps_1",
+      "customerId": "cus_1"
+    }
+  }
+}

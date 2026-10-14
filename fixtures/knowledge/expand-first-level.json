@@ -1,0 +1,188 @@
+{
+  "service": "knowledge",
+  "action": "expand",
+  "case": "expand-first-level",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key",
+    "OPEN_ROUTER_API_KEY": "test-key"
+  },
+  "params": {
+    "graphId": "g4",
+    "numConcepts": 2
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\",\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"g4\"},\"nodes\":{\"mapValue\":{\"fields\":{\"g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Rust\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"name\":{\"stringValue\":\"Rust\"},\"description\":{\"stringValue\":\"Rust description\"},\"layer\":{\"integerValue\":\"0\"},\"sequence\":{\"integerValue\":\"1\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"goal-g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"name\":{\"stringValue\":\"Learn Rust\"},\"description\":{\"stringValue\":\"Systems programming\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"ship a CLI\"},\"estimatedTime\":{\"integerValue\":\"40\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"name\":{\"stringValue\":\"Basics\"},\"description\":{\"stringValue\":\"Syntax and ownership\"},\"sequence\":{\"integerValue\":\"0\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-2\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"name\":{\"stringValue\":\"Traits\"},\"description\":{\"stringValue\":\"Abstraction\"},\"sequence\":{\"integerValue\":\"1\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"g4\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Rust\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"goal-g4\"}]}},\"Milestone\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"ms-1\"},{\"stringValue\":\"ms-2\"}]}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-containsConcept-Rust\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-hasLearningGoal-goal-g4\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-1\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-2\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"qwen/qwen3-30b-a3b-instruct-2507\",\"temperature\":0.3,\"stream\":true,\"tool_choice\":\"auto\",\"stream_options\":{\"include_usage\":true},\"usage\":{\"include\":true},\"messages\":[{\"role\":\"system\",\"content\":\"## Role\\nYou are a learning architect who designs progressive learning paths. You create structured, goal-oriented educational content that builds knowledge incrementally.\\n\\n## Output Format\\nYou must return your response in a specific format. Every field is MANDATORY — empty tags are not allowed.\\n\\nFor each concept, output this exact sequence of tags:\\n<concept>CONCEPT NAME</concept>\\n<description>A full sentence explaining what this concept is and why it matters. Must be at least 15 characters — never empty.</description>\\n<parents>PARENT1, PARENT2</parents>\\n\\nAlso include:\\n- <level-name>NAME</level-name> for the layer name\\n- <goal>GOAL TEXT</goal> for the layer goal\\n\\nExample:\\n<concept>Heat Transfer</concept>\\n<description>The movement of thermal energy from a hotter object to a cooler one via conduction, convection, or radiation.</description>\\n<parents>Thermodynamics, Temperature</parents>\"},{\"role\":\"user\",\"content\":\"## Topic\\nYou are introducing a new learning path for: **Rust**\\n\\nRust description\\n\\n## Learning Goal\\n**Goal Title**: Learn Rust\\n**Goal Description**: Systems programming\\n**Goal Type**: skill_mastery\\n**Target**: ship a CLI\\n**Estimated Time**: 40 hours\\n\\n**Total Milestones**: 2\\n**Completed Milestones**: 0/2\\n\\n**Current Target Milestone**: Milestone 1: Basics\\n**Milestone Description**: Syntax and ownership\\n**All Milestones**: 1. Basics, 2. Traits\\n\\n## Task\\nCreate a simple project appropriate for Rust at the intermediate level.\\n\\n**Requirements:**\\n1. Suggest a name for this first layer (e.g., \\\"Level 1\\\", \\\"Foundation\\\", \\\"Module 1\\\") in a <level-name> tag\\n2. Define a project goal in a <goal> tag that advances toward the learning goal\\n\\n**CRITICAL MILESTONE GOAL REQUIREMENT:**\\n- This layer's goal **MUST be prefixed** with \\\"Milestone 1: \\\" in the <goal> tag\\n- **Example format**: `<goal>Milestone 1: [your project goal that advances toward \\\"Basics\\\"]</goal>`\\n- The goal should directly contribute to achieving \\\"Basics\\\"\\n- **Milestone Context**: Syntax and ownership\\n\\n3. Generate a narrative introducing Rust and describing approximately 2 foundational concepts\\n4. Tag each concept with <concept>CONCEPT NAME</concept>\\n5. Include <description>...</description> for each concept\\n6. Include <parents>...</parents> listing prerequisites for each concept\\n\\n**IMPORTANT**: This project should be the first step toward achieving the learning goal: \\\"Learn Rust\\\"\\n\\n## Difficulty Level\\nAssume the learner has some basic knowledge. Focus on concepts that bridge basic understanding to more advanced topics.\\n\\n## Learning Focus\\n**CRITICAL**: All concepts must align with and support the learning focus: \\\"Systems programming\\\". Do not introduce concepts that stray from this focus.\\n\\n## Rules\\n- Each concept must be tagged exactly once with <concept>CONCEPT NAME</concept>\\n- CRITICAL: Every <description> tag MUST contain a meaningful sentence (at least 15 characters). Empty descriptions are not allowed.\\n- Each concept MUST be immediately followed by its <description> and <parents> tags in that order\\n- Use simple, single-concept names (e.g., \\\"arrays\\\", \\\"functions\\\")\\n- Avoid long descriptive names, parentheses, or special characters\\n- Parents must reference either the seed concept (\\\"Rust\\\") or concepts introduced earlier in THIS layer. Copy the name EXACTLY.\\n- Use Title Case for concept names\\n- Do NOT repeat concepts from previous layers\\n- All concepts must align with the learning focus \\\"Systems programming\\\"\\n- Return only the narrative text; no JSON\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "text/event-stream"
+        },
+        "body": "data: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"<level-name>Foundations</level-name>\\n<goal>Milestone 1: Build a tiny CLI</goal>\\n\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"<concept>Ownership</concept>\\n<description>Every value has one owner that decides when it is freed.</description>\\n<parents>Rust</parents>\\n\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"<concept>Borrowing</concept>\\n<description>References let code use a value without taking it.</description>\\n<parents>Ownership, Missing Thing</parents>\\n\"},\"finish_reason\":null}]}\n\ndata: {\"id\":\"chatcmpl-1\",\"object\":\"chat.completion.chunk\",\"created\":1,\"model\":\"deepseek-v4-flash\",\"choices\":[{\"index\":0,\"delta\":{},\"finish_reason\":\"stop\"}]}\n\ndata: [DONE]\n\n"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents/users/learner-1:runQuery?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"structuredQuery\":{\"from\":[{\"collectionId\":\"knowledgeGraphs\"}],\"select\":{\"fields\":[{\"fieldPath\":\"id\"}]}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"document\":{\"name\":\"projects/p/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\",\"fields\":{\"id\":{\"stringValue\":\"g4\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\",\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"g4\"},\"nodes\":{\"mapValue\":{\"fields\":{\"g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Rust\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"name\":{\"stringValue\":\"Rust\"},\"description\":{\"stringValue\":\"Rust description\"},\"layer\":{\"integerValue\":\"0\"},\"sequence\":{\"integerValue\":\"1\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"goal-g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"name\":{\"stringValue\":\"Learn Rust\"},\"description\":{\"stringValue\":\"Systems programming\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"ship a CLI\"},\"estimatedTime\":{\"integerValue\":\"40\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"name\":{\"stringValue\":\"Basics\"},\"description\":{\"stringValue\":\"Syntax and ownership\"},\"sequence\":{\"integerValue\":\"0\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-2\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"name\":{\"stringValue\":\"Traits\"},\"description\":{\"stringValue\":\"Abstraction\"},\"sequence\":{\"integerValue\":\"1\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"g4\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Rust\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"goal-g4\"}]}},\"Milestone\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"ms-1\"},{\"stringValue\":\"ms-2\"}]}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-containsConcept-Rust\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-hasLearningGoal-goal-g4\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-1\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-2\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMQ==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"2\"},\"name\":{\"stringValue\":\"g4\"},\"nodes\":{\"mapValue\":{\"fields\":{\"g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"g4\"},\"seedConceptId\":{\"stringValue\":\"Rust\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Rust\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Rust\"},\"name\":{\"stringValue\":\"Rust\"},\"description\":{\"stringValue\":\"Rust description\"},\"layer\":{\"integerValue\":\"0\"},\"sequence\":{\"integerValue\":\"1\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"goal-g4\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"goal-g4\"},\"name\":{\"stringValue\":\"Learn Rust\"},\"description\":{\"stringValue\":\"Systems programming\"},\"type\":{\"stringValue\":\"skill_mastery\"},\"target\":{\"stringValue\":\"ship a CLI\"},\"estimatedTime\":{\"integerValue\":\"40\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-1\"},\"name\":{\"stringValue\":\"Basics\"},\"description\":{\"stringValue\":\"Syntax and ownership\"},\"sequence\":{\"integerValue\":\"0\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"ms-2\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"Milestone\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"ms-2\"},\"name\":{\"stringValue\":\"Traits\"},\"description\":{\"stringValue\":\"Abstraction\"},\"sequence\":{\"integerValue\":\"1\"},\"completed\":{\"booleanValue\":false}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"layer-g4-1\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"layer-g4-1\"},\"type\":{\"stringValue\":\"Layer\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"layer-g4-1\"},\"layerNumber\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"Foundations\"},\"goal\":{\"stringValue\":\"Milestone 1: Build a tiny CLI\"},\"prompt\":{\"stringValue\":\"\"},\"response\":{\"stringValue\":\"<level-name>Foundations</level-name>\\n<goal>Milestone 1: Build a tiny CLI</goal>\\n<concept>Ownership</concept>\\n<description>Every value has one owner that decides when it is freed.</description>\\n<parents>Rust</parents>\\n<concept>Borrowing</concept>\\n<description>References let code use a value without taking it.</description>\\n<parents>Ownership, Missing Thing</parents>\\n\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"targetMilestoneId\":{\"stringValue\":\"ms-1\"},\"targetMilestoneSequence\":{\"integerValue\":\"0\"},\"targetMilestoneTitle\":{\"stringValue\":\"Basics\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Ownership\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Ownership\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Ownership\"},\"name\":{\"stringValue\":\"Ownership\"},\"description\":{\"stringValue\":\"Every value has one owner that decides when it is freed.\"},\"layer\":{\"integerValue\":\"1\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"canonicalName\":{\"stringValue\":\"Ownership\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"Borrowing\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Borrowing\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"Borrowing\"},\"name\":{\"stringValue\":\"Borrowing\"},\"description\":{\"stringValue\":\"References let code use a value without taking it.\"},\"layer\":{\"integerValue\":\"1\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"canonicalName\":{\"stringValue\":\"Borrowing\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"g4\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"Rust\"},{\"stringValue\":\"Ownership\"},{\"stringValue\":\"Borrowing\"}]}},\"Layer\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"layer-g4-1\"}]}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"goal-g4\"}]}},\"Milestone\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"ms-1\"},{\"stringValue\":\"ms-2\"}]}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-containsConcept-Rust\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-g4-hasLearningGoal-goal-g4\"},\"source\":{\"stringValue\":\"g4\"},\"target\":{\"stringValue\":\"goal-g4\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-1\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-goal-g4-hasMilestone-ms-2\"},\"source\":{\"stringValue\":\"goal-g4\"},\"target\":{\"stringValue\":\"ms-2\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Rust-hasLayer-layer-g4-1\"},\"source\":{\"stringValue\":\"Rust\"},\"target\":{\"stringValue\":\"layer-g4-1\"},\"type\":{\"stringValue\":\"hasLayer\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-layer-g4-1-hasMilestone-ms-1\"},\"source\":{\"stringValue\":\"layer-g4-1\"},\"target\":{\"stringValue\":\"ms-1\"},\"type\":{\"stringValue\":\"hasMilestone\"},\"direction\":{\"stringValue\":\"forward\"},\"metadata\":{\"mapValue\":{\"fields\":{\"layerNumber\":{\"integerValue\":\"1\"},\"milestoneSequence\":{\"integerValue\":\"0\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-layer-g4-1-containsConcept-Ownership\"},\"source\":{\"stringValue\":\"layer-g4-1\"},\"target\":{\"stringValue\":\"Ownership\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Ownership-belongsToLayer-layer-g4-1\"},\"source\":{\"stringValue\":\"Ownership\"},\"target\":{\"stringValue\":\"layer-g4-1\"},\"type\":{\"stringValue\":\"belongsToLayer\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Rust-hasChild-Ownership\"},\"source\":{\"stringValue\":\"Rust\"},\"target\":{\"stringValue\":\"Ownership\"},\"type\":{\"stringValue\":\"hasChild\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Ownership-hasParent-Rust\"},\"source\":{\"stringValue\":\"Ownership\"},\"target\":{\"stringValue\":\"Rust\"},\"type\":{\"stringValue\":\"hasParent\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-layer-g4-1-containsConcept-Borrowing\"},\"source\":{\"stringValue\":\"layer-g4-1\"},\"target\":{\"stringValue\":\"Borrowing\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Borrowing-belongsToLayer-layer-g4-1\"},\"source\":{\"stringValue\":\"Borrowing\"},\"target\":{\"stringValue\":\"layer-g4-1\"},\"type\":{\"stringValue\":\"belongsToLayer\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Ownership-hasChild-Borrowing\"},\"source\":{\"stringValue\":\"Ownership\"},\"target\":{\"stringValue\":\"Borrowing\"},\"type\":{\"stringValue\":\"hasChild\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-Borrowing-hasParent-Ownership\"},\"source\":{\"stringValue\":\"Borrowing\"},\"target\":{\"stringValue\":\"Ownership\"},\"type\":{\"stringValue\":\"hasParent\"},\"direction\":{\"stringValue\":\"forward\"},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/g4\"}}],\"transaction\":\"dHgtMQ==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "levelName": "Foundations",
+      "added": [
+        {
+          "id": "Ownership",
+          "name": "Ownership",
+          "description": "Every value has one owner that decides when it is freed.",
+          "layer": 1,
+          "isSeed": false,
+          "sequence": 0,
+          "prerequisites": [],
+          "parents": [
+            "Rust"
+          ],
+          "masteryLevel": 0,
+          "hasLesson": false,
+          "canonicalKey": "Ownership",
+          "routeKey": "T3duZXJzaGlw"
+        },
+        {
+          "id": "Borrowing",
+          "name": "Borrowing",
+          "description": "References let code use a value without taking it.",
+          "layer": 1,
+          "isSeed": false,
+          "sequence": 0,
+          "prerequisites": [],
+          "parents": [
+            "Ownership"
+          ],
+          "masteryLevel": 0,
+          "hasLesson": false,
+          "canonicalKey": "Borrowing",
+          "routeKey": "Qm9ycm93aW5n"
+        }
+      ]
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ],
+    [
+      40,
+      3
+    ]
+  ],
+  "progress": [
+    {
+      "phase": "start",
+      "text": "",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    },
+    {
+      "phase": "delta",
+      "text": "<level-name>Foundations</level-name>\n<goal>Milestone 1: Build a tiny CLI</goal>\n",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    },
+    {
+      "phase": "delta",
+      "text": "<concept>Ownership</concept>\n<description>Every value has one owner that decides when it is freed.</description>\n<parents>Rust</parents>\n",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    },
+    {
+      "phase": "step",
+      "text": "Ownership",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    },
+    {
+      "phase": "delta",
+      "text": "<concept>Borrowing</concept>\n<description>References let code use a value without taking it.</description>\n<parents>Ownership, Missing Thing</parents>\n",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    },
+    {
+      "phase": "step",
+      "text": "Borrowing",
+      "model": "qwen/qwen3-30b-a3b-instruct-2507"
+    }
+  ],
+  "visualizations": []
+}

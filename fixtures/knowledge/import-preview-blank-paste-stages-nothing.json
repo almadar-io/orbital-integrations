@@ -1,0 +1,30 @@
+{
+  "service": "knowledge",
+  "action": "importPreview",
+  "case": "import-preview-blank-paste-stages-nothing",
+  "env": {},
+  "params": {
+    "adapter": "paste",
+    "documents": [
+      {
+        "ref": "clip",
+        "title": "",
+        "raw": "   "
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "units": [],
+      "errors": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

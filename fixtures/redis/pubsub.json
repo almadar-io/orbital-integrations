@@ -1,0 +1,71 @@
+{
+  "service": "redis",
+  "case": "pubsub",
+  "env": {},
+  "steps": [
+    {
+      "action": "publish",
+      "params": {
+        "channel": "news",
+        "message": "hello"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "receivers": 0
+        }
+      }
+    },
+    {
+      "action": "subscribe",
+      "params": {
+        "channel": "news"
+      },
+      "clockMs": 1760000000010,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "subscribed": true
+        }
+      }
+    },
+    {
+      "action": "subscribe",
+      "params": {
+        "channel": "news"
+      },
+      "clockMs": 1760000000020,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "subscribed": true
+        }
+      }
+    },
+    {
+      "action": "publish",
+      "params": {
+        "channel": "news",
+        "message": {
+          "id": 1
+        }
+      },
+      "clockMs": 1760000000030,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "receivers": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "openai-generate-model-not-found",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "userPrompt": "hi",
+    "model": "gpt-nope"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-nope\",\"temperature\":0.7,\"stream\":false,\"max_tokens\":1024,\"messages\":[{\"role\":\"system\",\"content\":\"You are a helpful assistant.\"},{\"role\":\"user\",\"content\":\"hi\"}]}"
+      },
+      "response": {
+        "status": 404,
+        "body": "{\"error\":{\"message\":\"The model `gpt-nope` does not exist\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "404 The model `gpt-nope` does not exist\n\nTroubleshooting URL: https://docs.langchain.com/oss/javascript/langchain/errors/MODEL_NOT_FOUND/\n"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "service": "knowledge-web",
+  "action": "currentTopics",
+  "case": "topics-empty",
+  "env": {
+    "KNOWLEDGE_TEST_CONNECTED": "true",
+    "KNOWLEDGE_TEST_ACCOUNT": "me@example.com"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/jump-back-in",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"items\":[]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/learning/goals",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"goals\":[]}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "{base}/api/user/statistics/recent-activity?limit=50",
+        "headers": {
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"activity\":[]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "topics": []
+    }
+  },
+  "now": "2027-01-15T08:00:00.000Z"
+}

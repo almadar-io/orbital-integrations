@@ -1,0 +1,145 @@
+{
+  "service": "knowledge",
+  "action": "importCommit",
+  "case": "import-commit-paste",
+  "env": {},
+  "params": {
+    "adapter": "paste",
+    "documents": [
+      {
+        "ref": "clip",
+        "title": "",
+        "raw": "line one\nline two"
+      }
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"missing\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\",\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMQ==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"clip\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"Imported from clip\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"}}],\"transaction\":\"dHgtMQ==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\",\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"1\"},\"name\":{\"stringValue\":\"clip\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"Imported from clip\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMg==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"2\"},\"name\":{\"stringValue\":\"clip\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"Imported from clip\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000003\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"line one\\nline two\"},\"type\":{\"stringValue\":\"custom\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"}}],\"transaction\":\"dHgtMg==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"],\"newTransaction\":{\"readWrite\":{}}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\",\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"2\"},\"name\":{\"stringValue\":\"clip\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"Imported from clip\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000003\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"line one\\nline two\"},\"type\":{\"stringValue\":\"custom\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\",\"transaction\":\"dHgtMw==\"}]"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"},\"version\":{\"integerValue\":\"3\"},\"name\":{\"stringValue\":\"clip\"},\"nodes\":{\"mapValue\":{\"fields\":{\"00000000-0000-4000-8000-000000000001\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"type\":{\"stringValue\":\"Graph\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"seedConceptId\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000002\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"Concept\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"Imported from clip\"},\"isSeed\":{\"booleanValue\":true}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"00000000-0000-4000-8000-000000000003\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"type\":{\"stringValue\":\"LearningGoal\"},\"properties\":{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"name\":{\"stringValue\":\"clip\"},\"description\":{\"stringValue\":\"line one\\nline two\"},\"type\":{\"stringValue\":\"custom\"},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}},\"createdAt\":{\"integerValue\":\"1700000000000\"},\"updatedAt\":{\"integerValue\":\"1700000000000\"}}}}}}},\"nodeTypes\":{\"mapValue\":{\"fields\":{\"Graph\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"}]}},\"Concept\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"}]}},\"Layer\":{\"arrayValue\":{}},\"LearningGoal\":{\"arrayValue\":{\"values\":[{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"}]}},\"Milestone\":{\"arrayValue\":{}},\"PracticeExercise\":{\"arrayValue\":{}},\"Lesson\":{\"arrayValue\":{}},\"ConceptMetadata\":{\"arrayValue\":{}},\"GraphMetadata\":{\"arrayValue\":{}},\"FlashCard\":{\"arrayValue\":{}},\"Story\":{\"arrayValue\":{}},\"Course\":{\"arrayValue\":{}},\"Assessment\":{\"arrayValue\":{}},\"Translation\":{\"arrayValue\":{}},\"LanguageConfig\":{\"arrayValue\":{}},\"Student\":{\"arrayValue\":{}},\"ScheduleSlot\":{\"arrayValue\":{}},\"Progress\":{\"arrayValue\":{}},\"Enrollment\":{\"arrayValue\":{}},\"AssessmentSubmission\":{\"arrayValue\":{}},\"Achievement\":{\"arrayValue\":{}},\"StudentPreferences\":{\"arrayValue\":{}},\"CourseCategory\":{\"arrayValue\":{}},\"CourseTemplate\":{\"arrayValue\":{}}}}},\"relationships\":{\"arrayValue\":{\"values\":[{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-containsConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"containsConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasSeedConcept-00000000-0000-4000-8000-000000000002\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000002\"},\"type\":{\"stringValue\":\"hasSeedConcept\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}},{\"mapValue\":{\"fields\":{\"id\":{\"stringValue\":\"rel-00000000-0000-4000-8000-000000000001-hasLearningGoal-00000000-0000-4000-8000-000000000003\"},\"source\":{\"stringValue\":\"00000000-0000-4000-8000-000000000001\"},\"target\":{\"stringValue\":\"00000000-0000-4000-8000-000000000003\"},\"type\":{\"stringValue\":\"hasLearningGoal\"},\"direction\":{\"stringValue\":\"forward\"},\"strength\":{\"nullValue\":null},\"metadata\":{\"nullValue\":null},\"createdAt\":{\"integerValue\":\"1700000000000\"}}}}]}}},\"name\":\"projects/demo-kflow/databases/(default)/documents/users/learner-1/knowledgeGraphs/00000000-0000-4000-8000-000000000001\"}}],\"transaction\":\"dHgtMw==\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"writeResults\":[{\"updateTime\":\"2024-01-01T00:00:00.000000Z\"}],\"commitTime\":\"2024-01-01T00:00:00.000000Z\"}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "graphId": "00000000-0000-4000-8000-000000000001",
+      "committed": 1,
+      "failed": []
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [
+    "00000000-0000-4000-8000-000000000001",
+    "00000000-0000-4000-8000-000000000002",
+    "00000000-0000-4000-8000-000000000003"
+  ],
+  "randomBytes": [
+    [
+      40,
+      1
+    ],
+    [
+      40,
+      2
+    ],
+    [
+      40,
+      3
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

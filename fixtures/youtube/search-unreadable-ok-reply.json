@@ -1,0 +1,34 @@
+{
+  "service": "youtube",
+  "action": "search",
+  "case": "search-unreadable-ok-reply",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "not json",
+        "headers": {
+          "content-type": "text/html"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": null
+  }
+}

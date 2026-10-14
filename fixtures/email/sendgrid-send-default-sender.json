@@ -1,0 +1,41 @@
+{
+  "service": "email",
+  "action": "send",
+  "case": "sendgrid-send-default-sender",
+  "env": {
+    "SENDGRID_API_KEY": "test-key"
+  },
+  "params": {
+    "to": "ada@example.com",
+    "subject": "Welcome",
+    "body": "<p>Hello Ada</p>"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.sendgrid.com/v3/mail/send",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"from\":{\"email\":\"noreply@example.com\"},\"subject\":\"Welcome\",\"personalizations\":[{\"to\":[{\"email\":\"ada@example.com\"}]}],\"content\":[{\"value\":\"<p>Hello Ada</p>\",\"type\":\"text/html\"}]}"
+      },
+      "response": {
+        "status": 202,
+        "body": "",
+        "headers": {
+          "x-message-id": "sg-msg-4"
+        }
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "sg-msg-4",
+      "status": "sent"
+    }
+  }
+}

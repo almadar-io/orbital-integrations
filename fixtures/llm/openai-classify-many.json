@@ -1,0 +1,60 @@
+{
+  "service": "llm",
+  "action": "classifyMany",
+  "case": "openai-classify-many",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "items": [
+      {
+        "id": "a",
+        "text": "invoice overdue"
+      },
+      {
+        "id": "b",
+        "text": "app crashes"
+      }
+    ],
+    "categories": [
+      "billing",
+      "support"
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.1,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text classifier. Classify each item below into exactly one of these categories:\\n- billing\\n- support\\nAnswer with one verdict per item: its id, the category, and your confidence from 0 to 1. Return JSON: { \\\"verdicts\\\": [{ \\\"id\\\", \\\"category\\\", \\\"confidence\\\" }] }.\"},{\"role\":\"user\",\"content\":\"[1] invoice overdue\\n[2] app crashes\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"verdicts\\\":[{\\\"id\\\":\\\"1\\\",\\\"category\\\":\\\"billing\\\",\\\"confidence\\\":0.9},{\\\"id\\\":\\\"2\\\",\\\"category\\\":\\\"support\\\",\\\"confidence\\\":0.8}]}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "verdicts": [
+        {
+          "id": "a",
+          "category": "billing",
+          "confidence": 0.9
+        },
+        {
+          "id": "b",
+          "category": "support",
+          "confidence": 0.8
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "service": "stripe",
+  "action": "createCheckoutSession",
+  "case": "create-checkout-session-unknown-tier",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "tier": "gold",
+    "quantity": 1,
+    "successUrl": "https://app.example.com/billing/success",
+    "cancelUrl": "https://app.example.com/billing/cancel"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "tier must be \"solo\" or \"teams\""
+  }
+}

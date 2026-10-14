@@ -1,0 +1,23 @@
+{
+  "service": "knowledge",
+  "action": "createGoalWithGraph",
+  "case": "create-goal-blank-anchor",
+  "env": {
+    "DEEPSEEK_API_KEY": "test-key"
+  },
+  "params": {
+    "anchorAnswer": "   "
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "anchorAnswer is required and must be a non-empty string"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

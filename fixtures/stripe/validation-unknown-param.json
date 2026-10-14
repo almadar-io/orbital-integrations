@@ -1,0 +1,20 @@
+{
+  "service": "stripe",
+  "action": "confirmPayment",
+  "case": "validation-unknown-param",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "paymentIntentId": "pi_1",
+    "bogus": 1
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for stripe.confirmPayment: bogus: Unknown parameter: bogus (declared: paymentIntentId)"
+  }
+}

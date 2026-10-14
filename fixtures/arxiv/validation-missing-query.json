@@ -1,0 +1,13 @@
+{
+  "service": "arxiv",
+  "action": "search",
+  "case": "validation-missing-query",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for arxiv.search: query: Missing required parameter: query"
+  }
+}

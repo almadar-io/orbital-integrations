@@ -1,0 +1,19 @@
+{
+  "service": "github",
+  "action": "getIssue",
+  "case": "validation-wrong-type",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "issueNumber": "one"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for github.getIssue: issueNumber: Expected number, got string"
+  }
+}

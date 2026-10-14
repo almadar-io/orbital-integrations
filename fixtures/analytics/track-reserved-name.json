@@ -1,0 +1,22 @@
+{
+  "service": "analytics",
+  "action": "track",
+  "case": "track-reserved-name",
+  "env": {},
+  "params": {
+    "endpoint": "{base}/e",
+    "name": "pageview",
+    "path": "/"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Event name 'pageview' is reserved; call pageview"
+  },
+  "page": {
+    "hostname": "orb.almadar.io",
+    "referrer": "https://news.ycombinator.com/",
+    "screenWidth": 1440
+  }
+}

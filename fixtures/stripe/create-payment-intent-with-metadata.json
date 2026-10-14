@@ -1,0 +1,52 @@
+{
+  "service": "stripe",
+  "action": "createPaymentIntent",
+  "case": "create-payment-intent-with-metadata",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "amount": 1999,
+    "currency": "eur",
+    "metadata": {
+      "orderId": "o 1&2",
+      "note": "café (rush)"
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/payment_intents",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "amount=1999&currency=eur&metadata[orderId]=o%201%262&metadata[note]=caf%C3%A9%20%28rush%29"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"pi_1\",\"object\":\"payment_intent\",\"amount\":1999,\"currency\":\"eur\",\"status\":\"requires_payment_method\",\"client_secret\":\"pi_1_secret_x\",\"metadata\":{\"orderId\":\"o 1&2\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "id": "pi_1",
+      "object": "payment_intent",
+      "amount": 1999,
+      "currency": "eur",
+      "status": "requires_payment_method",
+      "client_secret": "pi_1_secret_x",
+      "metadata": {
+        "orderId": "o 1&2"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "service": "ml",
+  "action": "infer",
+  "case": "infer-structured-output-and-violations",
+  "env": {
+    "MASAR_URL": "{base}",
+    "MASAR_ML_TRAIT": "inference-serving"
+  },
+  "params": {
+    "model": "masar:ckpt-7",
+    "input": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ]
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/api/inference-serving/events",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*"
+        },
+        "body": "{\"event\":\"INFER\",\"payload\":{\"model\":\"masar:ckpt-7\",\"input\":[[1,2],[3,4]]}}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"success\":true,\"newState\":\"ready\",\"effectResults\":[{\"effect\":\"emit\",\"success\":true,\"data\":{\"event\":\"INFERRED\",\"payload\":{\"output\":{\"label\":\"cat\",\"scores\":{\"cat\":0.8,\"dog\":0.2}},\"confidence\":0.8,\"violations\":[{\"rule\":\"range\",\"field\":\"score\"}]}}}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "output": {
+        "label": "cat",
+        "scores": {
+          "cat": 0.8,
+          "dog": 0.2
+        }
+      },
+      "confidence": 0.8,
+      "violations": [
+        {
+          "rule": "range",
+          "field": "score"
+        }
+      ]
+    }
+  }
+}

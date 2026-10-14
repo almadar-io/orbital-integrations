@@ -1,0 +1,37 @@
+{
+  "service": "llm",
+  "action": "summarize",
+  "case": "openai-summarize-defaults",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "text": "A long text."
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/chat/completions",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"model\":\"gpt-4o\",\"temperature\":0.3,\"stream\":false,\"messages\":[{\"role\":\"system\",\"content\":\"You are a text summarizer. Be concise.  Return JSON with: summary (string) and keyPoints (array of strings).\"},{\"role\":\"user\",\"content\":\"A long text.\"}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"chatcmpl-1\",\"object\":\"chat.completion\",\"created\":1,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"summary\\\":\\\"short\\\",\\\"keyPoints\\\":[]}\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":1,\"total_tokens\":4}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "summary": "short",
+      "keyPoints": []
+    }
+  }
+}

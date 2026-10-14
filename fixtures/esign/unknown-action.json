@@ -1,0 +1,16 @@
+{
+  "service": "esign",
+  "action": "nope",
+  "case": "unknown-action",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for esign.nope: action: Unknown action: nope"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "service": "knowledge",
+  "action": "touchNode",
+  "case": "firestore-permission-denied-on-write",
+  "env": {},
+  "params": {
+    "nodeKey": "concept:light"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:commit?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"writes\":[{\"update\":{\"fields\":{\"lastSeenOnNode\":{\"integerValue\":\"1700000000000\"}},\"name\":\"projects/demo-kflow/databases/(default)/documents/node-activity/concept%3Alight/members/learner-1\"},\"updateMask\":{\"fieldPaths\":[\"lastSeenOnNode\"]}}]}"
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{\"code\":403,\"message\":\"Missing or insufficient permissions.\",\"status\":\"PERMISSION_DENIED\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": 403,
+    "message": "{\"error\":{\"code\":403,\"message\":\"Missing or insufficient permissions.\",\"status\":\"PERMISSION_DENIED\"}}"
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

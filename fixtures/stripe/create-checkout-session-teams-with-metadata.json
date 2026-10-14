@@ -1,0 +1,48 @@
+{
+  "service": "stripe",
+  "action": "createCheckoutSession",
+  "case": "create-checkout-session-teams-with-metadata",
+  "env": {
+    "STRIPE_SECRET_KEY": "test-key",
+    "STRIPE_PRICE_SOLO": "price_solo_test",
+    "STRIPE_PRICE_TEAMS": "price_teams_test"
+  },
+  "params": {
+    "tier": "teams",
+    "quantity": 3,
+    "successUrl": "https://app.example.com/billing/success",
+    "cancelUrl": "https://app.example.com/billing/cancel",
+    "metadata": {
+      "almadarUid": "uid-7",
+      "team": "core"
+    }
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.stripe.com/v1/checkout/sessions",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "accept": "application/json",
+          "authorization": "<redacted>",
+          "stripe-version": "2025-02-24.acacia",
+          "idempotency-key": "<generated>"
+        },
+        "body": "mode=subscription&line_items[0][price]=price_teams_test&line_items[0][quantity]=3&success_url=https%3A%2F%2Fapp.example.com%2Fbilling%2Fsuccess&cancel_url=https%3A%2F%2Fapp.example.com%2Fbilling%2Fcancel&subscription_data[metadata][almadarUid]=uid-7&subscription_data[metadata][team]=core&automatic_tax[enabled]=true&allow_promotion_codes=true"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"cs_2\",\"object\":\"checkout.session\",\"url\":\"https://checkout.stripe.com/c/pay/cs_2\",\"customer\":null}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "url": "https://checkout.stripe.com/c/pay/cs_2",
+      "sessionId": "cs_2",
+      "customerId": ""
+    }
+  }
+}

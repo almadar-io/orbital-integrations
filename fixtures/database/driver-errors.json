@@ -1,0 +1,186 @@
+{
+  "service": "database",
+  "case": "driver-errors",
+  "env": {},
+  "setup": {
+    "processEnv": {
+      "ORDERS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "REPORTS_DB_URL": "postgres://reader:test-key@reports.internal:5432/reports",
+      "ALIAS_DB_URL": "postgres://app:test-key@db.internal:5432/orders",
+      "EMPTY_DB_URL": ""
+    }
+  },
+  "steps": [
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT * FROM missing_table"
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "SERVICE_ERROR",
+        "message": "relation \"missing_table\" does not exist"
+      },
+      "driver": {
+        "connects": [
+          {
+            "connectionString": "postgres://app:test-key@db.internal:5432/orders",
+            "statementTimeoutMs": 10000
+          }
+        ],
+        "queries": [
+          {
+            "sql": "SELECT * FROM missing_table",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "error": {
+            "message": "relation \"missing_table\" does not exist",
+            "code": "42P01"
+          }
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT pg_sleep(60)"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "TIMEOUT_ERROR",
+        "message": "Statement timeout exceeded"
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT pg_sleep(60)",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "error": {
+            "message": "canceling statement due to statement timeout",
+            "code": "57014"
+          }
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "SERVICE_ERROR",
+        "message": "Connection terminated unexpectedly"
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT 1",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "error": {
+            "message": "Connection terminated unexpectedly"
+          }
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "SERVICE_ERROR",
+        "message": "Query read timeout"
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT 1",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "error": {
+            "message": "Query read timeout"
+          }
+        }
+      ]
+    },
+    {
+      "action": "query",
+      "params": {
+        "connectionRef": "ORDERS_DB_URL",
+        "sql": "SELECT 1"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "rows": [
+            {
+              "ok": true
+            }
+          ],
+          "rowCount": 1
+        }
+      },
+      "driver": {
+        "connects": [],
+        "queries": [
+          {
+            "sql": "SELECT 1",
+            "params": []
+          }
+        ]
+      },
+      "replies": [
+        {
+          "rows": [
+            {
+              "ok": true
+            }
+          ],
+          "rowCount": 1
+        }
+      ]
+    }
+  ]
+}

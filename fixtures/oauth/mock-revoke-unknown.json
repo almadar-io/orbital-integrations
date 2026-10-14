@@ -1,0 +1,23 @@
+{
+  "service": "oauth",
+  "case": "mock-revoke-unknown",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "revoke",
+      "params": {
+        "token": "nope"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "revoked": false
+        }
+      }
+    }
+  ]
+}

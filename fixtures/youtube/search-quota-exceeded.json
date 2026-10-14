@@ -1,0 +1,32 @@
+{
+  "service": "youtube",
+  "action": "search",
+  "case": "search-quota-exceeded",
+  "env": {
+    "YOUTUBE_API_KEY": "test-key"
+  },
+  "params": {
+    "query": "x"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=x&maxResults=10&key=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 403,
+        "body": "{\"error\":{\"code\":403,\"message\":\"The request cannot be completed because you have exceeded your quota.\",\"errors\":[{\"message\":\"The request cannot be completed because you have exceeded your quota.\",\"domain\":\"youtube.quota\",\"reason\":\"quotaExceeded\"}],\"status\":\"ERROR\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "The request cannot be completed because you have exceeded your quota."
+  }
+}

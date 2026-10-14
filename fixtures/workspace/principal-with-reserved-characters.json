@@ -1,0 +1,86 @@
+{
+  "service": "workspace",
+  "case": "principal-with-reserved-characters",
+  "startMs": 1767225600000,
+  "steps": [
+    {
+      "action": "writeFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo",
+        "content": "x"
+      },
+      "principal": "ünï_user@example.com",
+      "cold": false,
+      "noHost": false,
+      "atMs": 1767225600000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "path": "a.lolo",
+          "written": true
+        }
+      },
+      "objects": [
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/app-marker.json",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/index.json",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/project.orb",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/user.orb",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.gitignore",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/a.lolo",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/schema.orb"
+      ]
+    },
+    {
+      "action": "readFile",
+      "params": {
+        "workspace": "app-1",
+        "path": "a.lolo"
+      },
+      "principal": "ünï_user@example.com",
+      "cold": true,
+      "noHost": false,
+      "atMs": 1767225601000,
+      "outcome": {
+        "ok": true,
+        "data": {
+          "path": "a.lolo",
+          "exists": true,
+          "content": "x"
+        }
+      },
+      "objects": [
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/app-marker.json",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/index.json",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/project.orb",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/user.orb",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.gitignore",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/a.lolo",
+        "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/schema.orb"
+      ]
+    }
+  ],
+  "bucket": {
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/app-marker.json": {
+      "text": "{\n  \"appId\": \"app-1\",\n  \"userId\": \"_c3_bcn_c3_af_5fuser_40example_2ecom\",\n  \"createdAt\": 1767225600000\n}"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/index.json": {
+      "text": "{\n  \"schemaVersion\": 2,\n  \"bm25\": {\n    \"documents\": {},\n    \"docFreq\": {},\n    \"docCount\": 0,\n    \"avgDocLen\": 0\n  },\n  \"intent\": {\n    \"entityNameOverrides\": {},\n    \"traitRefImporters\": {},\n    \"ruleCapabilities\": {},\n    \"organism\": {}\n  },\n  \"composed\": {\n    \"events\": {},\n    \"entityNameComposed\": {}\n  },\n  \"recency\": {},\n  \"bakedAt\": 1767225600000\n}"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/project.orb": {
+      "text": "{\n  \"name\": \"ProjectMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Domain knowledge for Untitled\",\n  \"orbitals\": [\n    {\n      \"name\": \"DomainKnowledge\",\n      \"entity\": {\n        \"name\": \"ProjectContext\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"app-1\",\n            \"appId\": \"app-1\",\n            \"projectName\": \"Untitled\",\n            \"lastUpdatedAt\": \"2026-01-01T00:00:00.000Z\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.almadar/user.orb": {
+      "text": "{\n  \"name\": \"UserMemory\",\n  \"version\": \"1.0.0\",\n  \"description\": \"User preferences and learned patterns\",\n  \"orbitals\": [\n    {\n      \"name\": \"PreferenceTracking\",\n      \"entity\": {\n        \"name\": \"UserPreference\",\n        \"fields\": [],\n        \"instances\": [\n          {\n            \"id\": \"pref-_c3_bcn_c3_af_5fuser_40example_2ecom\",\n            \"userId\": \"_c3_bcn_c3_af_5fuser_40example_2ecom\"\n          }\n        ]\n      },\n      \"traits\": [],\n      \"pages\": []\n    }\n  ]\n}"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/.gitignore": {
+      "text": "# Almadar — version only the app; ignore generated/churny state\n# `.almadar/` is an allowlist: its app state is history, anything else there is scratch.\n/.almadar/*\n!/.almadar/app-marker.json\n!/.almadar/ledger.json\n!/.almadar/project.orb\n!/.almadar/user.orb\n!/.almadar/fill-candidates/\n# A session is churn except each orbital's spec.json: its .orb is derived from it.\n!/.almadar/sessions/\n/.almadar/sessions/*\n!/.almadar/sessions/*/\n/.almadar/sessions/*/**\n!/.almadar/sessions/*/spec.json\n/apps/\n/.almadar-archive.bundle\n"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/a.lolo": {
+      "text": "x"
+    },
+    "workspaces/_c3_bcn_c3_af_5fuser_40example_2ecom/app-1/files/schema.orb": {
+      "text": "{\n  \"name\": \"Untitled\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"orbitals\": []\n}"
+    }
+  }
+}

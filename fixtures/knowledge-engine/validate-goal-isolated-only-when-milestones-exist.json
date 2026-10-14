@@ -1,0 +1,86 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-goal-isolated-only-when-milestones-exist",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "goal1": {
+        "id": "goal1",
+        "type": "LearningGoal",
+        "properties": {
+          "name": "g",
+          "description": "d",
+          "type": "skill"
+        }
+      },
+      "goal2": {
+        "id": "goal2",
+        "type": "LearningGoal",
+        "properties": {
+          "name": "g2",
+          "description": "d",
+          "type": "skill"
+        }
+      },
+      "m1": {
+        "id": "m1",
+        "type": "Milestone",
+        "properties": {
+          "name": "m",
+          "completed": false
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [],
+      "LearningGoal": [
+        "goal1",
+        "goal2"
+      ],
+      "Milestone": [
+        "m1"
+      ],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "goal2",
+        "target": "m1",
+        "type": "hasMilestone",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_07_GOAL_ISOLATED",
+      "severity": "warning",
+      "nodeId": "goal1",
+      "message": "LearningGoal \"goal1\" has no hasMilestone, hasLearningGoal, or belongsToGoal relationships."
+    }
+  ]
+}

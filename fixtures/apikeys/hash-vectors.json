@@ -1,0 +1,31 @@
+{
+  "service": "apikeys",
+  "case": "hash-vectors",
+  "constructorError": "ALMADAR_API_KEY_SALT not configured",
+  "vectors": [
+    {
+      "salt": "00112233445566778899",
+      "plaintext": "{{API_KEY_PREFIX}}abababababababababababababababababababababababababababababababab",
+      "keyHash": "a492cbeb35eff51937467da2c2ebd3357833764db320d250ab133403456b1537",
+      "lastFour": "abab"
+    },
+    {
+      "salt": "00112233445566778899",
+      "plaintext": "{{API_KEY_PREFIX}}",
+      "keyHash": "010bbcf1a211930bca10afa35c740b1c70dcb058711e165c9918f1137c97b940",
+      "lastFour": "ive_"
+    },
+    {
+      "salt": "00112233445566778899",
+      "plaintext": "héllo wörld",
+      "keyHash": "5a781e12503077b2d0d1bf683ca2ba77737fdeaca90df36fc5ef9c5fd72dfde7",
+      "lastFour": "örld"
+    },
+    {
+      "salt": "AbCdEf0123456789",
+      "plaintext": "{{API_KEY_PREFIX}}0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f",
+      "keyHash": "1dcc68a241b44c82ab715bbab75dc0ab28643e69111a574a65f1f072a0ff47b5",
+      "lastFour": "0f0f"
+    }
+  ]
+}

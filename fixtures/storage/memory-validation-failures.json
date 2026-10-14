@@ -1,0 +1,110 @@
+{
+  "service": "storage",
+  "case": "memory-validation-failures",
+  "env": {
+    "STORAGE_BUCKET": "dev-bucket"
+  },
+  "steps": [
+    {
+      "action": "upload",
+      "params": {},
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.upload: bucket: Missing required parameter: bucket"
+      }
+    },
+    {
+      "action": "download",
+      "params": {
+        "bucket": "b"
+      },
+      "clockMs": 1760000000001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.download: key: Missing required parameter: key"
+      }
+    },
+    {
+      "action": "list",
+      "params": {
+        "bucket": "b",
+        "maxKeys": "many"
+      },
+      "clockMs": 1760000000002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.list: maxKeys: Expected number, got string"
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "bucket": 5,
+        "key": "k"
+      },
+      "clockMs": 1760000000003,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.delete: bucket: Expected string, got number"
+      }
+    },
+    {
+      "action": "getSignedUrl",
+      "params": {
+        "bucket": "b",
+        "key": "k",
+        "expiresIn": "soon"
+      },
+      "clockMs": 1760000000004,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.getSignedUrl: expiresIn: Expected number, got string"
+      }
+    },
+    {
+      "action": "copy",
+      "params": {
+        "bucket": "b"
+      },
+      "clockMs": 1760000000005,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.copy: action: Unknown action: copy"
+      }
+    },
+    {
+      "action": "uploadMany",
+      "params": {
+        "bucket": "b",
+        "files": "x"
+      },
+      "clockMs": 1760000000006,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": false,
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for storage.uploadMany: files: Expected array, got string"
+      }
+    }
+  ]
+}

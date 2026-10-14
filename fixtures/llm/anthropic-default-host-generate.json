@@ -1,0 +1,41 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "anthropic-default-host-generate",
+  "env": {
+    "ANTHROPIC_API_KEY": "test-key"
+  },
+  "params": {
+    "userPrompt": "hi"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "x-api-key": "<redacted>",
+          "anthropic-version": "2023-06-01"
+        },
+        "body": "{\"model\":\"claude-sonnet-4-5-20250929\",\"stream\":false,\"max_tokens\":1024,\"temperature\":0.7,\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}],\"system\":[{\"type\":\"text\",\"text\":\"You are a helpful assistant.\",\"cache_control\":{\"type\":\"ephemeral\"}}]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"id\":\"msg_1\",\"type\":\"message\",\"role\":\"assistant\",\"model\":\"claude-sonnet-4-5-20250929\",\"content\":[{\"type\":\"text\",\"text\":\"hi\"}],\"stop_reason\":\"end_turn\",\"stop_sequence\":null,\"usage\":{\"input_tokens\":3,\"output_tokens\":1}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "hi",
+      "usage": {
+        "promptTokens": 3,
+        "completionTokens": 1,
+        "totalTokens": 4
+      }
+    }
+  }
+}

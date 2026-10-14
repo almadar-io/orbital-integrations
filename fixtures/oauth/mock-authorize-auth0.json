@@ -1,0 +1,26 @@
+{
+  "service": "oauth",
+  "case": "mock-authorize-auth0",
+  "nowMs": 1800000000000,
+  "env": {
+    "OAUTH_MODE": "mock"
+  },
+  "steps": [
+    {
+      "action": "authorize",
+      "params": {
+        "provider": "auth0",
+        "scopes": [],
+        "redirectUri": "https://app.example.com/callback"
+      },
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "authUrl": "https://auth.example.com/authorize?response_type=code&scope=&redirect_uri=https%3A%2F%2Fapp.example.com%2Fcallback&state=<hex32>&client_id=mock-client-id",
+          "state": "<hex32>"
+        }
+      }
+    }
+  ]
+}

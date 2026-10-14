@@ -1,0 +1,20 @@
+{
+  "service": "drive",
+  "action": "uploadFile",
+  "case": "upload-file-malformed-data-url",
+  "env": {
+    "GOOGLE_DRIVE_REFRESH_TOKEN": "test-refresh-token",
+    "OAUTH_CLIENT_ID": "test-client-id",
+    "OAUTH_CLIENT_SECRET": "test-client-secret"
+  },
+  "params": {
+    "name": "x.txt",
+    "content": "data:text/plain,100%"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": null,
+    "message": "URI malformed"
+  }
+}

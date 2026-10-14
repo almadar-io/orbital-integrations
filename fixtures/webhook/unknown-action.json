@@ -1,0 +1,16 @@
+{
+  "service": "webhook",
+  "action": "verify",
+  "case": "unknown-action",
+  "env": {},
+  "params": {
+    "url": "{base}/hooks/orders"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for webhook.verify: action: Unknown action: verify"
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

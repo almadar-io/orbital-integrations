@@ -1,0 +1,100 @@
+{
+  "service": "knowledge-engine",
+  "case": "validate-layer-multiple-precedes-and-cycle",
+  "kind": "validate",
+  "input": {
+    "id": "g1",
+    "createdAt": 1000,
+    "updatedAt": 2000,
+    "nodes": {
+      "l1": {
+        "id": "l1",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 1
+        }
+      },
+      "l2": {
+        "id": "l2",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 2
+        }
+      },
+      "l3": {
+        "id": "l3",
+        "type": "Layer",
+        "properties": {
+          "layerNumber": 3
+        }
+      }
+    },
+    "nodeTypes": {
+      "Graph": [],
+      "Concept": [],
+      "Layer": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "LearningGoal": [],
+      "Milestone": [],
+      "PracticeExercise": [],
+      "Lesson": [],
+      "ConceptMetadata": [],
+      "GraphMetadata": [],
+      "FlashCard": [],
+      "Story": [],
+      "Course": [],
+      "Assessment": [],
+      "Translation": [],
+      "LanguageConfig": [],
+      "Student": [],
+      "ScheduleSlot": [],
+      "Progress": [],
+      "Enrollment": [],
+      "AssessmentSubmission": [],
+      "Achievement": [],
+      "StudentPreferences": [],
+      "CourseCategory": [],
+      "CourseTemplate": []
+    },
+    "relationships": [
+      {
+        "id": "r1",
+        "source": "l1",
+        "target": "l2",
+        "type": "precedesLayer",
+        "direction": "forward"
+      },
+      {
+        "id": "r2",
+        "source": "l1",
+        "target": "l3",
+        "type": "precedesLayer",
+        "direction": "forward"
+      },
+      {
+        "id": "r3",
+        "source": "l3",
+        "target": "l1",
+        "type": "precedesLayer",
+        "direction": "forward"
+      }
+    ]
+  },
+  "output": [
+    {
+      "code": "KG_INV_06_LAYER_MULTI_PRECEDES",
+      "severity": "error",
+      "nodeId": "l1",
+      "message": "Layer \"l1\" has more than one precedesLayer relationship (non-linear)."
+    },
+    {
+      "code": "KG_INV_06_LAYER_CYCLE",
+      "severity": "error",
+      "nodeId": "l1",
+      "message": "Layer precedence graph contains a cycle involving \"l1\"."
+    }
+  ]
+}

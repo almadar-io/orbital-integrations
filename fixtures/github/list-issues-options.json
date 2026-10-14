@@ -1,0 +1,57 @@
+{
+  "service": "github",
+  "action": "listIssues",
+  "case": "list-issues-options",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "state": "closed",
+    "labels": [
+      "bug",
+      "help wanted"
+    ],
+    "per_page": 500
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/acme/widgets/issues?state=closed&per_page=100&labels=bug%2Chelp+wanted",
+        "headers": {
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"number\":3,\"url\":\"https://api.github.com/repos/acme/widgets/issues/3\",\"title\":\"Third\",\"body\":\"Body of Third\",\"state\":\"closed\",\"labels\":[{\"name\":\"bug\",\"color\":\"d73a4a\"}],\"created_at\":\"2026-01-02T03:04:05Z\",\"updated_at\":\"2026-01-03T03:04:05Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "issues": [
+        {
+          "number": 3,
+          "url": "https://api.github.com/repos/acme/widgets/issues/3",
+          "title": "Third",
+          "body": "Body of Third",
+          "state": "closed",
+          "labels": [
+            {
+              "name": "bug",
+              "color": "d73a4a"
+            }
+          ],
+          "created_at": "2026-01-02T03:04:05Z",
+          "updated_at": "2026-01-03T03:04:05Z"
+        }
+      ]
+    }
+  }
+}

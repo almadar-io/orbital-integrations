@@ -1,0 +1,37 @@
+{
+  "service": "iconify",
+  "action": "search",
+  "case": "search",
+  "env": {},
+  "params": {
+    "query": "github",
+    "limit": 3
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.iconify.design/search?query=github&limit=3",
+        "headers": {
+          "accept": "*/*",
+          "user-agent": "Almadar/1.0 (https://almadar.dev)"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"icons\":[\"logos:github-icon\",\"mdi:github\",\"ri:github-fill\"],\"total\":3,\"limit\":3,\"start\":0,\"collections\":{}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "icons": [
+        "logos:github-icon",
+        "mdi:github",
+        "ri:github-fill"
+      ]
+    }
+  }
+}

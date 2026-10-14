@@ -1,0 +1,21 @@
+{
+  "service": "knowledge",
+  "action": "deletePath",
+  "case": "no-principal",
+  "env": {},
+  "params": {
+    "graphId": "g1"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "AUTH_ERROR",
+    "message": "knowledge.deletePath needs a signed-in learner"
+  },
+  "principal": null,
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [],
+  "progress": [],
+  "visualizations": []
+}

@@ -1,0 +1,148 @@
+{
+  "service": "redis",
+  "case": "ttl-expiry",
+  "env": {},
+  "steps": [
+    {
+      "action": "set",
+      "params": {
+        "key": "session",
+        "value": "abc",
+        "ttl": 2
+      },
+      "clockMs": 1760000000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "session"
+      },
+      "clockMs": 1760000001999,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": "abc"
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "session"
+      },
+      "clockMs": 1760000002000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": "abc"
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "session"
+      },
+      "clockMs": 1760000002001,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": null
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "key": "session"
+      },
+      "clockMs": 1760000002002,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": false
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "stale",
+        "value": 1,
+        "ttl": 1
+      },
+      "clockMs": 1760000002100,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "delete",
+      "params": {
+        "key": "stale"
+      },
+      "clockMs": 1760000009000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "deleted": true
+        }
+      }
+    },
+    {
+      "action": "set",
+      "params": {
+        "key": "zero-ttl",
+        "value": 1,
+        "ttl": 0
+      },
+      "clockMs": 1760000003000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "action": "get",
+      "params": {
+        "key": "zero-ttl"
+      },
+      "clockMs": 1760009000000,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "value": 1
+        }
+      }
+    }
+  ]
+}

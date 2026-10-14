@@ -1,0 +1,14 @@
+{
+  "service": "accounting",
+  "action": "exportJournal",
+  "case": "validation-missing-entries",
+  "env": {},
+  "params": {},
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for accounting.exportJournal: entries: Missing required parameter: entries"
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

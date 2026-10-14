@@ -1,0 +1,35 @@
+[package]
+name = "orbital-integrations"
+version = "18.0.0"
+edition = "2021"
+license = "BUSL-1.1"
+repository = "https://github.com/almadar-io/orbital-integrations"
+description = "Rust providers for Almadar call-service integrations: the twin of @almadar/integrations, host-side (the kernel stays I/O-free)"
+
+[features]
+default = ["http", "google", "postgres"]
+# Native Postgres connector for the `database` service (the synchronous `postgres` client, no TLS yet).
+postgres = ["dep:postgres", "dep:bytes"]
+# RS256 service-account JWT signing for the Google providers (calendar, drive); ring is already in the rustls tree.
+google = ["dep:ring"]
+# Native HTTP(S) transport (ureq + rustls). Off for wasm32 and for hosts that supply their own `Transport`.
+http = ["dep:ureq", "ureq/tls"]
+
+[dependencies]
+aes-gcm = "0.10"
+base64 = "0.22"
+bytes = { version = "1", optional = true }
+getrandom = "0.2"
+p256 = { version = "0.13", features = ["ecdh", "ecdsa"] }
+postgres = { version = "0.19", optional = true }
+md-5 = "0.10"
+sha1 = "0.10"
+sha2 = "0.10"
+url = "2"
+orbital-core = { git = "https://github.com/almadar-io/orbital-core", branch = "main" }
+regex = "1"
+ring = { version = "0.17", optional = true }
+scrypt = { version = "0.11", default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["float_roundtrip"] }
+ureq = { version = "2.9", default-features = false, features = ["json"], optional = true }

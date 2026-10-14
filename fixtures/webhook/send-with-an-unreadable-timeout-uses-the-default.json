@@ -1,0 +1,39 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "send-with-an-unreadable-timeout-uses-the-default",
+  "env": {
+    "WEBHOOK_TIMEOUT_MS": "soon"
+  },
+  "params": {
+    "url": "{base}/hooks/orders",
+    "event": "ping"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/hooks/orders",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "x-almadar-event": "ping"
+        },
+        "body": "{\"event\":\"ping\",\"payload\":{},\"timestamp\":\"2026-05-17T08:09:10.011Z\"}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"received\":true}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": 200,
+      "ok": true,
+      "durationMs": 0
+    }
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

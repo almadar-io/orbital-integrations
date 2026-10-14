@@ -1,0 +1,19 @@
+{
+  "service": "llm",
+  "action": "generate",
+  "case": "validation-unknown-param",
+  "env": {
+    "OPENAI_API_KEY": "test-key",
+    "OPENAI_BASE_URL": "{base}/v1"
+  },
+  "params": {
+    "userPrompt": "hi",
+    "bogus": 1
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for llm.generate: bogus: Unknown parameter: bogus (declared: maxTokens, model, systemPrompt, temperature, userPrompt)"
+  }
+}

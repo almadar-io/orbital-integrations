@@ -1,0 +1,52 @@
+{
+  "service": "github",
+  "action": "createPR",
+  "case": "create-pr-draft",
+  "env": {
+    "GITHUB_TOKEN": "test-key",
+    "GITHUB_OWNER": "acme",
+    "GITHUB_REPO": "widgets"
+  },
+  "params": {
+    "title": "WIP",
+    "body": "",
+    "baseBranch": "main",
+    "headBranch": "feature/y",
+    "draft": true
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/acme/widgets/pulls",
+        "headers": {
+          "content-type": "text/plain;charset=UTF-8",
+          "accept": "application/vnd.github+json",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"title\":\"WIP\",\"body\":\"\",\"base\":\"main\",\"head\":\"feature/y\",\"draft\":true}"
+      },
+      "response": {
+        "status": 201,
+        "body": "{\"number\":8,\"url\":\"https://api.github.com/repos/acme/widgets/pulls/8\",\"html_url\":\"https://github.com/acme/widgets/pull/8\",\"title\":\"WIP\",\"state\":\"open\",\"draft\":true,\"head\":{\"ref\":\"feature/x\"},\"base\":{\"ref\":\"main\"}}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "number": 8,
+      "url": "https://api.github.com/repos/acme/widgets/pulls/8",
+      "html_url": "https://github.com/acme/widgets/pull/8",
+      "title": "WIP",
+      "state": "open",
+      "draft": true,
+      "head": {
+        "ref": "feature/x"
+      },
+      "base": {
+        "ref": "main"
+      }
+    }
+  }
+}

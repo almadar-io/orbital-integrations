@@ -1,0 +1,40 @@
+{
+  "service": "accounting",
+  "action": "exportInvoices",
+  "case": "export-invoices-missing-and-odd-cells",
+  "env": {},
+  "params": {
+    "invoices": [
+      {
+        "id": "x",
+        "net": 1e+21,
+        "tax": 1e-7,
+        "gross": 0,
+        "status": true,
+        "customer": null
+      },
+      {
+        "id": "y",
+        "number": [
+          "a",
+          "b",
+          null
+        ],
+        "dueAt": {
+          "nested": 1
+        },
+        "extra": "ignored"
+      }
+    ]
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "content": "id,number,customer,issuedAt,dueAt,currency,net,tax,gross,status\r\nx,,,,,,1e+21,1e-7,0,true\r\ny,\"a,b,\",,,[object Object],,,,,\r\n",
+      "filename": "invoices-export-2026-03-09.csv",
+      "count": 2
+    }
+  },
+  "now": "2026-03-09T23:59:58.123Z"
+}

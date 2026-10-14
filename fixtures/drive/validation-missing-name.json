@@ -1,0 +1,19 @@
+{
+  "service": "drive",
+  "action": "uploadFile",
+  "case": "validation-missing-name",
+  "env": {
+    "GOOGLE_DRIVE_REFRESH_TOKEN": "test-refresh-token",
+    "OAUTH_CLIENT_ID": "test-client-id",
+    "OAUTH_CLIENT_SECRET": "test-client-secret"
+  },
+  "params": {
+    "content": "x"
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for drive.uploadFile: name: Missing required parameter: name"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "service": "esign",
+  "action": "sendEnvelope",
+  "case": "validation-missing-recipient",
+  "env": {
+    "DOCUSIGN_BASE_URL": "{base}/restapi/v2.1/accounts/acct-1",
+    "DOCUSIGN_ACCESS_TOKEN": "test-token"
+  },
+  "params": {
+    "recipientName": "Ada",
+    "documentName": "a.pdf",
+    "documentContent": "QQ=="
+  },
+  "exchanges": [],
+  "outcome": {
+    "ok": false,
+    "code": "VALIDATION_ERROR",
+    "message": "Validation failed for esign.sendEnvelope: recipientEmail: Missing required parameter: recipientEmail"
+  }
+}

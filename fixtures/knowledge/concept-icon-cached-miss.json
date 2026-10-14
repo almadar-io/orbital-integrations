@@ -1,0 +1,45 @@
+{
+  "service": "knowledge",
+  "action": "conceptIcon",
+  "case": "concept-icon-cached-miss",
+  "env": {},
+  "params": {
+    "label": "Zzz"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/v1/projects/demo-kflow/databases/(default)/documents:batchGet?$alt=json%3Benum-encoding=int",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "authorization": "<redacted>"
+        },
+        "body": "{\"documents\":[\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:zzz\"]}"
+      },
+      "response": {
+        "status": 200,
+        "body": "[{\"found\":{\"name\":\"projects/demo-kflow/databases/(default)/documents/concept-icons/i:zzz\",\"fields\":{\"label\":{\"stringValue\":\"Zzz\"},\"icon\":{\"nullValue\":null},\"tone\":{\"nullValue\":null},\"fetchedAt\":{\"integerValue\":\"1699913600000\"}},\"createTime\":\"2024-01-01T00:00:00.000000Z\",\"updateTime\":\"2024-01-01T00:00:00.000000Z\"},\"readTime\":\"2024-01-01T00:00:00.000000Z\"}]"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "icon": "",
+      "tone": "none"
+    }
+  },
+  "principal": "learner-1",
+  "now": 1700000000000,
+  "uuids": [],
+  "randomBytes": [
+    [
+      40,
+      1
+    ]
+  ],
+  "progress": [],
+  "visualizations": []
+}

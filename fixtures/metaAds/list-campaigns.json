@@ -1,0 +1,51 @@
+{
+  "service": "metaAds",
+  "action": "listCampaigns",
+  "case": "list-campaigns",
+  "env": {
+    "META_ACCESS_TOKEN": "test-key",
+    "META_AD_ACCOUNT_ID": "1234567890"
+  },
+  "params": {},
+  "exchanges": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://graph.facebook.com/v21.0/act_1234567890/campaigns?fields=id%2Cname%2Cstatus%2Cdaily_budget&access_token=test-key",
+        "headers": {
+          "accept": "*/*"
+        },
+        "body": ""
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\":[{\"id\":\"1\",\"name\":\"Spring sale\",\"status\":\"ACTIVE\",\"daily_budget\":\"2500\"},{\"id\":\"2\",\"name\":\"Retarget\",\"status\":\"PAUSED\",\"daily_budget\":\"1050\"},{\"id\":\"3\"}]}"
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "campaigns": [
+        {
+          "id": "1",
+          "name": "Spring sale",
+          "status": "ACTIVE",
+          "dailyBudget": 25
+        },
+        {
+          "id": "2",
+          "name": "Retarget",
+          "status": "PAUSED",
+          "dailyBudget": 10.5
+        },
+        {
+          "id": "3",
+          "name": "",
+          "status": "",
+          "dailyBudget": 0
+        }
+      ]
+    }
+  }
+}

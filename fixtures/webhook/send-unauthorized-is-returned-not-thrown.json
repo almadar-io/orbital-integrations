@@ -1,0 +1,37 @@
+{
+  "service": "webhook",
+  "action": "send",
+  "case": "send-unauthorized-is-returned-not-thrown",
+  "env": {},
+  "params": {
+    "url": "{base}/hooks/orders",
+    "event": "order.created"
+  },
+  "exchanges": [
+    {
+      "request": {
+        "method": "POST",
+        "url": "{base}/hooks/orders",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "*/*",
+          "x-almadar-event": "order.created"
+        },
+        "body": "{\"event\":\"order.created\",\"payload\":{},\"timestamp\":\"2026-05-17T08:09:10.011Z\"}"
+      },
+      "response": {
+        "status": 401,
+        "body": ""
+      }
+    }
+  ],
+  "outcome": {
+    "ok": true,
+    "data": {
+      "status": 401,
+      "ok": false,
+      "durationMs": 0
+    }
+  },
+  "now": "2026-05-17T08:09:10.011Z"
+}

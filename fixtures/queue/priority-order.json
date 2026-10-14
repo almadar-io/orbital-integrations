@@ -1,0 +1,236 @@
+{
+  "service": "queue",
+  "case": "priority-order",
+  "env": {},
+  "steps": [
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "mail",
+        "payload": {
+          "to": "a@x.io"
+        }
+      },
+      "clockMs": 1760000000000,
+      "randoms": [
+        0.111111111111
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000000_3zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "mail",
+        "payload": "second",
+        "priority": 5
+      },
+      "clockMs": 1760000000010,
+      "randoms": [
+        0.222222222222
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000010_7zzzzz",
+          "position": 0
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "mail",
+        "payload": "third",
+        "priority": 5
+      },
+      "clockMs": 1760000000020,
+      "randoms": [
+        0.333333333333
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000020_bzzzzz",
+          "position": 1
+        }
+      }
+    },
+    {
+      "action": "enqueue",
+      "params": {
+        "queue": "mail",
+        "payload": null,
+        "priority": 1
+      },
+      "clockMs": 1760000000030,
+      "randoms": [
+        0.444444444444
+      ],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "jobId": "job_1760000000030_fzzzzz",
+          "position": 2
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000040,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 4,
+          "pending": 4,
+          "processing": 0
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000050,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000010_7zzzzz",
+            "payload": "second",
+            "enqueuedAt": 1760000000010,
+            "priority": 5
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000060,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000020_bzzzzz",
+            "payload": "third",
+            "enqueuedAt": 1760000000020,
+            "priority": 5
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000070,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000030_fzzzzz",
+            "payload": null,
+            "enqueuedAt": 1760000000030,
+            "priority": 1
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000080,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": {
+            "id": "job_1760000000000_3zzzzz",
+            "payload": {
+              "to": "a@x.io"
+            },
+            "enqueuedAt": 1760000000000,
+            "priority": 0
+          }
+        }
+      }
+    },
+    {
+      "action": "dequeue",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000090,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "job": null
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "mail"
+      },
+      "clockMs": 1760000000100,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 4,
+          "pending": 0,
+          "processing": 4
+        }
+      }
+    },
+    {
+      "action": "size",
+      "params": {
+        "queue": "empty"
+      },
+      "clockMs": 1760000000110,
+      "randoms": [],
+      "exchanges": [],
+      "outcome": {
+        "ok": true,
+        "data": {
+          "size": 0,
+          "pending": 0,
+          "processing": 0
+        }
+      }
+    }
+  ]
+}
